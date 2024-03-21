@@ -1,0 +1,148 @@
+{{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="dynamic-category-section section-{{ section.id }}-padding {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <h3 class="small-caps">Shop our Ceramics</h3>
+  <div class="category-toggle">
+    {% for block in section.blocks %}
+      <span class="category-toggle-item {% if forloop.first %}active{% endif %}" data-category="{{ block.settings.category_name }}">{{ block.settings.category_name }}</span>
+    {% endfor %}
+  </div>
+  <div class="category-content">
+    {% for block in section.blocks %}
+      <div class="category-content-item {% if forloop.first %}active{% endif %} {{ block.settings.class }}" data-category="{{ block.settings.category_name }}">
+        <img class="image ceramic" src="{{ block.settings.ceramic_image | img_url: 'master' }}" alt="{{ block.settings.category_name }} Image">
+        <img class="image left" src="{{ block.settings.left_image | img_url: 'master' }}" alt="{{ block.settings.category_name }} Image">
+        <div class="category-text">
+          <h2 class="h0">{{ block.settings.category_name }}</h2>
+          <p>{{ block.settings.category_collection.description }}</p>
+          <a href="{{ block.settings.category_collection.url }}" class="shop-button button">Shop {{ block.settings.category_name }}</a>
+        </div>
+        <img class="image right" src="{{ block.settings.right_image | img_url: 'master' }}" alt="{{ block.settings.category_name }} Image">
+        <video class="category-video" src="{{ block.settings.category_video }}" controls muted></video>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleItems = document.querySelectorAll(".category-toggle-item");
+  const contentItems = document.querySelectorAll(".category-content-item");
+
+  toggleItems.forEach((toggle, index) => {
+    toggle.addEventListener("click", function () {
+      toggleItems.forEach((item) => item.classList.remove("active"));
+      contentItems.forEach((item) => item.classList.remove("active"));
+
+      // Toggle the active class with a small delay to ensure transitions work
+      setTimeout(function () {
+        toggle.classList.add("active");
+        contentItems[index].classList.add("active");
+      }, 10);
+    });
+  });
+
+  // Initialize the first category as active
+  toggleItems[0].click();
+});
+
+
+{% endjavascript %}
+
+
+{% schema %}
+{
+  "name": "t:sections.collection-list.name",
+  "tag": "section",
+  "class": "section section-collection-list",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Block",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Category Name",
+          "id": "category_name"
+        },
+        {
+          "type": "image_picker",
+          "label": "Ceramic Image",
+          "id": "ceramic_image"
+        },
+        {
+          "type": "image_picker",
+          "label": "Left Image",
+          "id": "left_image"
+        },
+        {
+          "type": "image_picker",
+          "label": "Right Image",
+          "id": "right_image"
+        },
+        {
+          "type": "collection",
+          "label": "Category Collection",
+          "id": "category_collection"
+        },
+        {
+          "type": "text",
+          "label": "Category Video URL",
+          "id": "category_video"
+        },
+        {
+          "type": "text",
+          "label": "Class",
+          "info": "Assign a class name. This is for development purposes",
+          "id": "class"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection-list.presets.name"
+    }
+  ]
+}
+
+{% endschema %}

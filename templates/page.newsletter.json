@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 16
+      }
+    },
+    "44e8a762-e273-493d-a18b-9c3ca9863a1d": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16203853168818__44e8a762-e273-493d-a18b-9c3ca9863a1d-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Let's be friends!",
+            "heading_size": "h1"
+          }
+        },
+        "template--16203853168818__44e8a762-e273-493d-a18b-9c3ca9863a1d-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Sign up for our newsletter to get (infrequent) emails about shop updates, studio sales, and a little more. If you haven't shopped with us, you'll also receive 10% off your first order.",
+            "text_style": "body"
+          }
+        },
+        "template--16203853168818__44e8a762-e273-493d-a18b-9c3ca9863a1d-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16203853168818__44e8a762-e273-493d-a18b-9c3ca9863a1d-heading-1",
+        "template--16203853168818__44e8a762-e273-493d-a18b-9c3ca9863a1d-text-1",
+        "template--16203853168818__44e8a762-e273-493d-a18b-9c3ca9863a1d-buttons-1"
+      ],
+      "custom_css": [
+        ".banner {margin-top: 10rem;}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/WolfCeramics_June2023-100.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "d80bbb59-7f25-4917-9ab0-395ba9303ddb": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"klaviyo-form-XrBZQw\"><\/div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "44e8a762-e273-493d-a18b-9c3ca9863a1d",
+    "d80bbb59-7f25-4917-9ab0-395ba9303ddb"
+  ]
+}

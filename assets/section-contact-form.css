@@ -1,0 +1,104 @@
+.contact-wrapper {
+  overflow: hidden;
+}
+
+.form-inner {
+  padding: 5rem;
+  border: 1px solid var(--grey);
+  border-radius: var(--media-radius);
+  position: relative;
+}
+
+.form-inner:after,
+.form-inner:before {
+  content: '';
+  position: absolute;
+  background: var(--grey);
+  height: 100%;
+  width: 100%;
+  border-radius: 30rem;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background-size: contain;
+  background-size: cover;
+}
+
+.form-inner:after {
+  background-position: right;
+  background-image: url(https://cdn.shopify.com/s/files/1/0535/5483/9730/files/WolfCeramics_June2023-35.jpg?v=1696600810);
+  transform: translateX(calc(100% + 10rem));
+}
+
+.form-inner:before {
+  background-position: left;
+  background-image: url(https://cdn.shopify.com/s/files/1/0535/5483/9730/files/WolfCeramics_June2023-26.jpg?v=1696600912);
+  transform: translateX(calc(-100% - 10rem));
+}
+
+.contact img {
+  max-width: 100%;
+}
+
+.contact .form__message {
+  align-items: flex-start;
+}
+
+.contact .icon-success {
+  margin-top: 0.2rem;
+}
+
+.contact .field {
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .contact .field {
+    margin-bottom: 2rem;
+  }
+}
+
+.contact__button {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .contact__button {
+    margin-top: 4rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .contact__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+  }
+}
+
+.field:after, .select:after, .customer .field:after, .customer select:after, .localization-form__select:after {
+  content: unset;
+}
+
+.field__input, .customer .field input {
+  border: 1px solid var(--grey);
+}
+
+.field__input, .select__select, .customer .field input, .customer select {
+  border-radius: 10px;
+}
+
+.contact__button {
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .form-inner {
+    padding: unset;
+    border: unset;
+  }
+  .form-inner:before {
+    
+  }
+}

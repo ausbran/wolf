@@ -1,0 +1,301 @@
+/* Add this CSS to your stylesheet or style tag in the liquid file */
+
+/* Container styling */
+.multicolumn-card__image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-slider {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Ensure the list items are in a row */
+  transition: transform 0.5s ease-in-out; /* Smooth transition effect */
+}
+
+.product-slider li,
+.product-slider li a,
+.product-slider li img {
+  position: absolute;
+}
+
+.product-slider li a {
+  bottom: 3rem;
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: .9em;
+  padding: 2rem 2rem 2rem 4.5rem;
+  width: calc(100% - 6rem);
+  background: #fff;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--duration-long) ease;
+}
+.product-slider li a:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.product-slider li a .icon {
+  transform: rotate(-90deg);
+  color: #fff;
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  padding: 1.75rem 1.75rem 1.5rem 1.75rem;
+  background: var(--black);
+  border-radius: 2.5rem;
+}
+
+.product-slider li img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.product-slider li {
+  width: 100%;
+  height: 100%;
+  transition: var(--duration-long) ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .product-slider li {
+    min-width: 80%;
+  }
+}
+
+.multicolumn .title {
+  margin: 0;
+}
+
+.multicolumn.no-heading .title {
+  display: none;
+}
+
+.multicolumn .title-wrapper-with-link {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .multicolumn .title-wrapper-with-link {
+    margin-bottom: 3rem;
+  }
+
+  .multicolumn .page-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.multicolumn-card__image-wrapper--third-width {
+  width: 33%;
+}
+
+.multicolumn-card__image-wrapper--half-width {
+  width: 50%;
+}
+
+.multicolumn-list__item.center .multicolumn-card__image-wrapper:not(.multicolumn-card__image-wrapper--full-width),
+.multicolumn-list__item:only-child {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.multicolumn .button {
+  margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .multicolumn .button {
+    margin-top: 4rem;
+  }
+  .multicolumn-list {
+    max-width: 150rem;
+    margin: 0 auto;
+    box-sizing: content-box;
+    padding: 0 5rem !important;
+  }
+}
+
+.multicolumn-list__item:only-child {
+  max-width: 72rem;
+}
+
+.multicolumn-list__item--empty {
+  display: none;
+}
+
+.multicolumn:not(.background-none) .multicolumn-card {
+  background: transparent;
+  height: 100%;
+}
+
+.multicolumn.background-primary .multicolumn-card {
+  background: rgb(var(--color-background))
+    linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));
+}
+
+.multicolumn-list h3 {
+  line-height: calc(1 + 0.5 / max(1, var(--font-heading-scale)));
+}
+
+.multicolumn-list h3,
+.multicolumn-list p {
+  margin: 0;
+}
+
+.multicolumn-card-spacing {
+  padding-top: 2.5rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.multicolumn-card__info > :nth-child(2) {
+  margin-top: 1rem;
+}
+
+.multicolumn-list__item.center .media--adapt,
+.multicolumn-list__item .media--adapt .multicolumn-card__image {
+  width: auto;
+}
+
+.multicolumn-list__item.center .media--adapt img {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 749px) {
+  .multicolumn-list {
+    margin: 0;
+    width: 100%;
+  }
+
+  .multicolumn-list:not(.slider) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .multicolumn-list.slider,
+  .multicolumn-list.grid--4-col-desktop {
+    padding: 0;
+  }
+
+  .multicolumn-list__item,
+  .grid--4-col-desktop .multicolumn-list__item {
+    padding-bottom: 0;
+  }
+
+  .background-none .grid--2-col-tablet .multicolumn-list__item {
+    margin-top: 4rem;
+  }
+}
+
+.background-none .multicolumn-card-spacing {
+  padding: 0;
+  margin: 0;
+}
+
+.multicolumn-card__info {
+  padding-top: 2.5rem;
+}
+
+.background-none .multicolumn-card__info {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.background-none .slider .multicolumn-card__info {
+  padding-bottom: 0;
+}
+
+.background-none .multicolumn-card__image-wrapper + .multicolumn-card__info {
+  padding-top: 2.5rem;
+}
+
+.background-none .slider .multicolumn-card__info {
+  padding-left: 0.5rem;
+}
+
+.background-none .slider .multicolumn-card__image-wrapper + .multicolumn-card__info {
+  padding-left: 1.5rem;
+}
+
+.background-none .multicolumn-list:not(.slider) .center .multicolumn-card__info {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+@media screen and (max-width: 749px) {
+  .background-none .slider .multicolumn-card__info {
+    padding-bottom: 1rem;
+  }
+
+  .multicolumn.background-none .slider.slider--mobile {
+    margin-bottom: 0rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .background-none .multicolumn-list .multicolumn-card__info,
+  .background-none .multicolumn-list:not(.slider) .center .multicolumn-card__info {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.multicolumn-card {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.multicolumn-card > .multicolumn-card__image-wrapper--full-width:not(.multicolumn-card-spacing) {
+  border-radius: var(--media-radius);
+  overflow: hidden;
+}
+
+.multicolumn.background-none .multicolumn-card {
+  border-radius: 0;
+}
+
+.multicolumn-card__info .link {
+  text-decoration: none;
+  font-size: inherit;
+  margin-top: 1.5rem;
+}
+
+.multicolumn-card__info .icon-wrap {
+  margin-left: 0.8rem;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 990px) {
+  .multicolumn-list__item--empty {
+    display: list-item;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .product-slider li a {
+    font-size: 1.3rem;
+    padding: 2rem;
+    padding-left: 3rem;
+    width: calc(100% - 4rem);
+    bottom: 2rem;
+  }
+  .product-slider li a .icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 1.3rem;
+  }
+}

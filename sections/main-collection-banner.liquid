@@ -1,0 +1,97 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  header * {
+      color: var(--black);
+    }
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign ceramicImage = collection.metafields.custom.ceramic_image
+  assign ceramicImageURL = ceramicImage | img_url: 'master' | img_tag
+
+  assign leftImage = collection.metafields.custom.left_image
+  assign leftImageURL = leftImage | img_url: 'master' | img_tag
+
+  assign rightImage = collection.metafields.custom.right_image
+  assign rightImageURL = rightImage | img_url: 'master' | img_tag
+-%}
+
+<div class="collection-hero {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="collection-hero__inner {{ collection.metafields.custom.class }}">
+
+    {%- if ceramicImage != blank -%}
+      <div class="image ceramic">
+        {{ ceramicImageURL }}
+      </div>
+    {%- endif -%}
+
+    {%- if leftImage != blank -%}
+      <div class="image left">
+        {{ leftImageURL }}
+      </div>
+    {%- endif -%}
+
+    <div class="collection-hero__text-wrapper">
+      <div>
+        <h2 class="product-count__text text-body">
+          <span id="ProductCountDesktop">
+            {%- if collection.results_count -%}
+              {{
+                'templates.search.results_with_count'
+                | t: terms: collection.terms, count: collection.results_count
+              }}
+            {%- elsif collection.products_count == collection.all_products_count -%}
+              {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
+            {%- else -%}
+              {{
+                'products.facets.product_count'
+                | t: product_count: collection.products_count, count: collection.all_products_count
+              }}
+            {%- endif -%}
+          </span>
+        </h2>
+        <h1 class="collection-hero__title">
+          <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+          {{- collection.title | escape -}}
+        </h1>
+
+        {%- if section.settings.show_collection_description -%}
+          <div class="collection-hero__description rte">{{ collection.description }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if rightImage != blank -%}
+      <div class="image right">
+        {{ rightImageURL }}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    }
+  ]
+}
+{% endschema %}

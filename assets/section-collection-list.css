@@ -1,0 +1,465 @@
+.dynamic-category-section h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 6rem;
+}
+
+.category-video {
+  display: none;
+}
+
+.category-toggle {
+  height: 2.2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+  padding: 0 20px;
+}
+
+.category-toggle-item {
+  position: relative;
+  line-height: 1em;
+  opacity: .3;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-size: 1.25em;
+  cursor: pointer;
+  display: inline-block;
+  transition: var(--duration-default) ease;
+}
+
+.category-toggle-item:after {
+  content: '';
+  width: 100%;
+  height: 0.3rem;
+  background: var(--grey);
+  display: block;
+  position: absolute;
+  width: 0;
+  transition: var(--duration-default) ease;
+  z-index: -1;
+  border-radius: 1px;
+}
+
+.category-toggle-item[data-category="Mugs & Cups"]:after {
+  background: var(--green);
+}
+
+.category-toggle-item[data-category="Dinnerware"]:after {
+  background: var(--red);
+}
+
+.category-toggle-item[data-category="Servingware"]:after {
+  background: var(--yellow);
+}
+
+.category-toggle-item[data-category="Vases & Planters"]:after {
+  background: var(--blue);
+}
+
+.category-toggle-item.active:after {
+  width: 100%;
+}
+
+.category-toggle-item.active {
+  opacity: 1;
+}
+
+.category-content-inner {
+  opacity: 0;
+  transition: opacity var(--duration-long) ease, transform var(--duration-long) ease;
+}
+
+.category-content-inner.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.category-content-inner img {
+  max-width: 100%;
+  transition: opacity var(--duration-long) ease;
+}
+
+.category-text h2 {
+  margin: 0;
+  transition: opacity var(--duration-long) ease;
+}
+
+.category-text p {
+  max-width: 45rem;
+  font-size: 1.6rem;
+  margin: 2rem 0;
+  transition: opacity var(--duration-long) ease-in-out;
+}
+
+.category-content-inner .shop-button {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: opacity var(--duration-long) ease;
+}
+
+.category-text .shop-button:after {
+  content: unset !important;
+}
+
+.category-content-inner:hover img,
+.category-content-inner:hover h2,
+.category-content-inner:hover p,
+.category-content-inner:hover .shop-button {
+  opacity: 1;
+}
+
+.category-content {
+  width: 100%;
+  height: 56rem;
+  display: flex;
+  justify-content: center;
+  max-width: 160rem;
+  margin: auto;
+}
+
+.category-content-item {
+  max-width: 200rem;
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-long) ease, transform var(--duration-long) ease, visibility var(--duration-long) ease;
+}
+
+.category-content-item.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0rem);
+}
+
+.category-text {
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(-1rem);
+  -webkit-transform: translateY(-1rem);
+  flex-basis: 60rem;
+  padding-left: 4%;
+  transition: .8s var(--duration-medium) ease;
+}
+
+.active .category-text {
+  opacity: 1;
+  transform: translateY(0rem);
+  -webkit-transform: translateY(0rem);
+}
+
+.image {
+  opacity: 0;
+  max-height: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: visible;
+  transition: .8s var(--duration-medium) ease;
+}
+
+.image.left {
+  width: 15%;
+  object-position: right;
+  transform: translateX(-4rem);
+  -webkit-transform: translateX(-4rem);
+}
+
+.image.right {
+  width: 48%;
+  object-position: left;
+  transform: translateY(2rem);
+  -webkit-transform: translateY(2rem);
+}
+
+.image.ceramic {
+  z-index: 2;
+  position: absolute;
+}
+
+.active .image.right,
+.active .image.left,
+.active .image.ceramic {
+  opacity: 1;
+  transform: translateX(0rem);
+  -webkit-transform: translateX(0rem);
+}
+
+/* mugs */
+.mugs .category-text {
+  padding-left: 2%;
+}
+.mugs .image.ceramic {
+  height: 40rem;
+  bottom: -13rem;
+  left: 34%;
+}
+.mugs .shop-button {
+  background-color: var(--green);
+}
+
+/* dinnerware */
+.dinnerware .shop-button {
+  background-color: var(--red);
+}
+.dinnerware .image.ceramic {
+  height: 56rem;
+  bottom: -4rem;
+  left: 47%;
+}
+.dinnerware .image.right {
+  width: 15%;
+}
+.dinnerware .category-text {
+  flex: 1;
+}
+
+/* servingware */
+.servingware .image.ceramic {
+  backface-visibility: hidden;
+  height: 39rem;
+  bottom: -12rem;
+  right: 42%;
+}
+.servingware .image.right {
+  width: 15%;
+  object-position: -20rem;
+}
+.servingware .category-text {
+  text-align: center;
+  flex: 1;
+  padding-left: unset;
+  position: relative;
+  top: -8rem;
+}
+.servingware.category-content-item {
+  justify-content: space-around;
+}
+.servingware .category-text p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* vases */
+.vases .image.ceramic {
+  height: 50rem;
+  left: 36%;
+  bottom: -2rem;
+}
+.vases .image.left {
+  object-position: -8rem;
+}
+.vases .shop-button {
+  background-color: var(--blue);
+}
+.vases .category-text {
+  padding-left: 2%;
+}
+
+@media screen and (max-width: 1600px) {
+  .category-content {
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 68rem;
+    margin-bottom: -11rem;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .dinnerware .image.ceramic {
+    left: 53%;
+    bottom: -10rem;
+  }
+  .mugs .image.ceramic {
+    height: 38rem;
+    bottom: -14rem;
+    left: 38%;
+  }
+  .vases .image.ceramic {
+    left: 42%;
+    bottom: -11rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .dinnerware .image.ceramic {
+    height: 53rem;
+    left: 45%;
+    transform: scaleX(-1);
+  }
+  .mugs .category-text,
+  .vases .category-text {
+    padding-right: 4%;
+  }
+  .mugs .category-text {
+    padding-left: 4%;
+  }
+  .vases .image.left {
+    object-position: right;
+  }
+  .vases .image.ceramic{
+    transform: scaleX(-1);
+  }
+  .vases .category-text {
+    padding-left: 4%;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .image.left {
+    display: none;
+  }
+  .servingware .category-text {
+    text-align: left;
+    flex: unset;
+    padding: unset;
+  }
+  .servingware .category-text p {
+    margin-left: unset;
+  }
+  .servingware .image.ceramic {
+    left: 30%;
+    transform: scaleX(-1);
+  }
+  .category-text {
+    padding: 0 5rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .category-toggle {
+    padding-left: 5rem;
+    justify-content: flex-start;
+    gap: 6rem;
+    overflow: scroll;
+    flex-wrap: nowrap;
+  }
+  .dynamic-category-section h3 {
+    margin-bottom: 3rem;
+    text-align: left;
+    padding-left: 5rem;
+  }
+  .category-toggle-item {
+    text-wrap: nowrap;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .dynamic-category-section h3,
+  .category-toggle,
+  .category-text {
+    padding-left: 2rem !important;
+  }
+  .category-text {
+    padding-top: 0;
+  }
+  .servingware .image.right {
+    object-position: left;
+    width: 27%;
+  }
+  .mugs .image.ceramic {
+    right: -4rem;
+    left: unset;
+    height: 34rem;
+  }
+  .mugs .image.right {
+    width: 20%;
+    height: 70%;
+  }
+  .category-content {
+    height: 46rem;
+    padding-bottom: 59rem;
+    margin-bottom: -8rem;
+  }
+  .servingware .image.ceramic {
+    height: 26rem;
+    left: unset;
+    right: -4rem;
+  }
+  .dinnerware .category-text {
+      flex: unset;
+      width: 75%;
+  }
+  .vases .image.right {
+    width: 15%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .category-content-item {
+    align-items: flex-start;
+  }
+  .servingware .category-text {
+    position: static;
+  }
+  .vases .image.ceramic {
+    left: 16%;
+  }
+  .dinnerware .image.ceramic {
+    height: 34rem;
+    right: -9rem;
+    left: unset;
+  }
+  .image.right {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .category-content-item {
+    flex-direction: column-reverse;
+  }
+  .category-toggle {
+    gap: 4rem;
+  }
+  .image.ceramic {
+    position: relative;
+  }
+  .category-content {
+    height: unset;
+  }
+  .category-text {
+    flex-basis: unset;
+    width: 100% !important;
+  }
+  .dinnerware .image.ceramic {
+    align-self: flex-end;
+  }
+  .vases .image.ceramic {
+    height: 44rem;
+    bottom: 6rem;
+    right: 6rem;
+    left: unset;
+  }
+  .mugs .image.ceramic {
+    right: 3rem;
+    bottom: 0;
+    left: unset;
+  }
+  .dinnerware .image.ceramic {
+    height: 30rem;
+    bottom: 6rem;
+    right: unset;
+    left: 22%;
+  }
+  .servingware .image.ceramic {
+    bottom: -5rem;
+    right: 3rem;
+    left: unset;
+    height: 26rem;
+  }
+}
+
+

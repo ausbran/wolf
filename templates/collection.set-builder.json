@@ -1,0 +1,188 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false
+      }
+    },
+    "f9e57f33-a9ae-49e3-8622-fc14acb525a6": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16201206988978__f9e57f33-a9ae-49e3-8622-fc14acb525a6-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Build your custom dinner set.",
+            "heading_size": "h0"
+          }
+        },
+        "template--16201206988978__f9e57f33-a9ae-49e3-8622-fc14acb525a6-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Dream big and go home! Our made-to-order dinnerware comes in two unique but complimentary lines. Pick a lane or mix-and-match — how you build your set is up to you!",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "template--16201206988978__f9e57f33-a9ae-49e3-8622-fc14acb525a6-heading-1",
+        "template--16201206988978__f9e57f33-a9ae-49e3-8622-fc14acb525a6-text-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/landing_98775628-387c-491a-ba5a-a28306813441.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "full-screen",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "3e94fded-c56f-42c8-bd76-17d452571e9b": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16201206988978__3e94fded-c56f-42c8-bd76-17d452571e9b-column-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/portland.jpg",
+            "title": "The Portland Collection",
+            "text": "<p>The original dinnerware Sarah started making and selling back in the early days of Wolf Ceramics. Classic, timeless, elegant. At home in any home. <\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--16201206988978__3e94fded-c56f-42c8-bd76-17d452571e9b-column-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/kc.jpg",
+            "title": "The Kansas City Collection",
+            "text": "<p> A contemporary take on dinnerware, originally developed for Hotel Kansas City. Made with the same clay body and glazes as Portland for easy mix-and-matching.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16201206988978__3e94fded-c56f-42c8-bd76-17d452571e9b-column-1",
+        "template--16201206988978__3e94fded-c56f-42c8-bd76-17d452571e9b-column-2"
+      ],
+      "custom_css": [
+        ".multicolumn-inner {padding-bottom: 0 !important; padding-top: 0 !important;}",
+        ".media {min-height: 40rem;}"
+      ],
+      "settings": {
+        "title": "Learn about our collections",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "horizontal": false,
+        "text_on_top": true,
+        "border": false,
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "accent-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ef7badfa-2e64-4c4f-b89e-c33e24e38495": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16201206988978__ef7badfa-2e64-4c4f-b89e-c33e24e38495-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "These are made to order!",
+            "heading_size": "h2"
+          }
+        },
+        "template--16201206988978__ef7badfa-2e64-4c4f-b89e-c33e24e38495-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "All of our wares are made by our small team of ceramic artisans in Hood River. Once you place your order in our set builder, we'll add it to our production list and make it just for you within 14 weeks. If you need to get your ceramics as soon as possible, consider ordering from the selection of items that we keep in stock and ready-to-ship.",
+            "text_style": "body"
+          }
+        },
+        "template--16201206988978__ef7badfa-2e64-4c4f-b89e-c33e24e38495-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Ready to Ship",
+            "button_link_1": "shopify:\/\/collections\/shop-all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16201206988978__ef7badfa-2e64-4c4f-b89e-c33e24e38495-heading-1",
+        "template--16201206988978__ef7badfa-2e64-4c4f-b89e-c33e24e38495-text-1",
+        "template--16201206988978__ef7badfa-2e64-4c4f-b89e-c33e24e38495-buttons-1"
+      ],
+      "custom_css": [
+        ".banner {background-color: var(--black);}",
+        "@media screen and (max-width: 749px) {.banner__box {padding-left: 3rem !important; padding-right: 3rem; }}",
+        ".banner__box * {color: #fff !important;}",
+        ".banner__buttons * {background: transparent !important;}"
+      ],
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-setbuilder-product-grid",
+      "settings": {
+        "product_tag": "",
+        "columns_desktop": 3,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "d1ec8c2e-33a3-48fd-b3ee-b4a7961553b4": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n<\/style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "f9e57f33-a9ae-49e3-8622-fc14acb525a6",
+    "3e94fded-c56f-42c8-bd76-17d452571e9b",
+    "ef7badfa-2e64-4c4f-b89e-c33e24e38495",
+    "product-grid",
+    "d1ec8c2e-33a3-48fd-b3ee-b4a7961553b4"
+  ]
+}

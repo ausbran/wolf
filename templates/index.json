@@ -1,0 +1,211 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Handmade ceramics for joyful living.",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/collections\/shop-all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "video": "shopify:\/\/files\/videos\/landing-home.mp4",
+        "image": "shopify:\/\/shop_images\/WolfCeramics_June2023-58.jpg",
+        "image_overlay_opacity": 10,
+        "image_height": "full-screen",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "6ff1c6d4-201f-47a9-b2bf-6922ebb35438": {
+      "type": "collection-list",
+      "blocks": {
+        "0bd84283-1ddb-4b65-92c4-bb7349483609": {
+          "type": "category",
+          "settings": {
+            "category_name": "Mugs & Cups",
+            "ceramic_image": "shopify:\/\/shop_images\/mugs-ceramic_04d086e7-3271-4d9f-b114-77da493538ea.png",
+            "left_image": "shopify:\/\/shop_images\/mugs-left.svg",
+            "right_image": "shopify:\/\/shop_images\/mugs-right.svg",
+            "category_collection": "mugs-cups",
+            "category_video": "",
+            "class": "mugs"
+          }
+        },
+        "56e32ecd-1a92-4c7d-89f5-084c411e0c26": {
+          "type": "category",
+          "settings": {
+            "category_name": "Dinnerware",
+            "ceramic_image": "shopify:\/\/shop_images\/dinnerware-ceramic_601fdbd5-d66e-4731-871d-ce4ba6c9114d.png",
+            "left_image": "shopify:\/\/shop_images\/dinnerware-left.svg",
+            "right_image": "shopify:\/\/shop_images\/dinnerware-right.svg",
+            "category_collection": "dinnerware",
+            "category_video": "",
+            "class": "dinnerware"
+          }
+        },
+        "5e88b82e-2db7-4616-a64a-b595f49f352f": {
+          "type": "category",
+          "settings": {
+            "category_name": "Servingware",
+            "ceramic_image": "shopify:\/\/shop_images\/servingware_e32e63d1-5ab6-45c0-975c-11a1e570c54c.png",
+            "left_image": "shopify:\/\/shop_images\/servingware-left.svg",
+            "right_image": "shopify:\/\/shop_images\/servingware-right.png",
+            "category_collection": "servingware",
+            "category_video": "",
+            "class": "servingware"
+          }
+        },
+        "69e4494b-0740-4208-9a75-79f9da26c59f": {
+          "type": "category",
+          "settings": {
+            "category_name": "Vases & Planters",
+            "ceramic_image": "shopify:\/\/shop_images\/vases-ceramic.png",
+            "left_image": "shopify:\/\/shop_images\/vases-left.svg",
+            "right_image": "shopify:\/\/shop_images\/vases-right.svg",
+            "category_collection": "vases-planters",
+            "category_video": "",
+            "class": "vases"
+          }
+        }
+      },
+      "block_order": [
+        "0bd84283-1ddb-4b65-92c4-bb7349483609",
+        "56e32ecd-1a92-4c7d-89f5-084c411e0c26",
+        "5e88b82e-2db7-4616-a64a-b595f49f352f",
+        "69e4494b-0740-4208-9a75-79f9da26c59f"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "ee62491c-7194-4eaf-9e4b-4293bbcb3e5f": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16161778991282__ee62491c-7194-4eaf-9e4b-4293bbcb3e5f-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Build your custom dinner set.",
+            "heading_size": "h0"
+          }
+        },
+        "template--16161778991282__ee62491c-7194-4eaf-9e4b-4293bbcb3e5f-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Looking to fill your shelves with Wolf? Our Portland and Kansas City dinnerware lines are available made-to-order.",
+            "text_style": "body"
+          }
+        },
+        "template--16161778991282__ee62491c-7194-4eaf-9e4b-4293bbcb3e5f-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Build It",
+            "button_link_1": "shopify:\/\/collections\/build-your-set",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16161778991282__ee62491c-7194-4eaf-9e4b-4293bbcb3e5f-heading-1",
+        "template--16161778991282__ee62491c-7194-4eaf-9e4b-4293bbcb3e5f-text-1",
+        "template--16161778991282__ee62491c-7194-4eaf-9e4b-4293bbcb3e5f-buttons-1"
+      ],
+      "custom_css": [
+        "p {max-width: 50rem; margin: auto;}",
+        "@media screen and (max-width: 749px) {p {margin-left: unset; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/build-set.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "5d03e27b-f96a-41e4-b3b1-9250271ef79d": {
+      "type": "image-banner-masked",
+      "settings": {
+        "image-left": "shopify:\/\/shop_images\/texture-left.jpg",
+        "image-center": "shopify:\/\/shop_images\/team.jpg",
+        "image-right": "shopify:\/\/shop_images\/texture-right_6afc6d5e-6481-42b6-b9a6-51b65758e709.jpg",
+        "heading": "Welcome to our studio.",
+        "paragraph": "Founded in 2016 by Sarah Wolf, Wolf Ceramics is a small pottery studio based in Hood River, Oregon, about one hour from Portland. We take inspiration from the primary shapes, patterns and wisdom that are found in the natural world to create useful, everyday ceramics designed for enhancing the rituals of daily human life.",
+        "button_text": "More About Us",
+        "button_url": "shopify:\/\/pages\/studio",
+        "padding_top": 80,
+        "padding_bottom": 0
+      }
+    },
+    "c0e06741-5451-4925-b604-921ee109b139": {
+      "type": "custom-liquid",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n<\/style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "1700073651514c08b6": {
+      "type": "apps",
+      "blocks": {
+        "ae7d2ce7-caa1-48b8-b5f8-e1f6fd91138a": {
+          "type": "shopify:\/\/apps\/qr-code-hub\/blocks\/home_landing\/4500f4b8-8cd3-4443-9a62-c1d1d9888ad7",
+          "settings": {
+            "has_icon": true
+          }
+        }
+      },
+      "block_order": [
+        "ae7d2ce7-caa1-48b8-b5f8-e1f6fd91138a"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "6ff1c6d4-201f-47a9-b2bf-6922ebb35438",
+    "ee62491c-7194-4eaf-9e4b-4293bbcb3e5f",
+    "5d03e27b-f96a-41e4-b3b1-9250271ef79d",
+    "c0e06741-5451-4925-b604-921ee109b139",
+    "1700073651514c08b6"
+  ]
+}

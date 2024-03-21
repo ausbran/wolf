@@ -1,0 +1,343 @@
+.collection-hero__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-hero--with-image .collection-hero__inner {
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero.collection-hero--with-image {
+    padding: calc(4rem + var(--page-width-margin)) 0 calc(4rem + var(--page-width-margin));
+    overflow: hidden;
+  }
+
+  .collection-hero--with-image .collection-hero__inner {
+    padding-bottom: 0;
+  }
+}
+
+.collection-hero {
+  max-width: 100vw;
+  padding: 13.5rem 5rem 11rem 5rem;
+  margin: 0 auto -8rem auto;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.collection-hero__inner {
+  align-items: center;
+  flex-direction: row;
+  padding-bottom: 0;
+  position: relative;
+}
+
+.collection-hero__title {
+  font-size: 6rem;
+  margin: .5rem 0 0 0;
+}
+
+.collection-hero__title + .collection-hero__description {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero__title + .collection-hero__description {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .collection-hero__description {
+    max-width: 66.67%;
+  }
+
+  .collection-hero--with-image .collection-hero__description {
+    max-width: 100%;
+  }
+}
+
+.collection-hero--with-image .collection-hero__title {
+  margin: 0;
+}
+
+.collection-hero--with-image .collection-hero__text-wrapper {
+  padding: 5rem 0 4rem;
+}
+
+.collection-hero__image-container {
+  border: var(--media-border-width) solid rgba(var(--color-foreground), var(--media-border-opacity));
+  border-radius: var(--media-radius);
+  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--media-shadow-opacity));
+}
+
+@media screen and (max-width: 749px) {
+  .collection-hero__image-container {
+    height: 20rem;
+  }
+  .collection-hero {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero--with-image .collection-hero__text-wrapper {
+    padding: 4rem 2rem 4rem 0;
+    flex-basis: 50%;
+  }
+
+  .collection-hero__image-container {
+    align-self: stretch;
+    flex: 1 0 50%;
+    margin-left: 3rem;
+    min-height: 20rem;
+  }
+}
+
+.collection-hero__inner .image {
+  position: relative;
+  height: 46.5rem;
+}
+
+.collection-hero__inner .image img {
+  height: inherit;
+  object-fit: contain;
+  display: block;
+}
+
+.collection-hero__inner.all .image img {
+  object-fit: cover;
+}
+
+.collection-hero__inner .image.left {
+  width: 15%;
+}
+
+.collection-hero__inner .image.left img {
+  position: absolute;
+  right: 0;
+}
+
+.collection-hero__inner .image.right {
+  width: 51%;
+}
+
+.collection-hero__inner.servingware .image.left,
+.collection-hero__inner.vases .image.left {
+  width: 51%;
+}
+
+.collection-hero__inner.servingware .image.right,
+.collection-hero__inner.vases .image.right {
+  width: 15%;
+}
+
+.collection-hero__inner .image.ceramic {
+  position: absolute;
+  z-index: 2;
+  border-radius: var(--media-radius);
+  overflow: hidden;
+}
+
+.collection-hero__inner.all .image.ceramic,
+.collection-hero__inner.all .image.ceramic img {
+  width: 100%;
+  max-width: 150rem;
+}
+
+.collection-hero__inner .collection-hero__text-wrapper {
+  flex-basis: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8rem;
+}
+
+.collection-hero__text-wrapper .product-count__text {
+  font-weight: 500;
+  font-size: 1.6rem;
+  letter-spacing: .02em;
+}
+
+.collection-hero__inner .image:after {
+  position: absolute;
+  z-index: -1;
+}
+
+/* mugs */
+.mugs .image.right:after {
+  content: url(https://cdn.shopify.com/s/files/1/0535/5483/9730/files/mugs-right-after.svg?v=1696542514);
+  top: -27rem;
+  right: -28%;
+}
+
+.mugs .image.ceramic {
+  height: 33rem;
+  bottom: -13rem;
+  right: 38%;
+}
+
+/* dinnerware */
+.dinnerware .image.right:after {
+  content: url(https://cdn.shopify.com/s/files/1/0535/5483/9730/files/dinnerware-right-after.svg?v=1696544690);
+  top: -7rem;
+  right: 40%;
+}
+
+.dinnerware .image.ceramic {
+  height: 14rem;
+  bottom: -2rem;
+  right: 38%;
+}
+
+/* servingware */
+.servingware .image.ceramic {
+  backface-visibility: hidden;
+  height: 30rem;
+  bottom: -13rem;
+  right: 3rem;
+}
+
+/* vases */
+.collection-hero__inner.vases .image.right {
+  width: 30%;
+}
+
+/* all */
+.collection-hero__inner.all {
+  width: 100%;
+  margin: 0 5rem;
+  overflow: hidden;
+  height: 46.5rem;
+  margin: auto;
+  border-radius: var(--media-radius);
+  display: flex;
+  justify-content: center;
+}
+.collection-hero__inner.all .collection-hero__text-wrapper {
+  z-index: 2;
+  padding: unset;
+}
+.collection-hero__inner.all .collection-hero__text-wrapper * {
+  color: #fff;
+  text-align: center;
+}
+
+@media screen and (max-width: 1300px) {
+  .collection-hero__inner .collection-hero__text-wrapper {
+    padding-left: 4rem;
+  }
+  .collection-hero__inner.vases .image.right {
+    width: 40%;
+  }
+  .collection-hero__inner.servingware .image.right,
+  .collection-hero__inner.vases .image.right {
+    width: 10%;
+  }
+  .collection-hero__inner.servingware .image.left, .collection-hero__inner.vases .image.left {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .collection-hero__inner .image.right {
+    width: 40%;
+  }
+  .collection-hero__inner .collection-hero__text-wrapper {
+    flex: 1;
+  }
+  .mugs .image.ceramic {
+    height: 31rem;
+    bottom: -11rem;
+    right: 24%;
+  }
+  .mugs .image.right:after {
+    right: -57%;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .collection-hero__title {
+    font-size: 5rem;
+    padding: 0 2rem;
+  }
+  .collection-hero__inner .collection-hero__text-wrapper {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    flex: unset;
+    padding: unset;
+    text-align: center;
+  }
+  .collection-hero__text-wrapper * {
+    color: #fff !important;
+    text-shadow: var(--shadow);
+  }
+  .mugs .image.ceramic {
+    display: none;
+  }
+  .collection-hero__inner .image.right,
+  .collection-hero__inner.servingware .image.left,
+  .collection-hero__inner.vases .image.left {
+    width: 85vw;
+  }
+  .collection-hero__inner.mugs .image.left {
+    width: unset;
+    right: -21%;
+    bottom: -17%;
+  }
+  .mugs .image.right:after {
+    right: unset;
+    left: 53%;
+  }
+  .dinnerware .image.left {
+    bottom: unset;
+    right: -2%;
+  }
+  .dinnerware .image.ceramic {
+    bottom: -6rem;
+    height: 11rem;
+  }
+  .dinnerware .image.right:after {
+    right: 5%;
+  }
+  .servingware .image.ceramic {
+    height: 24rem;
+    bottom: -11rem;
+    right: -8rem;
+    transform: scaleX(-1);
+  }
+  .servingware .image.right {
+    display: none;
+  }
+  .vases .image.right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .dinnerware .image.ceramic {
+    bottom: -5rem;
+    height: 10rem;
+    right: 10%;
+  }
+  .collection-hero__inner.servingware .image.left,
+  .collection-hero__inner.vases .image.left {
+    width: 110vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+}

@@ -1,0 +1,91 @@
+.product-form__input input[type='radio'] + div label,
+.collection-variant {
+  background-color: rgb(var(--color-background));
+  color: rgba(var(--color-foreground));
+  border-radius: var(--variant-pills-radius);
+  color: rgb(var(--color-foreground));
+  display: inline-block;
+  margin: 0;
+  padding: 1.2rem 1.2rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.collection-variants {
+  position: relative;
+  display: inline-flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.product-form__input input[type='radio'] + div .value-hover,
+.value-hover {
+  color: var(--black);
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  bottom: 120%;
+  transition: var(--duration-default) ease;
+  text-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.collection-variants-inner .value-hover {
+  top: 120%;
+}
+
+.product-form__input input[type='radio'] + div label:hover + .value-hover,
+label:hover + .value-hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.collection-variants-inner {
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.collection-variant:after,
+.product-form__input input[type='radio'] + div label:after {
+  opacity: 0;
+  content: '';
+  border: 0.2rem solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+  position: absolute;
+  width: calc(100% + .2rem);
+  height: calc(100% + .2rem);
+  margin: auto;
+  left: -.1rem;
+  top: -.1rem;
+  border-radius: var(--variant-pills-radius);
+  transition: var(--duration-default) ease;
+}
+
+.collection-variant.visible:after,
+.product-form__input input[type='radio']:checked + div label:after {
+  opacity: 1;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-variants {
+    width: unset;
+    flex-wrap: unset;
+    max-width: 100vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: .5rem 2rem 2rem 2rem;
+    margin: -.5rem -2rem -2rem -2rem;
+  }
+}
+
+
