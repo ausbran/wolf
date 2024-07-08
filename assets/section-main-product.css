@@ -851,7 +851,7 @@ a.product__text {
 
 .product-media-modal__content {
   max-height: 100vh;
-  width: 80%;
+  /* width: 80%; */
   overflow: auto;
   margin: auto;
 }
@@ -889,7 +889,7 @@ a.product__text {
   object-fit: cover;
   object-position: bottom;
   display: block;
-  height: 85vh;
+  /* height: 85vh; */
   min-height: 600px;
   margin: 0 auto 5rem auto;
 }
@@ -1568,6 +1568,16 @@ a.product__text {
 
 .product-media-container.constrain-height .media {
   padding-top: min(var(--constrained-height), var(--ratio-percent));
+}
+
+.vertical-image {
+  background-color: transparent !important;
+}
+
+.vertical-image .product__media img {
+  width: initial !important;
+  margin: auto;
+  right: 0;
 }
 
 @media screen and (max-width: 749px) {

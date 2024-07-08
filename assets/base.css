@@ -86,6 +86,7 @@
 .scroll-buttons,
 .category-toggle,
 .collection-variants,
+.product-media-modal__content
 variant-radios,
 .menu-drawer-child-list,
 .menu-drawer__navigation-container,
@@ -97,6 +98,7 @@ variant-radios,
   -webkit-overflow-scrolling: touch !important;
 }
 
+.product-media-modal__content::-webkit-scrollbar,
 .related-products .grid::-webkit-scrollbar,
 .horizontal .grid::-webkit-scrollbar,
 .scroll-buttons::-webkit-scrollbar,
