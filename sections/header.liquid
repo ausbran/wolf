@@ -324,6 +324,8 @@
     constructor() {
       super();
       this.scrollButtons = document.querySelector(".scroll-buttons");
+      this.selectedProducts = document.querySelector(".selected-products");
+      this.selectedProductsList = document.querySelector("#selected-products-list");
     }
 
     connectedCallback() {
@@ -408,6 +410,10 @@
       if (this.scrollButtons) {
         this.scrollButtons.classList.remove('move');
       }
+      if (this.selectedProducts) {
+        this.selectedProducts.classList.remove('move');
+        this.selectedProductsList.classList.remove('move');
+      }
     }
 
     reveal() {
@@ -416,6 +422,10 @@
       this.header.classList.remove('shopify-section-header-hidden');
       if (this.scrollButtons) {
         this.scrollButtons.classList.add('move');
+      }
+      if (this.selectedProducts) {
+        this.selectedProducts.classList.add('move');
+         this.selectedProductsList.classList.add('move');
       }
     }
 

@@ -31,17 +31,6 @@
             "show_gift_card_recipient": true
           }
         },
-        "de0a2194-a9b5-45f6-a9ff-6925c4540f2f": {
-          "type": "pickup_info",
-          "disabled": true,
-          "settings": {
-            "image": "shopify:\/\/shop_images\/pickup-image.jpg",
-            "header": "Local Pickup",
-            "shipping": "Ships in 3-5 business days",
-            "small-header": "Available for pickup at our studio",
-            "text": "<p>Our production studio is located in Hood River, Oregon. We don’t have a storefront. Customers who select local Hood River pickup will receive an email with pickup instructions.<\/p>\n\n<p>Though our studio isn’t generally open for browsing, we love to have open studios! Join our mailing list to get notified about upcoming events. <\/p>"
-          }
-        },
         "crowdfunder_crowdfunder_TmipiD": {
           "type": "shopify:\/\/apps\/crowdfunder\/blocks\/crowdfunder\/3bdd0fe8-5fc7-4d01-b35b-48bca1437d27",
           "settings": {
@@ -51,13 +40,6 @@
           "type": "description",
           "settings": {
           }
-        },
-        "share": {
-          "type": "share",
-          "disabled": true,
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
@@ -66,10 +48,8 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "de0a2194-a9b5-45f6-a9ff-6925c4540f2f",
         "crowdfunder_crowdfunder_TmipiD",
-        "description",
-        "share"
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -84,23 +64,6 @@
         "enable_video_looping": true,
         "padding_top": 120,
         "padding_bottom": 0
-      }
-    },
-    "1700070561473b4dd2": {
-      "type": "apps",
-      "blocks": {
-        "5664c8e8-731a-45a1-bbd4-aa0ca7e6bdca": {
-          "type": "shopify:\/\/apps\/crowdfunder\/blocks\/crowdfunder\/3bdd0fe8-5fc7-4d01-b35b-48bca1437d27",
-          "disabled": true,
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "5664c8e8-731a-45a1-bbd4-aa0ca7e6bdca"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "575cc4f1-b858-4142-a98b-843a3a764e11": {
@@ -129,25 +92,17 @@
         "padding_bottom": 112
       }
     },
-    "ede6ea3f-cf73-47fc-9420-ba59861bf55d": {
-      "type": "product-column",
+    "registry_products_PRKiAQ": {
+      "type": "registry-products",
       "settings": {
-        "image1": "{{ product.metafields.custom.whats_it_for_image.value }}",
-        "title1": "Who it's for",
-        "text1": "<p>{{ product.metafields.custom.whats_it_for_text | metafield_tag }}<\/p>",
-        "image2": "{{ product.metafields.custom.how_its_made_image.value }}",
-        "title2": "How it's made",
-        "text2": "<p>{{ product.metafields.custom.how_its_made_text | metafield_tag }}<\/p>",
-        "title3": "They registered for...",
-        "text3": "<p>View the items requested on {{ product.title }}.<\/p>",
-        "image_width": "full",
-        "image_ratio": "portrait",
-        "column_alignment": "left",
-        "button_label": "Button label",
-        "button_link": "",
+        "heading": "What they registered for",
+        "heading_size": "h2",
+        "columns_desktop": 3,
         "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
         "columns_mobile": "1",
-        "swipe_on_mobile": true,
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -207,55 +162,6 @@
         "padding_bottom": 0
       }
     },
-    "91faf671-9e0f-43fd-9abc-360ddbf8eefe": {
-      "type": "image-banner",
-      "blocks": {
-        "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-heading-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Build your custom dinner set.",
-            "heading_size": "h2"
-          }
-        },
-        "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "Looking to fill a whole kitchen? Our Portland and KC dinnerware lines are available made-to-order.",
-            "text_style": "body"
-          }
-        },
-        "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-buttons-1": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Start your collection",
-            "button_link_1": "shopify:\/\/collections\/build-your-set",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-heading-1",
-        "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-text-1",
-        "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-buttons-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/build-set.jpg",
-        "image_overlay_opacity": 10,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "accent-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
     "6f1bbb4a-35d7-4dae-840a-8bf45ba1bfd6": {
       "type": "custom-liquid",
       "settings": {
@@ -268,12 +174,10 @@
   },
   "order": [
     "main",
-    "1700070561473b4dd2",
     "575cc4f1-b858-4142-a98b-843a3a764e11",
-    "ede6ea3f-cf73-47fc-9420-ba59861bf55d",
+    "registry_products_PRKiAQ",
     "425a3054-bc61-41f8-927a-30f8b61e0117",
     "related-products",
-    "91faf671-9e0f-43fd-9abc-360ddbf8eefe",
     "6f1bbb4a-35d7-4dae-840a-8bf45ba1bfd6"
   ]
 }

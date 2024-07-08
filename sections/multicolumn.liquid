@@ -43,11 +43,17 @@
       </div>
     {%- endunless -%}
     <slider-component class="slider-mobile-gutter">
-      <ul
-        class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %} {% if section.settings.text_on_top %}text-on-top{% endif %}"
-        id="Slider-{{ section.id }}"
-        role="list"
-      >
+      <ul class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}
+          {% if section.settings.text_placement == 'above' %}
+            text-above
+          {% elsif section.settings.text_placement == 'below' %}
+            text-below
+          {% elsif section.settings.text_placement == 'ontop' %}
+            text-on-top
+          {% endif %}"
+          id="Slider-{{ section.id }}"
+          role="list"
+        >
         {%- liquid
           assign highest_ratio = 0
           for block in section.blocks
@@ -75,7 +81,7 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            <div class="multicolumn-card content-container {% if section.settings.border %}border{% endif %}">
+            <div class="multicolumn-card content-container {% if section.settings.border %}border{% endif %} {% if section.settings.border and block.settings.image == blank %}no-image{% endif %}">
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
@@ -128,7 +134,7 @@
                   </div>
                 </div>
               {%- endif -%}
-              <div class="multicolumn-card__info">
+              <div class="multicolumn-card__info {% if section.settings.no_padding %}no-padding{% endif %}">
                 {%- if block.settings.title != blank -%}
                   <h3 class="inline-richtext">{{ block.settings.title }}</h3>
                 {%- endif -%}
@@ -279,21 +285,41 @@
     },
     {
       "type": "checkbox",
+      "id": "no_padding",
+      "default": false,
+      "label": "Enable no padding for text"
+    },
+    {
+      "type": "checkbox",
       "id": "horizontal",
       "default": false,
       "label": "Enable horizontal scroll on desktop"
     },
     {
       "type": "checkbox",
-      "id": "text_on_top",
-      "default": false,
-      "label": "Enable text on top of background"
-    },
-    {
-      "type": "checkbox",
       "id": "border",
       "default": false,
       "label": "Enable border for cards"
+    },
+    {
+      "type": "select",
+      "id": "text_placement",
+      "options": [
+        {
+          "value": "above",
+          "label": "Text above image"
+        },
+        {
+          "value": "below",
+          "label": "Text below image"
+        },
+        {
+          "value": "ontop",
+          "label": "Text on top of image"
+        }
+      ],
+      "default": "below",
+      "label": "Text Placement"
     },
     {
       "type": "range",

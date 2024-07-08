@@ -115,10 +115,12 @@ border-radius: var(--media-radius);
 .mega-menu .mega-menu__list--condensed {
   display: flex;
   justify-content: space-between;
+  gap: 3rem;
 }
 
 .mega-menu .mega-menu__list--condensed li {
-  width: 15%;
+/*  max-width: 230px;*/
+  flex: 1;
   list-style: none;
 }
 

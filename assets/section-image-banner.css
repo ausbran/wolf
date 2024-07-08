@@ -153,6 +153,7 @@
   .banner__content.banner__content--bottom-center {
     align-items: flex-end;
     justify-content: center;
+    margin-bottom: 6rem;
   }
 
   .banner__content.banner__content--bottom-right {
@@ -215,6 +216,9 @@
   .banner--stacked .animate--fixed:first-child > img,
   .banner--stacked .animate--zoom-in:first-child > img {
     width: 100%;
+  }
+   .banner__content.banner__content--bottom-center {
+    margin-bottom: unset;
   }
 
   .banner--stacked .banner__media-half.animate--fixed:nth-child(2) > img,

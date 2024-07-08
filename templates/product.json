@@ -179,6 +179,9 @@
         "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-text-1",
         "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-buttons-1"
       ],
+      "custom_css": [
+        "p {max-width: 500px;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/build-set.jpg",
         "image_overlay_opacity": 10,

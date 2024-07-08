@@ -1,0 +1,841 @@
+{{ 'section-registry-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient form-outer">
+  <div class="form-container page-width page-width--narrow section-{{ section.id }}-padding">
+    <div class="form-inner">
+      <form class="registry-form" id="registryForm">
+        <h2 class="form-top">Registry Request Form</h2>
+        <div class="step step-1 active">
+          <h3 class="form-title">Share your personal info</h3>
+          <!-- Personal information fields -->
+          <div class="field">
+              <input type="text" name="firstName" placeholder="First Name" class="field__input" required>
+              <label class="field__label" for="ContactForm-first-name">First Name</label>
+          </div>
+          <div class="field">
+              <input type="text" name="lastName" placeholder="Last Name" class="field__input" required>
+              <label class="field__label" for="ContactForm-last-name">Last Name</label>
+          </div>
+          <div class="field">
+              <input type="email" name="email" placeholder="Your Email" class="field__input" required>
+              <label class="field__label" for="ContactForm-email">Your Email</label>
+          </div>
+          <div class="field">
+              <input type="date" name="eventDate" placeholder="Event Date" class="field__input" required>
+              <label class="field__label" for="ContactForm-event-date">Event Date</label>
+          </div>
+          <!-- Radio button for partner -->
+          <div class="field">
+              <label for="add-partner">Would you like to add a partner?</label>
+              <div id="add-partner">
+                  <input type="radio" id="yes-partner" name="partner-option" value="yes">
+                  <label for="yes-partner">Yes</label>
+                  <input type="radio" id="no-partner" name="partner-option" value="no">
+                  <label for="no-partner">No</label>
+              </div>
+          </div>
+          <!-- Additional partner fields (hidden by default) -->
+          <div id="partner-fields">
+              <div class="field">
+                  <input type="text" name="partnerFirstName" placeholder="Partner's First Name" class="field__input">
+                  <label class="field__label" for="ContactForm-partner-first-name">Partner's First Name</label>
+              </div>
+              <div class="field">
+                  <input type="text" name="partnerLastName" placeholder="Partner's Last Name" class="field__input">
+                  <label class="field__label" for="ContactForm-partner-last-name">Partner's Last Name</label>
+              </div>
+              <div class="field">
+                  <input type="email" name="partnerEmail" placeholder="Partner's Email" class="field__input">
+                  <label class="field__label" for="ContactForm-partner-email">Partner's Email</label>
+              </div>
+          </div>
+          <button type="button" class="next-step button">Next</button>
+        </div>
+
+        <div class="step step-2">
+          <h3 class="form-title">Share shipping & registry info</h3>
+          <!-- Shipping information fields -->
+          <div class="field radio">
+              <label>Would you like your ceramics shipped to you or would you like to pick them up from our studio in Hood River?</label>
+              <div id="shipping-options">
+                  <input type="radio" id="ship-option" name="shippingOption" value="Ship to me" required>
+                  <label for="ship-option">Ship to me</label>
+                  <input type="radio" id="pickup-option" name="shippingOption" value="Pickup at Hood River Studio" required>
+                  <label for="pickup-option">Pickup at Hood River Studio</label>
+              </div>
+          </div>
+          <!-- Additional shipping address fields (hidden by default) -->
+          <div id="shipping-fields" class="hidden-fields">
+              <div class="field">
+                  <input type="text" name="address" placeholder="Address" class="field__input">
+                  <label class="field__label" for="ContactForm-address">Address</label>
+              </div>
+              <div class="field">
+                  <input type="text" name="city" placeholder="City" class="field__input">
+                  <label class="field__label" for="ContactForm-city">City</label>
+              </div>
+              <div class="field">
+                  <input type="text" name="state" placeholder="State" class="field__input">
+                  <label class="field__label" for="ContactForm-state">State</label>
+              </div>
+              <div class="field">
+                  <input type="text" name="zip" placeholder="ZIP Code" class="field__input">
+                  <label class="field__label" for="ContactForm-zip">ZIP Code</label>
+              </div>
+          </div>
+          <!-- Registry information fields -->
+          <div class="field radio">
+              <label>Would you like us to create a registry page for you or would you like to collect your own funds on another registry platform?</label>
+              <small>(If you're not sure, don't worry, we can discuss this further over email)</small>
+              <div id="registry-options">
+                <div>
+                  <input type="radio" id="create-registry-option" name="registryOption" value="Make a registry contrubtion page for me." required>
+                  <label for="create-registry-option">We make a registry contribution page for you</label>
+                </div>
+                <div>
+                  <input type="radio" id="use-other-platform-option" name="registryOption" value="I will use another platform." required>
+                  <label for="use-other-platform-option">Use another platform to collect contributions</label>
+                </div>
+              </div>
+          </div>
+          <div class="field notes">
+            <label for="customerNotes">Any extra notes for us?</label>
+            <textarea id="customerNotes" name="customerNotes" placeholder="Your notes here..." class="field__input" rows="4"></textarea>
+          </div>
+          <div class="buttons">
+              <button type="button" class="prev-step button">Back</button>
+              <button type="button" class="next-step button">Next</button>
+          </div>
+        </div>
+
+        <div class="step step-3">
+          <h3 class="form-title">Choose what you want.</h3>
+          <div class="products">
+            <div class="placeholder"></div>
+            <div class="selected-products">
+              <div class="selected-products-inner">
+                <h3>Your Registry</h3>
+                <span class="item-count">0 items</span>
+                <ul id="selected-products-list"></ul>
+              </div>
+              <div class="total">
+                <div class="price">
+                  <span>Estimated Total</span>
+                  <span>$<span id="total-cost">0</span></span>
+                </div>
+                <div class="buttons-container">
+                  <div id="loader">
+                      <div class="loader-icon"></div>
+                  </div>
+                  <button type="button" class="prev-step button">Back</button>
+                  <button type="submit" class="submit-form button">Submit Registry</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-outer">
+              <div class="scroll-buttons-wrapper">
+                <div class="scroll-buttons">
+                  <div class="scroll-buttons-inner">
+                    <button type="button" class="scroll-button" data-target="plates">Plates</button>
+                    <button type="button" class="scroll-button" data-target="bowls">Bowls</button>
+                    <button type="button" class="scroll-button" data-target="servingware">Servingware</button>
+                    <button type="button" class="scroll-button" data-target="mugs">Mugs & Cups</button>
+                  </div>
+                </div>
+                <div class="scroll-placeholder"></div>
+              </div>
+              <h2 id="plates" class="category-header">Plates</h2>
+              <div data-target="plates" class="product-grid">
+                {% for product in collections['Registry'].products %}
+                  {% if product.tags contains "Plates" %}
+                    <div class="product" data-product-id="{{ product.id }}" data-product-title="{{ product.title | escape | replace: ' - Made To Order', '' | replace: ' - Registry', '' }}" data-product-price="{{ product.price | money_without_currency }}">
+                        {% render 'registry-product',
+                          card_product: product,
+                          media_aspect_ratio: section.settings.image_ratio,
+                          section_id: section.id
+                        %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <h2 id="bowls" class="category-header">Bowls</h2>
+              <div data-target="bowls" class="product-grid">
+                {% for product in collections['Registry'].products %}
+                  {% if product.tags contains "Bowls" %}
+                    <div class="product" data-product-id="{{ product.id }}" data-product-title="{{ product.title | escape | replace: ' - Made To Order', '' | replace: ' - Registry', '' }}" data-product-price="{{ product.price | money_without_currency }}">
+                        {% render 'registry-product',
+                          card_product: product,
+                          media_aspect_ratio: section.settings.image_ratio,
+                          section_id: section.id
+                        %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <h2 id="servingware" class="category-header">Servingware</h2>
+              <div data-target="servingware" class="product-grid">
+                {% for product in collections['Registry'].products %}
+                  {% if product.tags contains "Servingware" %}
+                    <div class="product" data-product-id="{{ product.id }}" data-product-title="{{ product.title | escape | replace: ' - Made To Order', '' | replace: ' - Registry', '' }}" data-product-price="{{ product.price | money_without_currency }}">
+                        {% render 'registry-product',
+                          card_product: product,
+                          media_aspect_ratio: section.settings.image_ratio,
+                          section_id: section.id
+                        %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <h2 id="mugs" class="category-header">Mugs & Cups</h2>
+              <div data-target="mugs" class="product-grid">
+                {% for product in collections['Registry'].products %}
+                  {% if product.tags contains "Mugs" or product.tags contains "Cups" %}
+                    <div class="product" data-product-id="{{ product.id }}" data-product-title="{{ product.title | escape | replace: ' - Made To Order', '' | replace: ' - Registry', '' }}" data-product-price="{{ product.price | money_without_currency }}">
+                        {% render 'registry-product',
+                          card_product: product,
+                          media_aspect_ratio: section.settings.image_ratio,
+                          section_id: section.id
+                        %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="success">
+  <div class="inner">
+    {%- render 'icon-logo' -%}
+    <h1>{{ section.settings.title }}</h1>
+    <p>{{ section.settings.paragraph }}</p>
+    <div class="buttons-container">
+          <a href="{{ section.settings.button_link_1 }}" class="button">{{ section.settings.button_text_1 }}</a>
+          <a href="{{ section.settings.button_link_2 }}" class="button">{{ section.settings.button_text_2 }}</a>
+        </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollButtons = document.querySelector(".scroll-buttons");
+  const selectedProductsContainer = document.querySelector('.selected-products');
+  const productsContainer = document.querySelector('.products');
+  const scrollButtonsWrapper = document.querySelector('.scroll-buttons-wrapper');
+  const productGridOuter = document.querySelector('.product-grid-outer');
+  const productGrids = document.querySelectorAll('.product-grid');
+
+  function updateScrollButtonsPosition() {
+    const gridRect = productGridOuter.getBoundingClientRect();
+
+    if (gridRect.top <= 50) {
+      // Align scrollButtons with the productGridOuter when fixed
+      scrollButtons.style.left = `${gridRect.left}px`;
+      if (window.matchMedia("(min-width: 1110px)").matches) {
+        scrollButtons.style.width = `${gridRect.width + 50}px`; 
+       } else {
+        scrollButtons.style.width = `${gridRect.width + 30}px`; 
+      }
+    } else {
+      scrollButtons.style.left = '';
+      scrollButtons.style.width = '';
+    }
+  }
+
+  function handleScroll() {
+    const isMobileView = window.matchMedia("(max-width: 770px)").matches;
+    const productsTop = productsContainer.getBoundingClientRect().top;
+    const productsBottom = productsContainer.getBoundingClientRect().bottom;
+    const viewportHeight = window.innerHeight;
+
+    // Handling the fixed positioning for selectedProductsContainer
+    if (productsTop <= 50) {
+      selectedProductsContainer.classList.add('fixed-top');
+      selectedProductsContainer.classList.remove('absolute-bottom');
+      if (!isMobileView) {
+        scrollButtons.classList.add("fixed");
+      }
+    } else {
+      selectedProductsContainer.classList.remove('fixed-top');
+      if (!isMobileView) {
+        scrollButtons.classList.remove("fixed");
+      }
+    }
+
+    if (productsBottom <= viewportHeight + 2) {
+      selectedProductsContainer.classList.remove('fixed-top');
+      selectedProductsContainer.classList.add('absolute-bottom');
+    } else {
+      selectedProductsContainer.classList.remove('absolute-bottom');
+    }
+
+    // Update scroll buttons position on each scroll if not mobile view
+    if (!isMobileView) {
+      updateScrollButtonsPosition();
+    }
+}
+
+  function scrollHorizontally(targetData) {
+    const targetGrid = Array.from(productGrids).find(grid => grid.getAttribute('data-target') === targetData);
+    if (targetGrid) {
+        const scrollPosition = targetGrid.offsetLeft - productGridOuter.offsetLeft;
+        productGridOuter.scroll({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+    }
+  }
+
+  function updateResponsiveBehaviors() {
+    const isMobileView = window.matchMedia("(max-width: 770px)").matches;
+
+    // Adjust the scroll buttons wrapper based on the screen width
+    if (isMobileView) {
+      // Ensure scroll buttons are not fixed in mobile view
+      scrollButtons.classList.remove("fixed");
+      productGridOuter.parentNode.insertBefore(scrollButtonsWrapper, productGridOuter);
+    } else {
+      // Re-add fixed positioning logic here if needed
+      productGridOuter.prepend(scrollButtonsWrapper);
+    }
+
+    // Update the event logic for the scroll buttons
+    scrollButtons.querySelectorAll(".scroll-button").forEach(button => {
+      button.removeEventListener("click", handleScrollButtonClick);
+      button.addEventListener("click", handleScrollButtonClick);
+    });
+}
+
+  // Define the click event handler function separately
+  function handleScrollButtonClick(event) {
+    const button = event.currentTarget;
+    const targetData = button.getAttribute('data-target');
+    const isMobileView = window.matchMedia("(max-width: 770px)").matches;
+
+    if (isMobileView) {
+      // Mobile view logic
+      scrollHorizontally(targetData);
+    } else {
+      // Desktop view logic
+      const targetElement = document.getElementById(targetData);
+      if (targetElement) {
+        const offset = 120;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: "smooth"
+        });
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('resize', function() {
+    updateScrollButtonsPosition();
+    updateResponsiveBehaviors();
+  });
+
+  handleScroll();
+  updateScrollButtonsPosition();
+  updateResponsiveBehaviors();
+
+  let observer;
+  const products = document.querySelectorAll('.product');
+
+  function setupIntersectionObserver() {
+    const observerOptions = {
+      root: document.querySelector('.product-grid-outer'),
+      threshold: 0.4
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    };
+
+    observer = new IntersectionObserver(observerCallback, observerOptions);
+    products.forEach(product => observer.observe(product));
+  }
+
+  function manageObserverBasedOnViewport() {
+    const isMobileView = window.matchMedia("(max-width: 770px)").matches;
+    
+    if (isMobileView) {
+      // Setup or reconnect the observer
+      if (!observer) {
+        setupIntersectionObserver();
+      } else {
+        observer.disconnect(); // Reset observation to clean state
+        products.forEach(product => observer.observe(product));
+      }
+    } else if (observer) {
+      // Disconnect the observer in non-mobile view
+      observer.disconnect();
+    }
+  }
+
+  // Initial check and setup
+  manageObserverBasedOnViewport();
+
+  // Listen for resize events to adjust as needed
+  window.addEventListener('resize', debounce(manageObserverBasedOnViewport, 250));
+
+
+
+  const steps = Array.from(document.querySelectorAll('.step'));
+  const nextButtons = document.querySelectorAll('.next-step');
+  const prevButtons = document.querySelectorAll('.prev-step');
+
+  function areAllRequiredFieldsFilled(selector) {
+    return Array.from(document.querySelectorAll(selector))
+      .every(input => input.value.trim() !== '');
+  }
+
+  function isOptionSelected(selector) {
+    return document.querySelector(selector + ' input[type="radio"]:checked') !== null;
+  }
+
+  function toggleNextButton() {
+    const step = document.querySelector('.step.active');
+    // Only proceed if a "step" is active and found
+    if (step) {
+      let allRequiredFilled = true;
+      let shippingRequiredFilled = true;
+      let registryOptionSelected = true;
+
+      allRequiredFilled = areAllRequiredFieldsFilled('.step.active .field__input[required]');
+
+      if (step.classList.contains('step-1')) {
+        const partnerOptionSelected = isOptionSelected('#add-partner');
+        const partnerYesSelected = document.querySelector('#yes-partner').checked;
+        if (partnerYesSelected && !areAllRequiredFieldsFilled('#partner-fields .field__input[required]')) {
+          allRequiredFilled = false;
+        }
+        // Adjust the condition to include the partner option check
+        if (!partnerOptionSelected) allRequiredFilled = false;
+      } else if (step.classList.contains('step-2')) {
+        const shippingOptionSelected = isOptionSelected('#shipping-options');
+        registryOptionSelected = isOptionSelected('#registry-options');
+        const shipSelected = document.querySelector('#ship-option').checked;
+
+        if (shipSelected) {
+          shippingRequiredFilled = areAllRequiredFieldsFilled('#shipping-fields .field__input[required]');
+        }
+
+        // Combine conditions for Step 2
+        allRequiredFilled = shippingOptionSelected && registryOptionSelected && shippingRequiredFilled;
+      }
+
+      const nextButton = step.querySelector('.next-step');
+      if (allRequiredFilled && nextButton) {
+        nextButton.removeAttribute('disabled');
+      } else if (nextButton) { // Ensure nextButton exists before attempting to modify it
+        nextButton.setAttribute('disabled', 'disabled');
+      }
+    }
+  }
+
+  function toggleFields(containerId, shouldShow) {
+    const container = document.getElementById(containerId);
+    container.style.maxHeight = shouldShow ? container.scrollHeight + 'px' : '0';
+    container.querySelectorAll('.field').forEach(field => field.classList.toggle('active', shouldShow));
+    toggleNextButton(); // Update the Next button state
+  }
+
+  function showStep(nextStepIndex) {
+    const currentStep = document.querySelector('.step.active');
+    const nextStep = steps[nextStepIndex];
+
+    if (currentStep) {
+      currentStep.style.opacity = 0;
+      setTimeout(() => {
+        currentStep.classList.remove('active');
+        currentStep.style.display = 'none';
+
+        nextStep.style.display = 'block';
+        requestAnimationFrame(() => {
+          nextStep.style.opacity = 1;
+          nextStep.classList.add('active');
+
+          // Adjust the class of the form container when moving to step-3
+          const formContainer = document.querySelector('.form-container');
+          if (nextStepIndex === 2) { // Assuming step-3 is indexed as 2
+            formContainer.classList.add('expand');
+            handleScroll();
+          } else {
+            formContainer.classList.remove('expand');
+          }
+
+          toggleNextButton();
+        });
+      }, 500);
+    } else {
+      nextStep.style.display = 'block';
+      nextStep.style.opacity = 1;
+      nextStep.classList.add('active');
+      toggleNextButton();
+    }
+  }
+
+  document.querySelectorAll('#add-partner input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', function(e) {
+      toggleFields('partner-fields', e.target.value === 'yes');
+    });
+  });
+
+  document.querySelectorAll('#shipping-options input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', function(e) {
+      toggleFields('shipping-fields', e.target.value === 'Ship to me');
+      toggleNextButton(); // Call again to check for registry option selection
+    });
+  });
+
+  // Apply general listener for input and radio changes
+  document.querySelectorAll('.registry-form .field__input, .registry-form input[type="radio"]').forEach(input => {
+    input.addEventListener('input', toggleNextButton);
+    input.addEventListener('change', toggleNextButton);
+  });
+
+  const registryForm = document.querySelector('.registry-form');
+
+  function scrollToFormWithOffset() {
+      const yOffset = -175;
+      const yPosition = registryForm.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: yPosition, behavior: 'smooth' });
+  }
+
+  nextButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const currentStepIndex = steps.findIndex(step => step.classList.contains('active'));
+      if(currentStepIndex < steps.length - 1) {
+        showStep(currentStepIndex + 1);
+        // Scroll to .registry-form with offset
+        scrollToFormWithOffset();
+      }
+    });
+  });
+
+  prevButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const currentStepIndex = steps.findIndex(step => step.classList.contains('active'));
+      if(currentStepIndex > 0) {
+        showStep(currentStepIndex - 1);
+        // Scroll to .registry-form with offset
+        scrollToFormWithOffset();
+      }
+    });
+  });
+
+  // Initialize form state
+  toggleNextButton(); // To ensure the correct state of the "Next" button upon initial load
+
+  // Show the first step on initial load
+  if (steps.length > 0) {
+    steps[0].style.display = 'block';
+    steps[0].style.opacity = 1;
+    steps[0].classList.add('active');
+  }
+
+  const selectedProductsList = document.getElementById('selected-products-list');
+  const totalCostElement = document.getElementById('total-cost');
+
+  let selectedProducts = [];
+
+  let totalPrice = 0;
+
+  function updateTotalCost() {
+    const totalCost = selectedProducts.reduce((acc, product) => acc + (parseFloat(product.price) * product.quantity), 0);
+    totalCostElement.textContent = totalCost.toFixed(2);
+    totalPrice = totalCost;
+  }
+
+  const itemCountSpan = document.querySelector('.item-count');
+
+  function updateItemCount() {
+    const itemCount = selectedProducts.reduce((total, product) => total + product.quantity, 0);
+    itemCountSpan.textContent = `${itemCount} item${itemCount === 1 ? '' : 's'}`; // Handle pluralization
+  }
+
+  function addProductToList(product) {
+    const li = document.createElement('li');
+    li.setAttribute('data-product-id', product.uniqueVariantId); // Use uniqueVariantId
+    li.style.opacity = '0';
+    li.innerHTML = `
+        <div class="top-line">
+          <span>${product.title}</span>
+          <div>
+            <span>${product.color ? product.color : ''}</span>
+            <span>$${product.price}</span>
+          </div>
+        </div>
+        <div class="quantity-container">
+          <button class="quantity__button quantity-decrease" type="button">-</button>
+          <span class="quantity">${product.quantity}</span>
+          <button class="quantity__button quantity-increase" type="button">+</button>
+        </div>
+        <span class="remove">Remove</span>
+    `;
+    const decreaseButton = li.querySelector('.quantity-decrease');
+    const increaseButton = li.querySelector('.quantity-increase');
+    const removeButton = li.querySelector('.remove');
+
+    decreaseButton.addEventListener('click', () => adjustQuantity(product.uniqueVariantId, -1));
+    increaseButton.addEventListener('click', () => adjustQuantity(product.uniqueVariantId, 1));
+    removeButton.addEventListener('click', function() {
+      // Remove the product from the selectedProducts array
+      selectedProducts = selectedProducts.filter(p => p.uniqueVariantId !== product.uniqueVariantId);
+      // Remove the li element from the DOM
+      li.remove();
+      // Update the item count and total cost
+      updateItemCount();
+      updateTotalCost();
+    });
+
+    selectedProductsList.appendChild(li);
+    requestAnimationFrame(() => {
+        // This ensures the style change will be animated
+        li.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        li.style.opacity = '1';
+        li.style.transform = 'translateY(0px)';
+    });
+
+    // Reset the styles after the animation completes to avoid affecting subsequent reflows
+    setTimeout(() => {
+        li.style.transition = '';
+        li.style.transform = '';
+    }, 300); // Adjust this timeout to match your animation duration
+    updateItemCount();
+}
+
+function adjustQuantity(uniqueVariantId, adjustment) {
+  const productIndex = selectedProducts.findIndex(product => product.uniqueVariantId === uniqueVariantId);
+  if (productIndex >= 0) {
+    // Adjust the quantity
+    selectedProducts[productIndex].quantity += adjustment;
+
+    // Ensure quantity does not fall below 1
+    if (selectedProducts[productIndex].quantity < 1) {
+      selectedProducts[productIndex].quantity = 1;
+    }
+
+    // Update the quantity display for this product
+    const productLi = selectedProductsList.querySelector(`li[data-product-id="${uniqueVariantId}"]`);
+    const quantitySpan = productLi.querySelector('.quantity');
+    quantitySpan.textContent = selectedProducts[productIndex].quantity;
+
+    // Update total cost and item count
+    updateTotalCost();
+    updateItemCount();
+  }
+}
+
+
+  function removeProductFromList(productId) {
+    selectedProducts = selectedProducts.filter(product => product.id !== productId);
+    document.querySelector(`li[data-product-id="${productId}"]`).remove();
+    document.querySelector(`.product[data-product-id="${productId}"]`).classList.remove('selected');
+    updateTotalCost();
+    updateItemCount();
+  }
+
+  document.querySelectorAll('.product-grid').forEach(function(grid) {
+    grid.addEventListener('click', function(event) {
+      const productElement = event.target.closest('.product');
+
+      if (!productElement) return;
+
+
+      if (event.target.classList.contains('quantity-increase')) {
+        const input = productElement.querySelector('.quantity-input');
+        let quantity = parseInt(input.value, 10);
+        input.value = quantity + 1;
+        event.preventDefault(); // Prevent default button behavior
+      } else if (event.target.classList.contains('quantity-decrease')) {
+        const input = productElement.querySelector('.quantity-input');
+        let quantity = parseInt(input.value, 10);
+        input.value = Math.max(quantity - 1, 1); // Ensure quantity doesn't go below 1
+        event.preventDefault(); // Prevent default button behavior
+      } else if (event.target.classList.contains('add-to-registry')) {
+        const productId = productElement.dataset.productId;
+        const quantityInput = productElement.querySelector('.quantity-input');
+        const quantity = parseInt(quantityInput.value, 10);
+        const productTitle = productElement.dataset.productTitle;
+        const productPrice = productElement.dataset.productPrice;
+        const selectedColorVariantLabel = productElement.querySelector('.variant-swatch.visible');
+
+        let color = '';
+        if (selectedColorVariantLabel) {
+            const colorTextSpan = selectedColorVariantLabel.nextElementSibling;
+            if (colorTextSpan) {
+                color = colorTextSpan.textContent.trim();
+            }
+        }
+
+      // Create a unique identifier for each variant selection
+        const uniqueVariantId = `${productId}-${color.replace(/\s+/g, '-').toLowerCase()}`;
+
+        // Attempt to find a product by its unique variant ID
+        let productIndex = selectedProducts.findIndex(product => product.uniqueVariantId === uniqueVariantId);
+
+        if (productIndex > -1) {
+            // Product variant already selected, update quantity
+            selectedProducts[productIndex].quantity += quantity;
+        } else {
+            // New product variant, add to the list
+            const newProduct = {
+                uniqueVariantId: uniqueVariantId,
+                id: productId,
+                title: productTitle,
+                price: productPrice,
+                quantity: quantity,
+                color: color
+            };
+            selectedProducts.push(newProduct);
+        }
+
+        refreshSelectedProductsList();
+        updateTotalCost();
+        event.preventDefault();
+      }
+    });
+  });
+
+  function refreshSelectedProductsList() {
+    // Clear current items
+    selectedProductsList.innerHTML = '';
+
+    // Add each product in `selectedProducts` to the list
+    selectedProducts.forEach(product => {
+        addProductToList(product); // Ensure this function now works with `uniqueVariantId` if needed
+    });
+  }
+
+  document.querySelector('.registry-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var loader = document.getElementById('loader');
+    loader.classList.add('show');
+
+    // Correctly handle the removal of 'required' from inputs that are not visible/applicable.
+    document.querySelectorAll('input[required]').forEach(input => {
+      if (input.closest('.field').offsetParent === null) {
+        input.removeAttribute('required');
+      }
+    });
+
+    var formData = new FormData(this);
+    var object = {};
+    formData.forEach(function(value, key){
+        object[key] = value;
+    });
+
+    var selectedProductsString = selectedProducts.map(product => {
+      return `${product.title} (${product.color}) x ${product.quantity}`;
+    }).join("\n"); 
+
+    object.selectedProducts = selectedProductsString;
+    object.totalPrice = '$' + totalPrice.toFixed(2);
+
+    // If you have select or checkbox inputs, ensure their values are correctly added to `object`.
+    var json = JSON.stringify(object);
+
+    fetch('https://script.google.com/macros/s/AKfycbzyt4NVQ-23p_n2FpNV_3yqBSwje-TUuXZg4seJQrMF7b_lLs_jLE3PetswkMHfwgT9/exec', {
+        method: 'POST',
+        body: json,
+        mode: 'no-cors', // Note the limitations of no-cors
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(() => {
+      loader.classList.remove('show');
+      const overlay = document.getElementById('success');
+      overlay.classList.add('show');
+      document.querySelector('body').classList.add('overflow-hidden')
+    })
+    .catch((error) => {
+      // Catch network errors and other issues
+      console.error('Error:', error);
+      alert("There was a problem with your submission.");
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Registry Form",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Congratulations!"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Success Message",
+      "default": "You're one step closer to your Wolf collection! We'll review your registry and get in touch with you within one week, if not sooner. Thank you!"
+    },
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Button 1 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Button 2 Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button 2 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Registry Form"
+    }
+  ]
+}
+{% endschema %}

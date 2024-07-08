@@ -88,7 +88,10 @@
 .collection-variants,
 variant-radios,
 .menu-drawer-child-list,
-.menu-drawer__navigation-container {
+.menu-drawer__navigation-container,
+#selected-products-list,
+.scroll-buttons-inner,
+.product-grid-outer {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch !important;
@@ -101,11 +104,18 @@ variant-radios,
 .collection-variants::-webkit-scrollbar,
 variant-radios::-webkit-scrollbar,
 .menu-drawer-child-list::-webkit-scrollbar,
-.menu-drawer__navigation-container::-webkit-scrollbar { 
+.menu-drawer__navigation-container::-webkit-scrollbar,
+#selected-products-list::-webkit-scrollbar,
+.scroll-buttons-inner::-webkit-scrollbar,
+.product-grid-outer::-webkit-scrollbar { 
     display: none;
 }
 
 /* base */
+
+html {
+  scroll-behavior: smooth;
+}
 
 .no-js:not(html) {
   display: none !important;
@@ -1279,7 +1289,7 @@ summary::-webkit-details-marker {
   }
 
   .slider-buttons {
-    display: none;
+    display: none !important;
   }
 
   /* Fix to show some space at the end of our sliders in all browsers */
@@ -1333,7 +1343,7 @@ summary::-webkit-details-marker {
   }
 
   .product-columns .grid--1-col-tablet-down.grid--peek .grid__item:nth-of-type(3) .media--portrait {
-    padding-bottom: 50%;
+    padding-bottom: 70%;
   }
 }
 
@@ -1918,6 +1928,11 @@ details[open] > .share-button__fallback {
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
   outline: 0;
   border-radius: var(--inputs-radius);
+}
+
+form .field__input:focus-visible,
+form .field__input:focus {
+  border-radius: 10px;
 }
 
 .localization-form__select:focus {

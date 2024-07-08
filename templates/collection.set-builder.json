@@ -29,6 +29,9 @@
         "template--16201206988978__f9e57f33-a9ae-49e3-8622-fc14acb525a6-heading-1",
         "template--16201206988978__f9e57f33-a9ae-49e3-8622-fc14acb525a6-text-1"
       ],
+      "custom_css": [
+        ".banner--content-align-center:not(.banner--content-align-mobile-left) .banner__box .banner__heading+* {max-width:48rem;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/landing_98775628-387c-491a-ba5a-a28306813441.jpg",
         "image_overlay_opacity": 30,
@@ -80,9 +83,10 @@
         "heading_size": "h2",
         "image_width": "full",
         "image_ratio": "adapt",
+        "no_padding": false,
         "horizontal": false,
-        "text_on_top": true,
         "border": false,
+        "text_placement": "ontop",
         "columns_desktop": 2,
         "column_alignment": "left",
         "background_style": "none",
@@ -90,7 +94,7 @@
         "button_link": "",
         "color_scheme": "accent-1",
         "columns_mobile": "1",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -130,6 +134,7 @@
         "template--16201206988978__ef7badfa-2e64-4c4f-b89e-c33e24e38495-buttons-1"
       ],
       "custom_css": [
+        "{margin-top: var(--grid-desktop-vertical-spacing);}",
         ".banner {background-color: var(--black);}",
         "@media screen and (max-width: 749px) {.banner__box {padding-left: 3rem !important; padding-right: 3rem; }}",
         ".banner__box * {color: #fff !important;}",

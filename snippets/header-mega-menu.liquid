@@ -50,6 +50,9 @@
                           {% if collection and collection.image %}
                             <img src="{{ collection.image.src | img_url: 'master' }}" alt="{{ collection.title }}" />
                           {% endif %}
+                          {% if childlink.title == 'Create your Registry' %}
+                            <img src="{{ 'https://cdn.shopify.com/s/files/1/0535/5483/9730/files/create-your-registry.webp?v=1712096286' }}" alt="{{ childlink.title }}" />
+                          {% endif %}
                         </div>
                         {{ childlink.title | escape }}
                       </a>

@@ -1,0 +1,66 @@
+{{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+{{ 'component-variant.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+{%style%}
+.ratio:before {
+  padding-bottom: 300px;
+}
+.card__inner:after {
+  background-color: #fff !important;
+  border: 1.5px solid var(--grey);
+}
+.card__inner {
+  display: flex;
+  align-items: flex-end;
+}
+.card__inner div {
+  gap: 2rem;
+  padding: 5rem;
+  margin: unset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.card__inner h2 {
+  margin: unset;
+}
+.card__inner .button {
+  text-wrap: nowrap;
+  white-space: nowrap;
+}
+@media screen and (max-width: 1100px) {
+  .card__inner div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media only screen and (max-width: 749px) {
+  .card__inner h2 {
+    font-size: 3rem;
+  }
+  .card__inner div {
+    padding: 3rem;
+  }
+}
+{%endstyle%}
+
+<div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div
+    class="
+      card card--{{ settings.card_style }}
+      {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
+      {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
+    "
+  >
+    <div
+      class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %} ratio {% if card_product.title contains "Made To Order" %}overflow-hidden{% endif %}">
+      <div>
+        <h2>{{ card_product.title | escape | replace: ' Page', '' | replace: ' Registry', '' }}</h2>
+        <a href="{{ card_product.url }}" class="button">Shop Registry</a>
+      </div>
+    </div>
+  </div>
+</div>
+

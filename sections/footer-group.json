@@ -2,6 +2,40 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "newsletter_a3Y68X": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_WP8x6R": {
+          "type": "heading",
+          "settings": {
+            "heading": "Let's be friends!",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_PWLqrR": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Sign up to get the latest on shop updates, studio sales, and a little more.<\/p>"
+          }
+        },
+        "email_form_8iTa4B": {
+          "type": "email_form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "heading_WP8x6R",
+        "paragraph_PWLqrR",
+        "email_form_8iTa4B"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -33,6 +67,7 @@
     }
   },
   "order": [
+    "newsletter_a3Y68X",
     "footer"
   ]
 }

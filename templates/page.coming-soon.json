@@ -47,11 +47,12 @@
       ],
       "custom_css": [
         ".banner--content-align-center .banner__box .banner__heading + * {max-width: unset; margin: 1.5rem auto 0 auto;}",
-        ".button {background-color: transparent;}"
+        ".button {background-color: transparent;}",
+        ".banner--content-align-center:not(.banner--content-align-mobile-left) .banner__box .banner__heading + * {max-width: 55rem;}"
       ],
       "settings": {
         "video": "shopify:\/\/files\/videos\/mug-home copy_1.mp4",
-        "image_overlay_opacity": 0,
+        "image_overlay_opacity": 20,
         "image_height": "full-screen",
         "desktop_content_position": "middle-center",
         "show_text_box": false,

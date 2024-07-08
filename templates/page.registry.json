@@ -1,0 +1,208 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "image_banner_N6bkmV": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_DdxMhp": {
+          "type": "heading",
+          "settings": {
+            "heading": "At Wolf Ceramics, we love love.",
+            "heading_size": "h0"
+          }
+        },
+        "text_eExePb": {
+          "type": "text",
+          "settings": {
+            "text": "We would love to help fill your home and table with beautiful ceramics! Your friends and loved ones are excited to celebrate your love and launch you into the next chapter of your lives and relationship. Many of them will be very excited to contribute to something that they know you will use and love for years to come.",
+            "text_style": "body"
+          }
+        },
+        "buttons_FGf7XV": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "How it works",
+            "button_link_1": "#shopify-section-template--16887085826226__multicolumn_JrhbaK",
+            "button_style_secondary_1": true,
+            "button_label_2": "Create yours",
+            "button_link_2": "#shopify-section-template--16887085826226__registry_form_WBGLfD",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_DdxMhp",
+        "text_eExePb",
+        "buttons_FGf7XV"
+      ],
+      "custom_css": [
+        ".banner__box {max-width: 84rem;}",
+        ".banner__heading + * {max-width: 66rem;}",
+        "@media screen and (max-width: 749px) {.banner--content-align-mobile-center .banner__buttons--multiple > * {padding: 0 3rem; min-width: unset; width: 47%; font-size: 0.7em; text-wrap: nowrap; white-space: nowrap; } .banner__buttons {flex-wrap: nowrap; }}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/registry-landing.webp",
+        "image_overlay_opacity": 50,
+        "image_height": "full-screen",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "multicolumn_JrhbaK": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_eHETpJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/option1.jpg",
+            "title": "",
+            "text": "<h4>Option #1<\/h4><h2>Use our platform.<\/h2><p>You create your dream set and we make a contribution page for you, then make and ship the ceramic set after the wedding date or after its sold out.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_FnEtHK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/option2.jpg",
+            "title": "",
+            "text": "<h4>Option #2<\/h4><h2>Use the platform of your choice.<\/h2><p>You choose what you'd like and we'll let you know the total value (with shipping) so that you can create a cash fund on your own registry platform.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_eHETpJ",
+        "column_FnEtHK"
+      ],
+      "settings": {
+        "title": "How it works",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "no_padding": true,
+        "horizontal": false,
+        "border": false,
+        "text_placement": "above",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_LGmpaD": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_PpD9HD": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "<h4>First<\/h4><p>Our dinnerware sets as well as a selection of other Wolf products are available for Registry. If you aren't familiar with our dinnerware options, check them out here.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_kaaJjC": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "<h4>Second<\/h4><p>Fill out the form below. Share a little about yourself and your big day. Then explore our collection and choose what you'd like to register for!<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_9bhCtx": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "text": "<h4>Third<\/h4><p>Once you submit a registry request, we'll follow up via email within a week to finalize the details and get your registry page set up.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_PpD9HD",
+        "column_kaaJjC",
+        "column_9bhCtx"
+      ],
+      "custom_css": [
+        "{margin-top: var(--grid-desktop-vertical-spacing); @media screen and (max-width: 749px) {margin-top: 0; }}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "no_padding": false,
+        "horizontal": false,
+        "border": true,
+        "text_placement": "below",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "registry_form_WBGLfD": {
+      "type": "registry-form",
+      "custom_css": [
+        "{margin-top: var(--grid-desktop-vertical-spacing);}"
+      ],
+      "settings": {
+        "title": "Congratulations!",
+        "paragraph": "You're one step closer to your Wolf collection! We'll review your registry and get in touch with you within one week, if not sooner. Thank you!",
+        "button_text_1": "Home",
+        "button_link_1": "\/",
+        "button_text_2": "Shop All",
+        "button_link_2": "shopify:\/\/collections\/shop-all"
+      }
+    },
+    "custom_liquid_7a7PbM": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "{height: 0;}"
+      ],
+      "settings": {
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n<\/style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_N6bkmV",
+    "multicolumn_JrhbaK",
+    "multicolumn_LGmpaD",
+    "registry_form_WBGLfD",
+    "custom_liquid_7a7PbM"
+  ]
+}

@@ -253,34 +253,32 @@
 
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
+  const scrollButtons = document.querySelector(".scroll-buttons");
+  const offset = scrollButtons.getBoundingClientRect().top + window.scrollY - 20;
 
-    const scrollButtons = document.querySelector(".scroll-buttons");
-    const offset = scrollButtons.getBoundingClientRect().top + window.scrollY - 20;
+  window.addEventListener("scroll", function () {
+      if (window.scrollY > offset) {
+          scrollButtons.classList.add("fixed");
+      } else {
+          scrollButtons.classList.remove("fixed");
+      }
+  });
 
-    window.addEventListener("scroll", function () {
-        if (window.scrollY > offset) {
-            scrollButtons.classList.add("fixed");
-        } else {
-            scrollButtons.classList.remove("fixed");
-        }
+  const scrollButton = document.querySelectorAll(".scroll-button");
+  scrollButton.forEach(button => {
+  button.addEventListener("click", function() {
+      const targetId = button.getAttribute("data-target");
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const offset = 120;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+            top: targetPosition - offset,
+            behavior: "smooth"
+        });
+      }
     });
-
-    const scrollButton = document.querySelectorAll(".scroll-button");
-    scrollButton.forEach(button => {
-    button.addEventListener("click", function() {
-        const targetId = button.getAttribute("data-target");
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          const offset = 120;
-          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({
-              top: targetPosition - offset,
-              behavior: "smooth"
-          });
-        }
-      });
-    });
-
+  });
 });
 </script>
 

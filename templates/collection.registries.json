@@ -1,0 +1,37 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        "{padding-bottom: 0}"
+      ],
+      "settings": {
+        "show_collection_description": false
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-registries-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 2,
+        "columns_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "d1ec8c2e-33a3-48fd-b3ee-b4a7961553b4": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground: transparent;\n<\/style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "d1ec8c2e-33a3-48fd-b3ee-b4a7961553b4"
+  ]
+}

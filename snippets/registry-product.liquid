@@ -1,28 +1,6 @@
-{% comment %}
-  Renders a product card
-
-  Accepts:
-  - card_product: {Object} Product Liquid object (optional)
-  - media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
-  - image_shape: {String} Image mask to apply to the product image card. Values are "arch", "blob", "chevronleft", "chevronright", "diamond", "parallelogram", and "round". (optional)
-  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
-  - show_vendor: {Boolean} Show the product vendor. Default: false
-  - show_rating: {Boolean} Show the product rating. Default: false
-  - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
-  - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
-  - show_quick_add: {Boolean} Show the quick add button.
-  - section_id: {String} The ID of the section that contains this card.
-  - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
-  - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
-  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
-
-  Usage:
-  {% render 'card-product', show_vendor: section.settings.show_vendor %}
-{% endcomment %}
-
-{{ 'component-rating.css' | asset_url | stylesheet_tag }}
 {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
 {{ 'component-variant.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
 
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -54,9 +32,14 @@
         class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %} {% if card_product.title contains "Made To Order" %}overflow-hidden{% endif %}"
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 91 }}%;"
       >
-      {% if card_product.title contains "Made To Order" %}
-        <img class="made-badge" src="{{ 'made-to-order' | append: '.png' | file_url }})">
-      {% endif %}
+        <div class="buttons-container">
+          <div class="quantity-container">
+            <button type="button" class="quantity-decrease quantity__button">-</button>
+            <input type="text" value="1" class="quantity-input">
+            <button type="button" class="quantity-increase quantity__button">+</button>
+          </div>
+          <button type="button" class="add-to-registry button">Add to Registry</button>
+        </div>
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
 
@@ -124,144 +107,114 @@
             {% if card_product.variants.size > 1 %}
               {% assign firstVariant = card_product.variants.first %}
               {% for variant in card_product.variants %}
-                <a href="{{ card_product.url }}">
-                  <div class="media media--transparent media--hover-effect variant variantId-{{variant.id}} {% if variant == firstVariant %}visible{% endif %}">
-                    {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-                    <img
-                      srcset="
-                        {%- if variant.featured_media.width >= 165 -%}{{ variant.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 360 -%}{{ variant.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 533 -%}{{ variant.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 720 -%}{{ variant.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 940 -%}{{ variant.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 1066 -%}{{ variant.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
-                        {{ variant.featured_media | image_url }} {{ variant.featured_media.width }}w
-                      "
-                      src="{{ variant.featured_media | image_url: width: 533 }}"
-                      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                      alt="{{ variant.featured_media.alt | escape }}"
-                      class="motion-reduce"
-                      {% unless lazy_load == false %}
-                        loading="lazy"
-                      {% endunless %}
-                      width="{{ variant.featured_media.width }}"
-                      height="{{ variant.featured_media.height }}"
-                    >
-                    {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
-
-                    {%- if variant.media[1] != null and show_secondary_image -%}
-                      <img
-                        srcset="
-                          {%- if variant.media[1].width >= 165 -%}{{ variant.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
-                          {%- if variant.media[1].width >= 360 -%}{{ variant.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
-                          {%- if variant.media[1].width >= 533 -%}{{ variant.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
-                          {%- if variant.media[1].width >= 720 -%}{{ variant.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
-                          {%- if variant.media[1].width >= 940 -%}{{ variant.media[1] | image_url: width: 940 }} 940w,{%- endif -%}
-                          {%- if variant.media[1].width >= 1066 -%}{{ variant.media[1] | image_url: width: 1066 }} 1066w,{%- endif -%}
-                          {{ variant.media[1] | image_url }} {{ variant.media[1].width }}w
-                        "
-                        src="{{ variant.media[1] | image_url: width: 533 }}"
-                        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                        alt=""
-                        class="motion-reduce"
-                        loading="lazy"
-                        width="{{ variant.media[1].width }}"
-                        height="{{ variant.media[1].height }}"
-                      >
-                    {%- endif -%}
-                  </div>
-                </a>
-              {% endfor %}
-            {% endif %}
-
-            {% if card_product.variants.size == 1 or card_product.title contains 'Club' %}
-              <a href="{{ card_product.url }}">
-                <div class="media media--transparent media--hover-effect">
+                {% if forloop.first %}
+                  <a class="view-product" href="{{ card_product.url }}" target="_blank">
+                    {% render 'icon-zoom' %}
+                  </a>
+                {% endif %}
+                <div class="media media--transparent media--hover-effect variant variantId-{{variant.id}} {% if variant == firstVariant %}visible{% endif %}">
                   {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
                   <img
                     srcset="
-                      {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
-                      {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
-                      {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
-                      {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
-                      {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
-                      {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
-                      {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+                      {%- if variant.featured_media.width >= 165 -%}{{ variant.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if variant.featured_media.width >= 360 -%}{{ variant.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if variant.featured_media.width >= 533 -%}{{ variant.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                      {%- if variant.featured_media.width >= 720 -%}{{ variant.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                      {%- if variant.featured_media.width >= 940 -%}{{ variant.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                      {%- if variant.featured_media.width >= 1066 -%}{{ variant.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                      {{ variant.featured_media | image_url }} {{ variant.featured_media.width }}w
                     "
-                    src="{{ card_product.featured_media | image_url: width: 533 }}"
+                    src="{{ variant.featured_media | image_url: width: 533 }}"
                     sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                    alt="{{ card_product.featured_media.alt | escape }}"
+                    alt="{{ variant.featured_media.alt | escape }}"
                     class="motion-reduce"
                     {% unless lazy_load == false %}
                       loading="lazy"
                     {% endunless %}
-                    width="{{ card_product.featured_media.width }}"
-                    height="{{ card_product.featured_media.height }}"
+                    width="{{ variant.featured_media.width }}"
+                    height="{{ variant.featured_media.height }}"
                   >
                   {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
 
-                  {%- if card_product.media[1] != null and show_secondary_image -%}
+                  {%- if variant.media[1] != null and show_secondary_image -%}
                     <img
                       srcset="
-                        {%- if card_product.media[1].width >= 165 -%}{{ card_product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
-                        {%- if card_product.media[1].width >= 360 -%}{{ card_product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
-                        {%- if card_product.media[1].width >= 533 -%}{{ card_product.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
-                        {%- if card_product.media[1].width >= 720 -%}{{ card_product.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
-                        {%- if card_product.media[1].width >= 940 -%}{{ card_product.media[1] | image_url: width: 940 }} 940w,{%- endif -%}
-                        {%- if card_product.media[1].width >= 1066 -%}{{ card_product.media[1] | image_url: width: 1066 }} 1066w,{%- endif -%}
-                        {{ card_product.media[1] | image_url }} {{ card_product.media[1].width }}w
+                        {%- if variant.media[1].width >= 165 -%}{{ variant.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+                        {%- if variant.media[1].width >= 360 -%}{{ variant.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+                        {%- if variant.media[1].width >= 533 -%}{{ variant.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
+                        {%- if variant.media[1].width >= 720 -%}{{ variant.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
+                        {%- if variant.media[1].width >= 940 -%}{{ variant.media[1] | image_url: width: 940 }} 940w,{%- endif -%}
+                        {%- if variant.media[1].width >= 1066 -%}{{ variant.media[1] | image_url: width: 1066 }} 1066w,{%- endif -%}
+                        {{ variant.media[1] | image_url }} {{ variant.media[1].width }}w
                       "
-                      src="{{ card_product.media[1] | image_url: width: 533 }}"
+                      src="{{ variant.media[1] | image_url: width: 533 }}"
                       sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                       alt=""
                       class="motion-reduce"
                       loading="lazy"
-                      width="{{ card_product.media[1].width }}"
-                      height="{{ card_product.media[1].height }}"
+                      width="{{ variant.media[1].width }}"
+                      height="{{ variant.media[1].height }}"
                     >
                   {%- endif -%}
                 </div>
-              </a>
+              {% endfor %}
+            {% endif %}
+
+            {% if card_product.variants.size == 1 or card_product.title contains 'Club' %}
+                {% if forloop.first %}
+                  <a class="view-product" href="{{ card_product.url }}" target="_blank">
+                    {% render 'icon-zoom' %}
+                  </a>
+                {% endif %}
+              <div class="media media--transparent media--hover-effect">
+                {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                <img
+                  srcset="
+                    {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                    {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+                  "
+                  src="{{ card_product.featured_media | image_url: width: 533 }}"
+                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                  alt="{{ card_product.featured_media.alt | escape }}"
+                  class="motion-reduce"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                  width="{{ card_product.featured_media.width }}"
+                  height="{{ card_product.featured_media.height }}"
+                >
+                {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+
+                {%- if card_product.media[1] != null and show_secondary_image -%}
+                  <img
+                    srcset="
+                      {%- if card_product.media[1].width >= 165 -%}{{ card_product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 360 -%}{{ card_product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 533 -%}{{ card_product.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 720 -%}{{ card_product.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 940 -%}{{ card_product.media[1] | image_url: width: 940 }} 940w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 1066 -%}{{ card_product.media[1] | image_url: width: 1066 }} 1066w,{%- endif -%}
+                      {{ card_product.media[1] | image_url }} {{ card_product.media[1].width }}w
+                    "
+                    src="{{ card_product.media[1] | image_url: width: 533 }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                    alt=""
+                    class="motion-reduce"
+                    loading="lazy"
+                    width="{{ card_product.media[1].width }}"
+                    height="{{ card_product.media[1].height }}"
+                  >
+                {%- endif -%}
+              </div>
             {% endif %}
 
           </div>
         {%- endif -%}
-        <div class="card__content">
-          <div class="card__information">
-            <h3
-              class="card__heading"
-              {% if card_product.featured_media == null and settings.card_style == 'standard' %}
-                id="title-{{ section_id }}-{{ card_product.id }}"
-              {% endif %}
-            >
-              <a
-                href="{{ card_product.url }}"
-                id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
-                class="full-unstyled-link"
-                aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-              >
-                {{ card_product.title | escape | replace: ' - Made To Order', '' | replace: ' - Registry', '' }}
-              </a>
-            </h3>
-          </div>
-          <div class="card__badge {{ settings.badge_position }}">
-            {%- if card_product.available == false -%}
-              <span
-                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-              >
-                {{- 'products.product.sold_out' | t -}}
-              </span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-              <span
-                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-              >
-                {{- 'products.product.on_sale' | t -}}
-              </span>
-            {%- endif -%}
-          </div>
-        </div>
       </div>
       <div class="card__content">
         <div class="card__information">
@@ -337,7 +290,7 @@
           {% assign firstVariant = card_product.variants.first %}
           {% unless card_product.title contains "Club" %}
           {% if card_product.variants.size > 1 %}
-            <div class="collection-variants">
+            <div class="collection-variants {% if card_product.variants.size > 6 %}small{%endif%}">
               {% for variant in card_product.variants %}
                 <div class="collection-variants-inner">
                   <label 

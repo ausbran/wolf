@@ -144,23 +144,24 @@
               data-cascade
             {% endif %}>
             <div class="multicolumn-card content-container">
-                <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
-                  <div
-                    class="media media--transparent media--{{ section.settings.image_ratio }}"
-                  >
-                    <ul class="product-slider">
-                    {% for product in product.metafields.custom.pictured_with_products.value %}
-                      <li>
-                        <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.title }}">
-                        <a href="{{ product.url }}">
-                          {{ product.title | escape | replace: ' - Made To Order', '' }}
-                          {% render "icon-caret" %}
-                        </a>
-                      </li>
-                    {% endfor %}
-                </ul>
+              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
+                <div class="media media--transparent media--{{ section.settings.image_ratio }}">
+                  <ul class="product-slider">
+                      {% for product in product.metafields.custom.pictured_with_products.value %}
+                        <li>
+                          <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.title }}">
+                          <a href="{{ product.url }}">
+                            {{ product.title | escape | replace: ' - Made To Order', '' }}
+                            {% render "icon-caret" %}
+                          </a>
+                        </li>
+                      {% endfor %}
+                  </ul>
+                  <div class="slider-progress-container">
+                      <div class="slider-progress-bar" style="width: 0%;"></div>
                   </div>
                 </div>
+              </div>
               <div class="multicolumn-card__info">
                 {%- if section.settings.title3 != blank -%}
                   <h3 class="inline-richtext">{{ section.settings.title3 }}</h3>
@@ -177,36 +178,50 @@
 </div>
 
 <script>
-  let currentIndex = 0;
-  const productSlides = document.querySelectorAll('.product-slider li');
-  let intervalId;
+let currentIndex = 0;
+    const slides = document.querySelectorAll('.product-slider li');
+    const progressBar = document.querySelector('.slider-progress-bar');
+    let slideInterval;
 
-  function showProduct(index) {
-    productSlides.forEach((slide, i) => {
-      slide.style.opacity = i === index ? 1 : 0;
-    });
-  }
+    // Set slide duration in milliseconds
+    const slideDuration = 4000;
 
-  function nextProduct() {
-    currentIndex = (currentIndex + 1) % productSlides.length;
-    showProduct(currentIndex);
-  }
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.opacity = i === index ? '1' : '0';
+        });
+        // Reset progress bar for the next slide
+        progressBar.style.width = '0%';
+        animateProgressBar();
+    }
 
-  intervalId = setInterval(nextProduct, 2500);
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }
 
-  // Pause animation on hover
-  productSlides.forEach((slide) => {
-    slide.addEventListener('mouseenter', () => {
-      clearInterval(intervalId);
-    });
+    function animateProgressBar() {
+        let start = Date.now();
+        slideInterval = setInterval(() => {
+            let timePassed = Date.now() - start;
+            let progress = (timePassed / slideDuration) * 100;
+            if (progress >= 100) {
+                clearInterval(slideInterval);
+                nextSlide();
+            } else {
+                progressBar.style.width = progress + '%';
+            }
+        }, 10);
+    }
 
-    slide.addEventListener('mouseleave', () => {
-      intervalId = setInterval(nextProduct, 2500);
-    });
-  });
+    // Example function to change progress bar color dynamically
+    function changeProgressBarColor(color) {
+        progressBar.style.backgroundColor = color;
+    }
 
-  // Initial display
-  showProduct(currentIndex);
+    // Initialize the slideshow on the first slide
+    showSlide(currentIndex);
+
 
   var video = document.getElementById('video');
 

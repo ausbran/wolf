@@ -102,10 +102,10 @@
               </p>
             {%- when 'title' -%}
               <div class="product__title" {{ block.shopify_attributes }}>
-                <h1>{{ product.title | escape | replace: ' - Made To Order', '' }}</h1>
+                <h1>{{ product.title | escape | replace: ' - Made To Order', '' | replace: ' - Registry', '' }}</h1>
                 <a href="{{ product.url }}" class="product__title">
                   <h2 class="h1">
-                    {{ product.title | escape | replace: ' - Made To Order', '' }}
+                    {{ product.title | escape | replace: ' - Made To Order', '' | replace: ' - Registry', '' }}
                   </h2>
                 </a>
               </div>
@@ -729,9 +729,9 @@
 
       if (variantRadios) {
         const radioInputs = variantRadios.querySelectorAll('input[type="radio"]'),
-          svgs = [...document.querySelectorAll('.product-shape, .slider-button .icon-caret')],
+          svgs = [...document.querySelectorAll('.product-shape, .slider-button .icon-caret, .product-slider li a .icon')],
           border = document.querySelector('.quantity-js'),
-          buttons = [...document.querySelectorAll('.thumbnail, .product-form__submit, .klaviyo-bis-trigger')],
+          buttons = [...document.querySelectorAll('.thumbnail, .product-form__submit, .klaviyo-bis-trigger, .slider-progress-bar, .product-slider li a')],
           texts = [...document.querySelectorAll('.rich-text__wrapper, .product__info-container, .product-flex-container .inline-richtext')];
 
         function updateColors() {
