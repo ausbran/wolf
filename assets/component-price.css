@@ -85,6 +85,17 @@
   flex-wrap: wrap;
 }
 
+.price--on-sale {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.price__badge-sale {
+  border: 1px solid var(--black);
+  /* color: #fff; */
+}
+
 .price--center {
   display: initial;
   justify-content: center;

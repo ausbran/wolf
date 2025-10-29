@@ -56,7 +56,15 @@
   class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} {% if section.settings.image_height == 'small' or section.settings.image_height == 'medium' or section.settings.image_height == 'large' %}page-width{%endif%}"
 >
   {% if section.settings.video != blank %}
-    {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: "banner__media media scroll-trigger animate--fade-in placeholder" }}
+    {{
+      section.settings.video
+      | video_tag:
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsinline: true,
+        class: 'banner__media media scroll-trigger animate--fade-in placeholder'
+    }}
   {% endif %}
 
   {%- if section.settings.video == blank and section.settings.image != blank -%}
@@ -123,6 +131,14 @@
                   {{- block.settings.button_label_2 | escape -}}
                 </a>
               {%- endif -%}
+            </div>
+          {%- when 'iframe' -%}
+            <div
+              class="banner__iframe"
+              {{ block.shopify_attributes }}
+              style="max-width: {{ block.settings.max_width | default: '100%' }}"
+            >
+              {{ block.settings.iframe | raw }}
             </div>
         {%- endcase -%}
       {%- endfor -%}
@@ -439,6 +455,24 @@
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
         }
       ]
+    },
+    {
+      "type": "iframe",
+      "name": "iFrame",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "iframe",
+          "label": "iFrame Embed Code"
+        },
+        {
+          "type": "text",
+          "id": "max_width",
+          "label": "Max Width",
+          "default": "100%",
+          "info": "Define a max width for the iframe (e.g., 800px or 100%)"
+        }
+      ]
     }
   ],
   "presets": [
@@ -453,6 +487,9 @@
         },
         {
           "type": "buttons"
+        },
+        {
+          "type": "iframe"
         }
       ]
     }

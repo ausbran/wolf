@@ -4,13 +4,13 @@
   --alpha-link: 0.85;
   --alpha-badge-border: 0.1;
   --header-margin: calc(100vw - 10rem);
-  --shadow: 0 .5px 1.5px rgba(0,0,0,.25);
-  --black: #2F2F2F;
-  --grey: #E4EBF0;
-  --blue: #517EFE;
-  --red: #F46C53;
-  --green: #477C76;
-  --yellow: #FECE90;
+  --shadow: 0 0.5px 1.5px rgba(0, 0, 0, 0.25);
+  --black: #2f2f2f;
+  --grey: #e4ebf0;
+  --blue: #517efe;
+  --red: #f46c53;
+  --green: #477c76;
+  --yellow: #fece90;
 }
 
 .product-card-wrapper .card,
@@ -86,13 +86,13 @@
 .scroll-buttons,
 .category-toggle,
 .collection-variants,
-.product-media-modal__content
-variant-radios,
+.product-media-modal__content variant-radios,
 .menu-drawer-child-list,
 .menu-drawer__navigation-container,
 #selected-products-list,
 .scroll-buttons-inner,
-.product-grid-outer {
+.product-grid-outer,
+#SlideNavigation {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch !important;
@@ -109,8 +109,9 @@ variant-radios::-webkit-scrollbar,
 .menu-drawer__navigation-container::-webkit-scrollbar,
 #selected-products-list::-webkit-scrollbar,
 .scroll-buttons-inner::-webkit-scrollbar,
-.product-grid-outer::-webkit-scrollbar { 
-    display: none;
+.product-grid-outer::-webkit-scrollbar,
+#SlideNavigation::-webkit-scrollbar {
+  display: none;
 }
 
 /* base */
@@ -343,7 +344,7 @@ h5,
   font-weight: var(--font-heading-weight);
   letter-spacing: 0;
   color: rgb(var(--color-foreground));
-  line-height: calc(.9 / max(1, var(--font-heading-scale)));
+  line-height: calc(0.9 / max(1, var(--font-heading-scale)));
   word-break: break-word;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -390,7 +391,7 @@ h2,
 @media only screen and (min-width: 750px) {
   h2,
   .h2 {
-    font-size: calc(var(--font-heading-scale) * 3.0rem);
+    font-size: calc(var(--font-heading-scale) * 3rem);
   }
 }
 
@@ -796,7 +797,9 @@ summary::-webkit-details-marker {
 .no-js *:focus {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 0.3rem;
-  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  box-shadow:
+    0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
 /* Negate the fallback side-effect for browsers that support :focus-visible */
@@ -840,14 +843,18 @@ summary::-webkit-details-marker {
 .focus-offset:focus-visible {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 1rem;
-  box-shadow: 0 0 0 1rem rgb(var(--color-background)), 0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
+  box-shadow:
+    0 0 0 1rem rgb(var(--color-background)),
+    0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
 }
 
 .focus-offset.focused,
 .no-js .focus-offset:focus {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 1rem;
-  box-shadow: 0 0 0 1rem rgb(var(--color-background)), 0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
+  box-shadow:
+    0 0 0 1rem rgb(var(--color-background)),
+    0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
 }
 
 .no-js .focus-offset:focus:not(:focus-visible) {
@@ -976,8 +983,7 @@ summary::-webkit-details-marker {
 }
 
 .related-products .grid,
-.horizontal .grid
- {
+.horizontal .grid {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
@@ -1069,7 +1075,7 @@ summary::-webkit-details-marker {
 
 .grid__item.custom-item .text a {
   background-color: transparent;
-  border: .1rem solid #fff;
+  border: 0.1rem solid #fff;
 }
 
 .grid__item.custom-item .text a {
@@ -1521,8 +1527,8 @@ button.shopify-payment-button__button--unbranded {
   left: var(--buttons-border-width);
   z-index: 1;
   border-radius: var(--buttons-radius);
-  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-      rgba(var(--color-button-text), var(--border-opacity)),
+  box-shadow:
+    0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba(var(--color-button-text), var(--border-opacity)),
     0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background));
   transition: box-shadow var(--duration-short) ease;
 }
@@ -1550,7 +1556,7 @@ header h1:not(.article-template__title):hover,
 .category-toggle-item:hover,
 .list-social__link:hover .icon,
 footer .link:hover {
-  opacity: .75;
+  opacity: 0.75;
   transform: translateY(-1px);
 }
 
@@ -1566,7 +1572,9 @@ footer .link:hover {
 .shopify-payment-button__button--unbranded:focus,
 .shopify-payment-button [role='button']:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.5rem rgba(var(--color-foreground), 0.5),
+  box-shadow:
+    0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0 0.5rem rgba(var(--color-foreground), 0.5),
     0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
@@ -1798,7 +1806,9 @@ details[open] > .share-button__fallback {
 .share-button__fallback .field__input:-webkit-autofill {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 0.1rem;
-  box-shadow: 0 0 0 0.1rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  box-shadow:
+    0 0 0 0.1rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
 
 .share-button__fallback .field__input {
@@ -1934,7 +1944,7 @@ details[open] > .share-button__fallback {
 
 form .field__input:focus-visible,
 form .field__input:focus {
-  border-radius: 10px;
+  border-radius: var(--inputs-radius);
 }
 
 .localization-form__select:focus {
@@ -2003,7 +2013,9 @@ form .field__input:focus {
   margin-bottom: 0;
   pointer-events: none;
   position: absolute;
-  transition: top var(--duration-short) ease, font-size var(--duration-short) ease;
+  transition:
+    top var(--duration-short) ease,
+    font-size var(--duration-short) ease;
   color: rgba(var(--color-foreground), 1);
   line-height: 1.5;
 }
@@ -2148,7 +2160,7 @@ input[type='checkbox'] {
 /* component-quantity */
 .quantity {
   color: inherit;
-  border-width: .15rem;
+  border-width: 0.15rem;
   border-style: solid;
   position: relative;
   width: 14rem;
@@ -2216,7 +2228,7 @@ input[type='checkbox'] {
 
 .quantity__button:not(.disabled):hover {
   transform: translateY(-1px);
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .quantity__button svg {
@@ -2374,7 +2386,7 @@ product-info .loading-overlay:not(.hidden) ~ *,
   bottom: 1.4rem;
   left: 1.4rem;
   line-height: calc(1 + 0.1 / var(--font-body-scale));
-/*  box-shadow: 0px 1px 2px rgba(0,0,0,.3);*/
+  /*  box-shadow: 0px 1px 2px rgba(0,0,0,.3);*/
 }
 
 /* utility-bar */
@@ -2580,18 +2592,30 @@ product-info .loading-overlay:not(.hidden) ~ *,
 }
 
 @keyframes translateAnnouncementSlideIn {
-  0% {opacity: 0; transform: translateX(var(--announcement-translate-from))}
-  100% {opacity: 1; transform: translateX(0)}
+  0% {
+    opacity: 0;
+    transform: translateX(var(--announcement-translate-from));
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes translateAnnouncementSlideOut {
-  0% {opacity: 1; transform: translateX(0)}
-  100% {opacity: 0; transform: translateX(var(--announcement-translate-to))}
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--announcement-translate-to));
+  }
 }
 
 /* section-header */
 .section-header.shopify-section-group-header-group {
-  z-index: 3;
+  z-index: 11;
 }
 
 .shopify-section-header-sticky {
@@ -2653,12 +2677,16 @@ product-info .loading-overlay:not(.hidden) ~ *,
   transform: translateY(0%);
   -webkit-transform: translateY(0%);
   background-color: rgb(var(--color-background));
-  transition: transform var(--duration-default) ease, background-color var(--duration-default) ease, color var(--duration-default) var(--duration-long) ease, border-bottom var(--duration-default) var(--duration-long) ease;
+  transition:
+    transform var(--duration-default) ease,
+    background-color var(--duration-default) ease,
+    color var(--duration-default) var(--duration-long) ease,
+    border-bottom var(--duration-default) var(--duration-long) ease;
 }
 
 .shopify-section-header-hidden .header-wrapper {
-    transform: translateY(-100%);
-    -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
 }
 
 .header-wrapper--border-bottom {
@@ -2750,7 +2778,7 @@ product-info .loading-overlay:not(.hidden) ~ *,
 
 .header > .header__heading-link {
   line-height: 0;
-} 
+}
 
 .header__heading,
 .header__heading-link {
@@ -3046,8 +3074,10 @@ summary.header__icon--menu {
   display: block;
   opacity: 1;
   transform: scale(1);
-  transition: transform 150ms ease, opacity 150ms ease;
-  stroke-width: .2rem;
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease;
+  stroke-width: 0.2rem;
   width: 100%;
 }
 
@@ -3137,7 +3167,7 @@ details[open] > .header__submenu {
 }
 
 details[open] > .header__menu-item {
-/*  text-decoration: underline;*/
+  /*  text-decoration: underline;*/
 }
 
 details[open]:hover > .header__menu-item {
@@ -3153,11 +3183,13 @@ details[open] > .header__menu-item .icon-caret {
 }
 
 .header__menu-item span:not(.header__active-menu-item):hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .header__submenu {
-  transition: opacity var(--duration-default) ease, transform var(--duration-default) ease;
+  transition:
+    opacity var(--duration-default) ease,
+    transform var(--duration-default) ease;
 }
 
 .global-settings-popup,
@@ -3239,13 +3271,13 @@ details-disclosure > details {
     overflow: auto;
   }
 }
-
-.badge {
+.card__badge .badge {
   position: absolute;
-  top: 3rem;
-  left: 3rem;
+  top: 2.5rem;
+  left: 2.5rem;
   z-index: 99;
-/*  border: 1px solid #fff;*/
+}
+.badge {
   border-radius: var(--badge-corner-radius);
   display: inline-block;
   font-size: 1rem;
@@ -3253,7 +3285,7 @@ details-disclosure > details {
   line-height: 1;
   text-transform: uppercase;
   font-weight: 600;
-  padding: 1.5rem 3rem;
+  padding: 2.5rem 3rem;
   text-align: center;
   background-color: #fff;
   color: var(--black);
@@ -3532,8 +3564,8 @@ details-disclosure > details {
 }
 
 .rte a:hover {
-  transform: translateY(-.5px);
-  opacity: .5;
+  transform: translateY(-0.5px);
+  opacity: 0.5;
 }
 
 .rte blockquote {
@@ -3686,7 +3718,9 @@ details-disclosure > details {
   .animate--hover-3d-lift .customer button,
   .animate--hover-3d-lift .shopify-payment-button__button,
   .animate--hover-3d-lift .deferred-media .deferred-media__poster-button {
-    transition: transform var(--duration-long) ease, box-shadow var(--duration-long) ease;
+    transition:
+      transform var(--duration-long) ease,
+      box-shadow var(--duration-long) ease;
     transform-origin: center;
   }
 
@@ -3697,10 +3731,15 @@ details-disclosure > details {
   .animate--hover-3d-lift .customer button:not([disabled]):hover,
   .animate--hover-3d-lift .shopify-payment-button__button:hover,
   .animate--hover-3d-lift .deferred-media:hover .deferred-media__poster-button {
-    transition: transform var(--duration-extended) ease, box-shadow var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
+    transition:
+      transform var(--duration-extended) ease,
+      box-shadow var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
     transform: rotate(1deg);
-    box-shadow: -1rem -1rem 1rem -1rem rgba(0, 0, 0, 0.05), 1rem 1rem 1rem -1rem rgba(0, 0, 0, 0.05),
-      0 0 0.5rem 0 rgba(255, 255, 255, 0), 0 2rem 3.5rem -2rem rgba(0, 0, 0, 0.5);
+    box-shadow:
+      -1rem -1rem 1rem -1rem rgba(0, 0, 0, 0.05),
+      1rem 1rem 1rem -1rem rgba(0, 0, 0, 0.05),
+      0 0 0.5rem 0 rgba(255, 255, 255, 0),
+      0 2rem 3.5rem -2rem rgba(0, 0, 0, 0.5);
   }
 
   .animate--hover-3d-lift .deferred-media:hover .deferred-media__poster-button {
@@ -3726,11 +3765,15 @@ details-disclosure > details {
 
   .animate--hover-3d-lift .card-wrapper .card--shape.card--standard:not(.card--text) .card__inner {
     box-shadow: none;
-    transition: transform var(--duration-long) ease, filter var(--duration-long) ease;
+    transition:
+      transform var(--duration-long) ease,
+      filter var(--duration-long) ease;
   }
 
   .animate--hover-3d-lift .card-wrapper:hover .card--shape.card--standard:not(.card--text) .card__inner {
-    transition: transform calc(2 * var(--duration-extended)) ease, filter var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
+    transition:
+      transform calc(2 * var(--duration-extended)) ease,
+      filter var(--duration-long) ease; /* Slow the card transition speed while hover is active. */
     filter: drop-shadow(0rem 2rem 2rem rgba(0, 0, 0, 0.15)) drop-shadow(0rem 1rem 1rem rgba(0, 0, 0, 0.15));
   }
 
@@ -3771,7 +3814,9 @@ details-disclosure > details {
     left: 0;
     opacity: 0;
     pointer-events: none;
-    transition: background-position calc(2 * var(--duration-extended)) ease, opacity var(--duration-default) ease;
+    transition:
+      background-position calc(2 * var(--duration-extended)) ease,
+      opacity var(--duration-default) ease;
     mix-blend-mode: overlay;
     background-size: 400% 100%;
     background-position: 90% 0;
@@ -3787,7 +3832,9 @@ details-disclosure > details {
   .animate--hover-3d-lift .card-wrapper:hover .card--card:before,
   .animate--hover-3d-lift .card-wrapper:hover .card--standard .card__media:after {
     opacity: 0.2;
-    transition: background-position 6s ease, opacity var(--duration-long) ease;
+    transition:
+      background-position 6s ease,
+      opacity var(--duration-long) ease;
     background-position: left;
     z-index: 2;
   }
@@ -3837,7 +3884,8 @@ details-disclosure > details {
   .animate--hover-vertical-lift .customer button:not([disabled]):hover:after,
   .animate--hover-vertical-lift .shopify-payment-button__button:not([disabled]):hover:after {
     --border-offset: 0.3px; /* Default is 1.3px as defined above in this file. This removes 1px to prevent the border from growing on buttons when this effect is on.  */
-    box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+    box-shadow:
+      0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
         rgba(var(--color-button-text), var(--border-opacity)),
       0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background));
   }

@@ -1,0 +1,279 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_MtFLg3": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_TBzreU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Explore our process",
+            "heading_size": "h1"
+          }
+        },
+        "text_pdwXRr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We are here to make goods that we are proud of, both for their function and their beauty. A commitment to a fair and caring work environment is at the core of our philosophy. The price points of our handmade ceramics are dictated by carefully calculating the time and energy that go into each piece, and supporting a fair and decent wage for all of our team members. We source our clay from a local manufacturer before hand making, trimming, glazing and firing all of our pieces at our studio in Hood River. Many of our forms are hand-thrown on a potter’s wheel, and in recent years we’ve also begun embracing other pottery tools that allow us to grow and be kinder to our bodies.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TBzreU",
+        "text_pdwXRr"
+      ],
+      "custom_css": [
+        "* {@media only screen and (max-width: 749px) {text-align: left !important; }}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 160,
+        "padding_bottom": 80
+      }
+    },
+    "process_A4yaFm": {
+      "type": "process",
+      "blocks": {
+        "hand_thrown_slide_zchCaW": {
+          "type": "hand_thrown_slide",
+          "settings": {
+            "heading": "Preparing to throw",
+            "text": "We begin each piece by wedging the clay to create an even consistency and weighing out balls depending on the shape and style we’ll be making.",
+            "image": "shopify://shop_images/WolfCeramics_Studio_July2024-234_4d37c313-2e0f-425a-8cc9-af8634c82f92.jpg"
+          }
+        },
+        "hand_thrown_slide_PnxMK9": {
+          "type": "hand_thrown_slide",
+          "settings": {
+            "heading": "Wheel Throwing",
+            "text": "We throw each piece to precise dimensions. We use a simple gauge that marks the height and width at the lip of a form in order to stay consistent. While the gauge helps, throwing matching forms is a skill that requires a ton of practice and a keen eye.",
+            "video": "shopify://files/videos/Screen Recording 2023-10-23 at 1.02.49 PM.mov"
+          }
+        },
+        "hand_thrown_slide_VcArDf": {
+          "type": "hand_thrown_slide",
+          "settings": {
+            "heading": "Trimming",
+            "text": "After pieces come off the wheel, we let them dry overnight until they’re about halfway dry, or leatherhard.  We then trim each piece using a sharp tool to refine the shape of the foot.",
+            "video": "shopify://files/videos/IMG_4814.mov"
+          }
+        },
+        "hand_thrown_slide_wNn7b8": {
+          "type": "hand_thrown_slide",
+          "settings": {
+            "heading": "Attatching",
+            "text": "After each piece has been trimmed, smoothed and stamped, we attach handles and spouts. Then, we let everything dry for another day before it's ready for the first kiln firing. Drying too fast can cause cracking so there's no rushing through this part of the process!",
+            "video": "shopify://files/videos/Screen Recording 2024-11-20 at 8.57.52 AM.MOV"
+          }
+        },
+        "hand_thrown_slide_YdceML": {
+          "type": "hand_thrown_slide",
+          "settings": {
+            "heading": "Bisque Firing",
+            "text": "The first of two kiln firings is called a bisque. It reaches a temperature of 1,945° F. This takes about 36 hours. After this firing, clay wares are called bisqueware.",
+            "image": "shopify://shop_images/WolfCeramics_Studio_July2024-156_f3352095-5bfe-49cd-962a-c4bb16d081ca.jpg"
+          }
+        },
+        "jiggered_slide_HQK4UL": {
+          "type": "jiggered_slide",
+          "settings": {
+            "heading": "What's a jigger jolly?",
+            "text": "We use a tool called a Jigger-Jolly to make most of our dinnerware. The Jigger-Jolly is like a potter's wheel, but instead of a flat wheel head, it spins a plaster mold. We've spent years developing models of our dinnerware forms, making molds and profile tools, and honing in our process. The jigger jolly has allowed us to reliably fill orders for dinnerware sets while being kinder to our bodies and joints.",
+            "image": "shopify://shop_images/WolfCeramics_Studio_July2024-124.jpg"
+          }
+        },
+        "jiggered_slide_tQkN7F": {
+          "type": "jiggered_slide",
+          "settings": {
+            "heading": "Jiggering",
+            "text": "Using a Jigger-Jolly is a lot like throwing on the wheel, but the clay is shaped inside a plaster mold. We use a profile tool as well as our hands to shape and compress the interior wall of each form within the plaster mold.",
+            "video": "shopify://files/videos/Untitled design (1).mp4"
+          }
+        },
+        "jiggered_slide_cncxMU": {
+          "type": "jiggered_slide",
+          "settings": {
+            "heading": "Mold Release",
+            "text": "After a few hours in our dry room, the plaster molds have absorbed some of the water from the clay. As they dry, jiggered pieces shrink and release from the molds and become firm enough to remove. Now they're ready to trim!",
+            "image": "shopify://shop_images/WolfCeramics_Studio_July2024-101.jpg"
+          }
+        },
+        "jiggered_slide_GN7qBp": {
+          "type": "jiggered_slide",
+          "settings": {
+            "heading": "Trimming",
+            "text": "We move the leather hard pieces to the pottery wheel and use a sharp tool to refine the rim and foot",
+            "image": "shopify://shop_images/WolfCeramics_Studio_July2024-63_6e9b673f-51a9-4fc0-94c5-d96aa791af50.jpg"
+          }
+        },
+        "jiggered_slide_qRmN8f": {
+          "type": "jiggered_slide",
+          "settings": {
+            "heading": "Bisque Firing",
+            "text": "Just like any hand thrown piece, our dinnerware is dried and then loaded into the first of two kiln firings: the bisque firing. It reaches a temperature of 1,945° F. This takes about 36 hours. After this firing, clay pieces are called bisqueware. They are roughly half baked at this point and now ready to glaze. Scroll down to see our glazing process!",
+            "image": "shopify://shop_images/WolfCeramics_Studio_July2024-149_6580a7d1-2c4f-4cf1-bf36-d3e50b5bd220.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "hand_thrown_slide_zchCaW",
+        "hand_thrown_slide_PnxMK9",
+        "hand_thrown_slide_VcArDf",
+        "hand_thrown_slide_wNn7b8",
+        "hand_thrown_slide_YdceML",
+        "jiggered_slide_HQK4UL",
+        "jiggered_slide_tQkN7F",
+        "jiggered_slide_cncxMU",
+        "jiggered_slide_GN7qBp",
+        "jiggered_slide_qRmN8f"
+      ],
+      "settings": {
+        "initial_video": "shopify://files/videos/mug-home copy_1.mp4",
+        "initial_heading": "Crafted two ways, made just for you.",
+        "initial_text": "Choose between hand-thrown pottery, shaped with care on the wheel, or jiggered pieces, crafted with precision for a consistent finish. Each method brings its own character to your ceramics.",
+        "image_overlay_opacity": 30
+      }
+    },
+    "multicolumn_PdhPqU": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_GzEFLF": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/WolfCeramics_Studio_July2024-201.jpg",
+            "hover-image": "shopify://shop_images/WolfCeramics_Studio_July2024-202_c8778488-efd1-4802-b2bb-70917501f5f3.jpg",
+            "title": "Preparing to Glaze",
+            "text": "<p>Our designs incorporate techniques that Sarah and her team have developed over years of experimentation. We use a vinyl cutter to make precise shapes, as well as tape and wax resist to control where the glaze and underglaze go. Once the bisqueware has been prepped with wax, tape, or underglaze, (sometimes all three!) it's ready to dip in glaze.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_8yVxHf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/WolfCeramics_June2023-99.jpg",
+            "hover-image": "shopify://shop_images/WolfCeramics_June2023-81.jpg",
+            "title": "Glazing Mugs",
+            "text": "<p>Glaze consists of clay and mineral particles suspended in water. Bisqueware must be dipped consistently and in one swift motion to avoid drips and blemishes. After glazing, the ceramics are carefully touched up with a sponge and an Exacto knife before being loaded into the kiln for a second firing!</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_deXNkR": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/IMG_6501.jpg",
+            "hover-image": "shopify://shop_images/IMG_6509.jpg",
+            "title": "Glazing Dinnerware",
+            "text": "<p>Most of our dinnerware forms are dipped twice, once on each side, leaving a stripe of glaze overlap at the center of the piece. This double dip technique is a mark of our process and of the fact that we glaze our wares by hand, rather than using a spray booth. We love this mark and consider it an aesthetic signature of our line!</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_jG36kT": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/4D9ED2A8-39EE-4400-8973-3FB3A01454E6-8250-000001DCA519C3CA_2.jpg",
+            "hover-image": "shopify://shop_images/WolfCeramics_StudioShoot-69_1_2.jpg",
+            "title": "Glaze Firing",
+            "text": "<p>The glaze firing reaches a temperature of 2167°, and transforms each piece from clay to ceramic.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_nWfxhW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/WolfCeramics_June2023-109_27f54313-a989-45bc-ab7f-da7ad976cf6a.jpg",
+            "title": "Quality Checking",
+            "text": "<p>Once the kilns are cool, we take the pieces from the kiln and inspect them for quality.<br/>There are always pieces that come out of the kiln with minor flaws that are still perfectly functional. Some might say these have more character!</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_cKccFD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/WolfCeramics_June2023-120.jpg",
+            "title": "Done!",
+            "text": "<p>Aside from the occasional open studio or holiday market, we sell most of our work online. This means photography, website management, and shipping are an inevitable part of our process. We love getting to send our work out into the world to be used by folks all over the country!</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_GzEFLF",
+        "column_8yVxHf",
+        "column_deXNkR",
+        "column_jG36kT",
+        "column_nWfxhW",
+        "column_cKccFD"
+      ],
+      "custom_css": [
+        ".multicolumn-inner {padding-top: 80px !important; padding-bottom: 80px !important;}"
+      ],
+      "settings": {
+        "title": "Our Glazing Process",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "no_padding": false,
+        "horizontal": true,
+        "border": false,
+        "text_placement": "below",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 88,
+        "padding_bottom": 80
+      }
+    },
+    "video_QLTGft": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=PvJVPjNFjno",
+        "cover_image": "shopify://shop_images/Screenshot_2025-01-14_at_11.15.16_AM.png",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_MtFLg3",
+    "process_A4yaFm",
+    "multicolumn_PdhPqU",
+    "video_QLTGft"
+  ]
+}

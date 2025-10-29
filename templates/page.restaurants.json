@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -34,7 +43,7 @@
         ".banner--content-align-center .banner__box .banner__heading + * {max-width: 62rem;}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/landing.jpg",
+        "image": "shopify://shop_images/landing.jpg",
         "image_overlay_opacity": 0,
         "image_height": "full-screen",
         "desktop_content_position": "middle-center",
@@ -71,7 +80,7 @@
         "1b1b6cd4-4f39-496c-a85f-3b0e6533350c"
       ],
       "custom_css": [
-        "h1.rich-text__heading,h2.rich-text__heading,h3.rich-text__heading,h4.rich-text__heading,h5.rich-text__heading,.h0.rich-text__heading,.h1.rich-text__heading,.h2.rich-text__heading,.h3.rich-text__heading,.h4.rich-text__heading,.h5.rich-text__heading {line-height: calc(1.1 \/ max(1, var(--font-heading-scale)));}",
+        "h1.rich-text__heading,h2.rich-text__heading,h3.rich-text__heading,h4.rich-text__heading,h5.rich-text__heading,.h0.rich-text__heading,.h1.rich-text__heading,.h2.rich-text__heading,.h3.rich-text__heading,.h4.rich-text__heading,.h5.rich-text__heading {line-height: calc(1.1 / max(1, var(--font-heading-scale)));}",
         "@media screen and (max-width: 749px) {.rich-text {padding: 2rem 0; } .rich-text: not(.rich-text--full-width) .rich-text__wrapper {width: 100%; } .rich-text .h0 {font-size: 3.2rem !important; text-align: left; }}"
       ],
       "settings": {
@@ -89,7 +98,7 @@
         "template--16176498081970__8e796ed5-8bc0-4376-8638-1692b5e63428-slide-1": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/image-1.jpg",
+            "image": "shopify://shop_images/image-1.jpg",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
@@ -107,7 +116,7 @@
         "template--16176498081970__8e796ed5-8bc0-4376-8638-1692b5e63428-slide-2": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/I73A9609.jpg",
+            "image": "shopify://shop_images/I73A9609.jpg",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
@@ -125,7 +134,7 @@
         "c7e88394-cefd-4f38-ae94-fd76a9f4d231": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/I73A9806.jpg",
+            "image": "shopify://shop_images/I73A9806.jpg",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
@@ -194,7 +203,7 @@
     "c38edc52-036a-4a88-8c2e-4760ca7401d2": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n<\/style>",
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0

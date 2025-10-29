@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -5,13 +14,11 @@
       "blocks": {
         "title": {
           "type": "title",
-          "settings": {
-          }
+          "settings": {}
         },
         "price": {
           "type": "price",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -21,8 +28,7 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {
-          }
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -33,18 +39,18 @@
         },
         "de0a2194-a9b5-45f6-a9ff-6925c4540f2f": {
           "type": "pickup_info",
+          "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/pickup-image.jpg",
+            "image": "shopify://shop_images/pickup-image.jpg",
             "header": "Local Pickup",
             "shipping": "Ships in 3-5 business days",
             "small-header": "Available for pickup at our studio",
-            "text": "<p>Our production studio is located in Hood River, Oregon. We don’t have a storefront. Customers who select local Hood River pickup will receive an email with pickup instructions.<\/p>\n\n<p>Though our studio isn’t generally open for browsing, we love to have open studios! Join our mailing list to get notified about upcoming events. <\/p>"
+            "text": "<p>Our production studio is located in Hood River, Oregon. We don’t have a storefront. Customers who select local Hood River pickup will receive an email with pickup instructions.</p>\n\n<p>Though our studio isn’t generally open for browsing, we love to have open studios! Join our mailing list to get notified about upcoming events. </p>"
           }
         },
         "description": {
           "type": "description",
-          "settings": {
-          }
+          "settings": {}
         },
         "share": {
           "type": "share",
@@ -85,7 +91,7 @@
         "text_8ifPtg": {
           "type": "text",
           "settings": {
-            "text": "<h3>Pricing and subscription info:<\/h3><p>The pricing listed above INCLUDES SHIPPING. You can select to receive a single mug each season (every 3 months) or a matching pair of mugs. Since we started the Mug Club, pricing has been on sliding scale, and we intend to keep it that way. <\/p><p>When signing up for the Mug Club, most people select to pay the \"regular\" price. If you are exited to support a small craft business and have the means, you can select to pay a few dollars more for each mug by choosing the \"patron\" option. The \"student\" option offers a slightly discounted rate. We dont ask for validation, this is on the honor system. Thank you!<\/p>"
+            "text": "<h3>Pricing and subscription info:</h3><p>The pricing listed above INCLUDES SHIPPING. You can select to receive a single mug each season (every 3 months) or a matching pair of mugs. Since we started the Mug Club, pricing has been on sliding scale, and we intend to keep it that way. </p><p>When signing up for the Mug Club, most people select to pay the \"regular\" price. If you are excited to support a small craft business and have the means, you can select to pay a few dollars more for each mug by choosing the \"patron\" option. The \"student\" option offers a slightly discounted rate. We dont ask for validation, this is on the honor system. Thank you!</p>"
           }
         },
         "template--16161779318962__575cc4f1-b858-4142-a98b-843a3a764e11-heading-1": {
@@ -101,7 +107,7 @@
         "template--16161779318962__575cc4f1-b858-4142-a98b-843a3a764e11-heading-1"
       ],
       "custom_css": [
-        "h1.rich-text__heading,h2.rich-text__heading,h3.rich-text__heading,h4.rich-text__heading,h5.rich-text__heading,.h0.rich-text__heading,.h1.rich-text__heading,.h2.rich-text__heading,.h3.rich-text__heading,.h4.rich-text__heading,.h5.rich-text__heading {line-height: calc(1.1 \/ max(1, var(--font-heading-scale)));}"
+        "h1.rich-text__heading,h2.rich-text__heading,h3.rich-text__heading,h4.rich-text__heading,h5.rich-text__heading,.h0.rich-text__heading,.h1.rich-text__heading,.h2.rich-text__heading,.h3.rich-text__heading,.h4.rich-text__heading,.h5.rich-text__heading {line-height: calc(1.1 / max(1, var(--font-heading-scale)));}"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -117,12 +123,12 @@
       "settings": {
         "image1": "{{ product.metafields.custom.whats_it_for_image.value }}",
         "title1": "What it's for",
-        "text1": "<p>{{ product.metafields.custom.whats_it_for_text | metafield_tag }}<\/p>",
+        "text1": "<p>{{ product.metafields.custom.whats_it_for_text | metafield_tag }}</p>",
         "image2": "{{ product.metafields.custom.how_its_made_image.value }}",
         "title2": "How it's made",
-        "text2": "<p>{{ product.metafields.custom.how_its_made_text | metafield_tag }}<\/p>",
+        "text2": "<p>{{ product.metafields.custom.how_its_made_text | metafield_tag }}</p>",
         "title3": "Pictured with",
-        "text3": "<p>Start a collection! Explore the other useful ceramic objects for your home pictured with the {{ product.title }}.<\/p>",
+        "text3": "<p>Start a collection! Explore the other useful ceramic objects for your home pictured with the {{ product.title }}.</p>",
         "image_width": "full",
         "image_ratio": "portrait",
         "column_alignment": "left",
@@ -158,7 +164,7 @@
         "template--16161779318962__425a3054-bc61-41f8-927a-30f8b61e0117-text-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/made-by-hand.jpg",
+        "image": "shopify://shop_images/made-by-hand.jpg",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "bottom-left",
@@ -210,7 +216,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Start your collection",
-            "button_link_1": "shopify:\/\/collections\/build-your-set",
+            "button_link_1": "shopify://collections/build-your-set",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -227,7 +233,7 @@
         "p {max-width: 450px;}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/build-set.jpg",
+        "image": "shopify://shop_images/build-set.jpg",
         "image_overlay_opacity": 10,
         "image_height": "small",
         "desktop_content_position": "middle-center",
@@ -243,7 +249,7 @@
     "6f1bbb4a-35d7-4dae-840a-8bf45ba1bfd6": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}\/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}\/cart\/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='\/cart\/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n<\/script>",
+        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0

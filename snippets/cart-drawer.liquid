@@ -60,9 +60,7 @@
       {%- endif -%}
       <div class="drawer__header">
         <div class="drawer__heading-wrapper">
-          <h2 class="drawer__heading">
-            Cart
-          </h2>
+          <h2 class="drawer__heading">Cart</h2>
           <span>{{ cart.item_count }} items</span>
         </div>
         <button
@@ -89,34 +87,34 @@
             {%- if cart != empty -%}
               <div class="drawer__cart-items-wrapper">
                 <table class="cart-items" role="table">
-                  {%comment%}
-                  <thead role="rowgroup">
-                    <tr role="row">
-                      <th id="CartDrawer-ColumnProductImage" role="columnheader">
-                        <span class="visually-hidden">{{ 'sections.cart.headings.image' | t }}</span>
-                      </th>
-                      <th
-                        id="CartDrawer-ColumnProduct"
-                        class="caption-with-letter-spacing"
-                        scope="col"
-                        role="columnheader"
-                      >
-                        {{ 'sections.cart.headings.product' | t }}
-                      </th>
-                      <th
-                        id="CartDrawer-ColumnTotal"
-                        class="right caption-with-letter-spacing"
-                        scope="col"
-                        role="columnheader"
-                      >
-                        {{ 'sections.cart.headings.total' | t }}
-                      </th>
-                      <th id="CartDrawer-ColumnQuantity" role="columnheader">
-                        <span class="visually-hidden">{{ 'sections.cart.headings.quantity' | t }}</span>
-                      </th>
-                    </tr>
-                  </thead>
-                  {%endcomment%}
+                  {% comment %}
+                    <thead role="rowgroup">
+                      <tr role="row">
+                        <th id="CartDrawer-ColumnProductImage" role="columnheader">
+                          <span class="visually-hidden">{{ 'sections.cart.headings.image' | t }}</span>
+                        </th>
+                        <th
+                          id="CartDrawer-ColumnProduct"
+                          class="caption-with-letter-spacing"
+                          scope="col"
+                          role="columnheader"
+                        >
+                          {{ 'sections.cart.headings.product' | t }}
+                        </th>
+                        <th
+                          id="CartDrawer-ColumnTotal"
+                          class="right caption-with-letter-spacing"
+                          scope="col"
+                          role="columnheader"
+                        >
+                          {{ 'sections.cart.headings.total' | t }}
+                        </th>
+                        <th id="CartDrawer-ColumnQuantity" role="columnheader">
+                          <span class="visually-hidden">{{ 'sections.cart.headings.quantity' | t }}</span>
+                        </th>
+                      </tr>
+                    </thead>
+                  {% endcomment %}
 
                   {%- for item in cart.items -%}
                     <tbody role="rowgroup">
@@ -221,61 +219,60 @@
                             {%- endfor -%}
                           </ul>
                           <div class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
-                          <div class="loading-overlay hidden">
-                            <div class="loading-overlay__spinner">
-                              <svg
-                                aria-hidden="true"
-                                focusable="false"
-                                class="spinner"
-                                viewBox="0 0 66 66"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                              </svg>
+                            <div class="loading-overlay hidden">
+                              <div class="loading-overlay__spinner">
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  class="spinner"
+                                  viewBox="0 0 66 66"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                </svg>
+                              </div>
+                            </div>
+
+                            <div class="cart-item__price-wrapper">
+                              {%- if item.variant.compare_at_price != item.final_line_price -%}
+                                <div class="cart-item__discounted-prices">
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.regular_price' | t }}
+                                  </span>
+                                  <s class="cart-item__old-price price price--end">
+                                    {{ item.variant.compare_at_price | money }}
+                                  </s>
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.sale_price' | t }}
+                                  </span>
+                                  <span class="price price--end">
+                                    {{ item.final_line_price | money }}
+                                  </span>
+                                </div>
+                              {%- else -%}
+                                <span class="price price--end">
+                                  {{ item.original_line_price | money }}
+                                </span>
+                              {%- endif -%}
+
+                              {%- if item.variant.available and item.unit_price_measurement -%}
+                                <div class="unit-price caption">
+                                  <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                  {{ item.unit_price | money }}
+                                  <span aria-hidden="true">/</span>
+                                  <span class="visually-hidden"
+                                    >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
+                                  >
+                                  {%- if item.unit_price_measurement.reference_value != 1 -%}
+                                    {{- item.unit_price_measurement.reference_value -}}
+                                  {%- endif -%}
+                                  {{ item.unit_price_measurement.reference_unit }}
+                                </div>
+                              {%- endif -%}
                             </div>
                           </div>
-
-                          <div class="cart-item__price-wrapper">
-                            {%- if item.original_line_price != item.final_line_price -%}
-                              <div class="cart-item__discounted-prices">
-                                <span class="visually-hidden">
-                                  {{ 'products.product.price.regular_price' | t }}
-                                </span>
-                                <s class="cart-item__old-price price price--end">
-                                  {{ item.original_line_price | money }}
-                                </s>
-                                <span class="visually-hidden">
-                                  {{ 'products.product.price.sale_price' | t }}
-                                </span>
-                                <span class="price price--end">
-                                  {{ item.final_line_price | money }}
-                                </span>
-                              </div>
-                            {%- else -%}
-                              <span class="price price--end">
-                                {{ item.original_line_price | money }}
-                              </span>
-                            {%- endif -%}
-
-                            {%- if item.variant.available and item.unit_price_measurement -%}
-                              <div class="unit-price caption">
-                                <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-                                {{ item.unit_price | money }}
-                                <span aria-hidden="true">/</span>
-                                <span class="visually-hidden"
-                                  >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
-                                >
-                                {%- if item.unit_price_measurement.reference_value != 1 -%}
-                                  {{- item.unit_price_measurement.reference_value -}}
-                                {%- endif -%}
-                                {{ item.unit_price_measurement.reference_unit }}
-                              </div>
-                            {%- endif -%}
-                          </div>
-                        </div>
                         </td>
 
-                        
                         {%- liquid
                           assign has_qty_rules = false
                           if item.variant.quantity_rule.increment > 1 or item.variant.quantity_rule.min > 1 or item.variant.quantity_rule.max != null
@@ -506,9 +503,25 @@
             {%- endif -%}
           </div>
 
+          {% assign total_savings = 0 %}
+          {%- for item in cart.items -%}
+            {% if item.variant.compare_at_price %}
+              {% assign item_savings = item.variant.compare_at_price
+                | times: item.quantity
+                | minus: item.final_line_price
+              %}
+              {% assign total_savings = total_savings | plus: item_savings %}
+            {% endif %}
+          {%- endfor -%}
+
           <div class="totals" role="status">
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            <div class="totals__inner">
+              {%- if total_savings > 0 -%}
+                <p class="totals__savings-value">You save: {{ total_savings | money }}</p>
+              {%- endif -%}
+              <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            </div>
           </div>
 
           <small class="tax-note caption-large rte">

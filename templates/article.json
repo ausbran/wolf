@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -24,8 +33,7 @@
         },
         "content": {
           "type": "content",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -34,13 +42,12 @@
         "share",
         "content"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "15d9fd7b-74d3-4e72-b833-c3010522cca8": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n<\/style>",
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0

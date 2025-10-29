@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "logo_width": 90,
@@ -95,8 +104,8 @@
     "badge_corner_radius": 40,
     "sale_badge_color_scheme": "accent-2",
     "sold_out_badge_color_scheme": "inverse",
-    "social_facebook_link": "https:\/\/www.facebook.com\/wolfceramics\/",
-    "social_instagram_link": "https:\/\/www.instagram.com\/wolfceramics",
+    "social_facebook_link": "https://www.facebook.com/wolfceramics/",
+    "social_instagram_link": "https://www.instagram.com/wolfceramics",
     "social_youtube_link": "",
     "social_tiktok_link": "",
     "social_twitter_link": "",
@@ -126,33 +135,32 @@
         }
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "blocks": {
       "319724205969189013": {
-        "type": "shopify:\/\/apps\/hulk-form-builder\/blocks\/app-embed\/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+        "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
         "disabled": false,
-        "settings": {
-        }
-      },
-      "16216491870256628967": {
-        "type": "shopify:\/\/apps\/bss-labels-badges\/blocks\/bss-pl-config-data\/91bfe765-b604-49a1-805e-3599fa600b24",
-        "disabled": true,
-        "settings": {
-        }
+        "settings": {}
       },
       "6279071938380501511": {
-        "type": "shopify:\/\/apps\/powerful-form-builder\/blocks\/app-embed\/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+        "type": "shopify://apps/powerful-form-builder/blocks/app-embed/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
+      },
+      "16216491870256628967": {
+        "type": "shopify://apps/bss-labels-badges/blocks/bss-pl-config-data/91bfe765-b604-49a1-805e-3599fa600b24",
+        "disabled": false,
+        "settings": {}
+      },
+      "11242429557760608184": {
+        "type": "shopify://apps/referrly-affiliate-marketing/blocks/main-app-embed/75b5ccd5-af90-4f81-ab89-2c28499171fd",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {

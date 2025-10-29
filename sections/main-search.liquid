@@ -80,7 +80,7 @@
             <main-search>
               <form action="{{ routes.search_url }}" method="get" role="search" class="search">
                 <div class="field">
-                  <input type="hidden" name="type" value="product,article">
+                  <input type="hidden" name="type" value="product,article,page">
                   <input
                     class="search__input field__input"
                     id="Search-In-Template"
@@ -212,10 +212,40 @@
           {%- else -%}
             <div class="template-search__results collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="product-grid" data-id="{{ section.id }}">
               <div class="loading-overlay gradient"></div>
+              {%- comment -%}Track how many items actually render so lazy loading kicks in later{%- endcomment -%}
+              {%- assign results_rendered = 0 -%}
+              {%- assign registry_collection_url = routes.collections_url | append: '/registry' -%}
+              {%- assign registry_collection_url_with_params = registry_collection_url | append: '?' -%}
               <ul class="grid product-grid  grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop" role="list">
                 {%- for item in search.results -%}
+                  {%- comment -%}Skip registry-only products and the registry collection from search results{%- endcomment -%}
+                  {%- liquid
+                    assign skip_item = false
+                    if item.object_type == 'product'
+                      if item.template_suffix == 'registry'
+                        assign skip_item = true
+                      else
+                        for tag in item.tags
+                          assign tag_downcase = tag | downcase
+                          if tag_downcase == 'registry' or tag_downcase == 'registry only'
+                            assign skip_item = true
+                          endif
+                        endfor
+                      endif
+                    elsif item.object_type == 'collection'
+                      if item.handle == 'registry' or item.url == registry_collection_url or item.url contains registry_collection_url_with_params
+                        assign skip_item = true
+                      endif
+                    elsif item.url == registry_collection_url or item.url contains registry_collection_url_with_params
+                      assign skip_item = true
+                    endif
+                  -%}
+                  {%- if skip_item -%}
+                    {%- continue -%}
+                  {%- endif -%}
+                  {%- assign results_rendered = results_rendered | plus: 1 -%}
                   {% assign lazy_load = false %}
-                  {%- if forloop.index > 2 -%}
+                  {%- if results_rendered > 2 -%}
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
 
@@ -246,21 +276,75 @@
                           lazy_load: lazy_load
                         %}
                       {%- when 'page' -%}
+                        {%- assign page_image = blank -%}
+                        {%- if item.metafields.custom.search_image != blank and item.metafields.custom.search_image.value != blank -%}
+                          {%- assign page_image = item.metafields.custom.search_image.value -%}
+                        {%- elsif item.metafields.custom.search_card_image != blank and item.metafields.custom.search_card_image.value != blank -%}
+                          {%- assign page_image = item.metafields.custom.search_card_image.value -%}
+                        {%- endif -%}
+                        {%- assign has_page_image = false -%}
+                        {%- if page_image != blank -%}
+                          {%- assign has_page_image = true -%}
+                        {%- endif -%}
+                        {%- assign page_image_alt = item.title -%}
+                        {%- if has_page_image and page_image.alt != blank -%}
+                          {%- assign page_image_alt = page_image.alt -%}
+                        {%- endif -%}
+                        {%- assign page_image_loading = 'lazy' -%}
+                        {%- if lazy_load == false -%}
+                          {%- assign page_image_loading = 'eager' -%}
+                        {%- endif -%}
                         <div class="article-card-wrapper card-wrapper underline-links-hover">
-                          <div class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}" style="--ratio-percent: 100%;">
-                            <div class="card__content">
-                              <div class="card__information">
-                                <h3 class="card__heading">
-                                  <a href="{{ item.url }}" class="full-unstyled-link">
-                                    {{ item.title | truncate: 50 | escape }}
-                                  </a>
-                                </h3>
+                          <a href="{{ item.url }}" class="full-unstyled-link">
+                            <div
+                              class="card article-card card--{{ settings.blog_card_style }}{% if has_page_image %} card--media{% else %} card--text{% endif %}{% if settings.blog_card_style == 'card' %} color-{{ settings.blog_card_color_scheme }} gradient{% endif %}"
+                              style="--ratio-percent: 100%;"
+                            >
+                              <div
+                                class="card__inner{% if settings.blog_card_style == 'standard' %} color-{{ settings.blog_card_color_scheme }} gradient{% endif %}{% if has_page_image or settings.blog_card_style == 'standard' %} ratio{% endif %}"
+                                style="--ratio-percent: 100%;"
+                              >
+                                {%- if has_page_image -%}
+                                  <div class="article-card__image-wrapper card__media">
+                                    <div class="article-card__image media media--hover-effect">
+                                      {{ page_image
+                                        | image_url: width: 800
+                                        | image_tag:
+                                          widths: '165,360,533,720,940,1066',
+                                          sizes: '(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)',
+                                          loading: page_image_loading,
+                                          class: 'motion-reduce',
+                                          alt: page_image_alt | escape
+                                      }}
+                                    </div>
+                                  </div>
+                                {%- else -%}
+                                  <div class="article-card__image-wrapper card__media">
+                                    <div class="article-card__image media page-search-placeholder"></div>
+                                  </div>
+                                {%- endif -%}
+                                <div class="card__content">
+                                  <div class="card__information">
+                                    <h3 class="card__heading">
+                                      {{ item.title | truncate: 50 | escape }}
+                                    </h3>
+                                  </div>
+                                  <div class="card__badge {{ settings.badge_position }}">
+                                    <span class="badge color-{{ settings.color_schemes | first }}">{{ 'templates.search.page' | t }}</span>
+                                  </div>
+                                </div>
                               </div>
-                              <div class="card__badge {{ settings.badge_position }}">
-                                <span class="badge color-{{ settings.color_schemes | first }}">{{ 'templates.search.page' | t }}</span>
+                              <div class="card__content">
+                                <div class="card__information">
+                                  <div class="card-title-container">
+                                    <h3 class="card__heading h5">
+                                      {{ item.title | truncate: 50 | escape }}
+                                    </h3>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
+                          </a>
                         </div>
                     {%- endcase -%}
                   </li>

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -17,11 +26,11 @@
         "show_vendor": false,
         "show_rating": false,
         "enable_quick_add": true,
-        "image": "shopify:\/\/shop_images\/build-your-set.jpg",
+        "image": "shopify://shop_images/build-your-set.jpg",
         "heading": "Build your custom dinner set.",
         "paragraph": "Looking to fill a whole kitchen? Our Portland and KC dinnerware lines are available made-to-order.",
         "button_text": "Build It",
-        "button_url": "shopify:\/\/collections\/build-your-set",
+        "button_url": "shopify://collections/build-your-set",
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
@@ -33,7 +42,7 @@
     "6eb82fcf-06fc-43e3-baa4-73f2904b9fe0": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\n.header-wrapper {\nbackground: transparent;\n<\/style>",
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground: transparent;\n</style>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52

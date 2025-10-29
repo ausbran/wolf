@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -30,10 +39,10 @@
         "template--16201206988978__f9e57f33-a9ae-49e3-8622-fc14acb525a6-text-1"
       ],
       "custom_css": [
-        ".banner--content-align-center:not(.banner--content-align-mobile-left) .banner__box .banner__heading+* {max-width:48rem;}"
+        ".banner--content-align-center:not(.banner--content-align-mobile-left) .banner__box .banner__heading + * {max-width: 48rem;}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/landing_98775628-387c-491a-ba5a-a28306813441.jpg",
+        "image": "shopify://shop_images/landing_98775628-387c-491a-ba5a-a28306813441.jpg",
         "image_overlay_opacity": 30,
         "image_height": "full-screen",
         "desktop_content_position": "middle-center",
@@ -52,9 +61,9 @@
         "template--16201206988978__3e94fded-c56f-42c8-bd76-17d452571e9b-column-1": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/portland.jpg",
+            "image": "shopify://shop_images/portland.jpg",
             "title": "The Portland Collection",
-            "text": "<p>The original dinnerware Sarah started making and selling back in the early days of Wolf Ceramics. Classic, timeless, elegant. At home in any home. <\/p>",
+            "text": "<p>The original dinnerware Sarah started making and selling back in the early days of Wolf Ceramics. Classic, timeless, elegant. At home in any home. </p>",
             "link_label": "",
             "link": ""
           }
@@ -62,9 +71,9 @@
         "template--16201206988978__3e94fded-c56f-42c8-bd76-17d452571e9b-column-2": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/kc.jpg",
+            "image": "shopify://shop_images/kc.jpg",
             "title": "The Kansas City Collection",
-            "text": "<p> A contemporary take on dinnerware, originally developed for Hotel Kansas City. Made with the same clay body and glazes as Portland for easy mix-and-matching.<\/p>",
+            "text": "<p> A contemporary take on dinnerware, originally developed for Hotel Kansas City. Made with the same clay body and glazes as Portland for easy mix-and-matching.</p>",
             "link_label": "",
             "link": ""
           }
@@ -112,7 +121,7 @@
         "template--16201206988978__ef7badfa-2e64-4c4f-b89e-c33e24e38495-text-1": {
           "type": "text",
           "settings": {
-            "text": "All of our wares are made by our small team of ceramic artisans in Hood River. Once you place your order in our set builder, we'll add it to our production list and make it just for you within 14 weeks. If you need to get your ceramics as soon as possible, consider ordering from the selection of items that we keep in stock and ready-to-ship.",
+            "text": "All of our wares are made by our small team of ceramic artisans in Hood River. Once you place your order in our set builder, we'll add it to our production list and make it just for you within 8 weeks. If you need to get your ceramics as soon as possible, consider ordering from the selection of items that we keep in stock and ready-to-ship.",
             "text_style": "body"
           }
         },
@@ -120,7 +129,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Ready to Ship",
-            "button_link_1": "shopify:\/\/collections\/shop-all",
+            "button_link_1": "shopify://collections/shop-all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -175,7 +184,7 @@
     "d1ec8c2e-33a3-48fd-b3ee-b4a7961553b4": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n<\/style>",
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0

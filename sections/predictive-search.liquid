@@ -1,18 +1,42 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
 {%- if predictive_search.performed -%}
-{% assign first_column_results_size = predictive_search.resources.queries.size
-| plus: predictive_search.resources.collections.size
-| plus: predictive_search.resources.pages.size
-| plus: predictive_search.resources.articles.size
-%}
+{%- assign hidden_collection_handle = 'registry' -%}
+{%- assign hidden_collections = predictive_search.resources.collections | where: 'handle', hidden_collection_handle -%}
+{%- assign hidden_collections_count = hidden_collections.size -%}
+{%- assign visible_collections_count = predictive_search.resources.collections.size | minus: hidden_collections_count -%}
+{%- assign first_column_results_size = predictive_search.resources.queries.size
+  | plus: predictive_search.resources.collections.size
+  | plus: predictive_search.resources.pages.size
+  | plus: predictive_search.resources.articles.size
+-%}
+{%- assign first_column_results_size = first_column_results_size | minus: hidden_collections_count -%}
+{%- assign hidden_products_count = 0 -%}
+{%- for predictive_product in predictive_search.resources.products -%}
+  {%- assign product_hidden = false -%}
+  {%- if predictive_product.template_suffix == 'registry' -%}
+    {%- assign product_hidden = true -%}
+  {%- else -%}
+    {%- for product_tag in predictive_product.tags -%}
+      {%- assign product_tag_downcase = product_tag | downcase -%}
+      {%- if product_tag_downcase == 'registry' or product_tag_downcase == 'registry only' -%}
+        {%- assign product_hidden = true -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- if product_hidden -%}
+    {%- assign hidden_products_count = hidden_products_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign visible_products_count = predictive_search.resources.products.size | minus: hidden_products_count -%}
   <div id="predictive-search-results" role="listbox">
-    {%- if first_column_results_size > 0 or predictive_search.resources.products.size > 0 -%}
-      <div id="predictive-search-results-groups-wrapper" class="predictive-search__results-groups-wrapper{% unless predictive_search.resources.products.size > 0 %} predictive-search__results-groups-wrapper--no-products{% endunless %}{% unless predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %} predictive-search__results-groups-wrapper--no-suggestions{% endunless %}">
+    {%- if first_column_results_size > 0 or visible_products_count > 0 -%}
+      <div id="predictive-search-results-groups-wrapper" class="predictive-search__results-groups-wrapper{% unless visible_products_count > 0 %} predictive-search__results-groups-wrapper--no-products{% endunless %}{% unless predictive_search.resources.queries.size > 0 or visible_collections_count > 0 %} predictive-search__results-groups-wrapper--no-suggestions{% endunless %}">
     {%- endif -%}
       {%- if first_column_results_size > 0 -%}
         <div class="predictive-search__result-group">
       {%- endif -%}
-      {%- if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 -%}
+      {%- if predictive_search.resources.queries.size > 0 or visible_collections_count > 0 -%}
         <div>
           <h2 id="predictive-search-queries" class="predictive-search__heading text-body caption-with-letter-spacing">
             {{- 'templates.search.suggestions' | t -}}
@@ -28,6 +52,7 @@
               </li>
             {%- endfor -%}
             {%- for collection in predictive_search.resources.collections -%}
+              {%- if collection.handle == hidden_collection_handle -%}{% continue %}{%- endif -%}
               <li id="predictive-search-option-collection-{{ forloop.index }}" class="predictive-search__list-item" role="option" aria-selected="false">
                 <a href="{{ collection.url }}" class="predictive-search__item link link--text" tabindex="-1">
                   <div class="predictive-search__item-content predictive-search__item-content--centered">
@@ -69,15 +94,28 @@
       {%- if first_column_results_size > 0 -%}
         </div>
       {%- endif -%}
-      {%- if predictive_search.resources.products.size > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 -%}
+      {%- if visible_products_count > 0 or predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 -%}
         <div class="predictive-search__result-group">
-          {%- if predictive_search.resources.products.size > 0 -%}
+          {%- if visible_products_count > 0 -%}
             <div>
               <h2 id="predictive-search-products" class="predictive-search__heading text-body caption-with-letter-spacing">
                 {{- 'templates.search.products' | t -}}
               </h2>
               <ul id="predictive-search-results-products-list" class="predictive-search__results-list list-unstyled" role="group" aria-labelledby="predictive-search-products">
                 {%- for product in predictive_search.resources.products -%}
+                  {%- assign skip_product = false -%}
+                  {%- if product.template_suffix == 'registry' -%}
+                    {%- assign skip_product = true -%}
+                  {%- else -%}
+                    {%- for product_tag in product.tags -%}
+                      {%- assign product_tag_downcase = product_tag | downcase -%}
+                      {%- if product_tag_downcase == 'registry' or product_tag_downcase == 'registry only' -%}
+                        {%- assign skip_product = true -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                  {%- if skip_product -%}{% continue %}{%- endif -%}
                   <li id="predictive-search-option-product-{{ forloop.index }}" class="predictive-search__list-item" role="option" aria-selected="false">
                     <a href="{{ product.url }}" class="predictive-search__item predictive-search__item--link-with-thumbnail link link--text" tabindex="-1">
                       {%- if product.featured_media != blank -%}
@@ -129,7 +167,7 @@
           {%- endif -%}
         </div>
       {%- endif -%}
-    {%- if first_column_results_size > 0 or predictive_search.resources.products.size > 0 -%}
+    {%- if first_column_results_size > 0 or visible_products_count > 0 -%}
       </div>
     {%- endif -%}
 
@@ -160,21 +198,21 @@
 
   <span class="hidden" data-predictive-search-live-region-count-value>
     {% liquid
-      assign total_results = predictive_search.resources.products.size | plus: first_column_results_size
+      assign total_results = visible_products_count | plus: first_column_results_size
       if total_results == 0
         echo 'templates.search.no_results' | t: terms: predictive_search.terms
       else
         echo 'templates.search.results_with_count' | t: count: total_results | append: ': '
         if predictive_search.resources.queries.size > 0
-          assign count = predictive_search.resources.queries.size | plus: predictive_search.resources.collections.size
+          assign count = predictive_search.resources.queries.size | plus: visible_collections_count
           echo 'templates.search.results_suggestions_with_count' | t: count: count | append: ', '
         endif
         if predictive_search.resources.pages.size > 0
           assign count = predictive_search.resources.pages.size | plus: predictive_search.resources.articles.size
           echo 'templates.search.results_pages_with_count' | t: count: count | append: ', '
         endif
-        if predictive_search.resources.products.size > 0
-          echo 'templates.search.results_products_with_count' | t: count: predictive_search.resources.products.size
+        if visible_products_count > 0
+          echo 'templates.search.results_products_with_count' | t: count: visible_products_count
         endif
       endif
     %}

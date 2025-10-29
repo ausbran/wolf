@@ -178,13 +178,20 @@
 </div>
 
 <script>
-let currentIndex = 0;
+    let currentIndex = 0;
     const slides = document.querySelectorAll('.product-slider li');
     const progressBar = document.querySelector('.slider-progress-bar');
+    const progressContainer = document.querySelector('.slider-progress-container');
     let slideInterval;
 
     // Set slide duration in milliseconds
-    const slideDuration = 4000;
+    const slideDuration = 7000;
+
+    if (slides.length <= 1) {
+        if (progressContainer) {
+            progressContainer.style.display = 'none';
+        }
+    }
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
@@ -220,20 +227,24 @@ let currentIndex = 0;
     }
 
     // Initialize the slideshow on the first slide
-    showSlide(currentIndex);
+    if (slides.length > 1) {
+        showSlide(currentIndex);
+    }
 
 
   var video = document.getElementById('video');
 
-  var options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0
-  };
+  
+  if (video) {  // Ensure the element exists
+      var options = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0
+      };
 
-  var observer = new IntersectionObserver(handleIntersection, options);
-
-  observer.observe(video);
+      var observer = new IntersectionObserver(handleIntersection, options);
+      observer.observe(video);
+  }
 
   function handleIntersection(entries, observer) {
     entries.forEach(function(entry) {

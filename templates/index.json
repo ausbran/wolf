@@ -1,10 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
       "type": "image-banner",
       "blocks": {
+        "iframe_6JYgww": {
+          "type": "iframe",
+          "settings": {
+            "iframe": "<dotlottie-player src=\"https://lottie.host/39a6a803-e34a-4614-8df6-96f081fd7169/2gSpSCmUBe.json\" background=\"transparent\" speed=\"1\" style=\"width: ; height: \" direction=\"1\" playmode=\"normal\" loop autoplay></dotlottie-player>",
+            "max_width": "650px"
+          }
+        },
         "heading": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "Handmade ceramics for joyful living.",
             "heading_size": "h0"
@@ -14,21 +31,22 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/shop-all",
+            "button_link_1": "shopify://collections/shop-all",
             "button_style_secondary_1": true,
             "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_link_2": "shopify://collections/last-chance",
+            "button_style_secondary_2": true
           }
         }
       },
       "block_order": [
+        "iframe_6JYgww",
         "heading",
         "button"
       ],
       "settings": {
-        "video": "shopify:\/\/files\/videos\/landing-home.mp4",
-        "image": "shopify:\/\/shop_images\/WolfCeramics_June2023-58.jpg",
+        "video": "shopify://files/videos/landing-home.mp4",
+        "image": "shopify://shop_images/WolfCeramics_June2023-58.jpg",
         "image_overlay_opacity": 10,
         "image_height": "full-screen",
         "desktop_content_position": "middle-center",
@@ -41,6 +59,81 @@
         "show_text_below": false
       }
     },
+    "slideshow_qCLEBD": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_dQcVky": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/web-4104_702be421-06d9-4a1d-a507-ba2c9d6a271d.jpg",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_BDkwJk": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/web-3516.jpg",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_Jd9zgD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/605F0631-42DD-49A3-9375-BC4DE2E496CC-55865-0000235488C99A65.jpg",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_dQcVky",
+        "slide_BDkwJk",
+        "slide_Jd9zgD"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
     "6ff1c6d4-201f-47a9-b2bf-6922ebb35438": {
       "type": "collection-list",
       "blocks": {
@@ -48,9 +141,9 @@
           "type": "category",
           "settings": {
             "category_name": "Mugs & Cups",
-            "ceramic_image": "shopify:\/\/shop_images\/mugs-ceramic_04d086e7-3271-4d9f-b114-77da493538ea.png",
-            "left_image": "shopify:\/\/shop_images\/mugs-left.svg",
-            "right_image": "shopify:\/\/shop_images\/mugs-right.svg",
+            "ceramic_image": "shopify://shop_images/mugs-ceramic-new.png",
+            "left_image": "shopify://shop_images/mugs-left-new.svg",
+            "right_image": "shopify://shop_images/mugs-right-new.svg",
             "category_collection": "mugs-cups",
             "category_video": "",
             "class": "mugs"
@@ -60,9 +153,9 @@
           "type": "category",
           "settings": {
             "category_name": "Dinnerware",
-            "ceramic_image": "shopify:\/\/shop_images\/dinnerware-ceramic_601fdbd5-d66e-4731-871d-ce4ba6c9114d.png",
-            "left_image": "shopify:\/\/shop_images\/dinnerware-left.svg",
-            "right_image": "shopify:\/\/shop_images\/dinnerware-right.svg",
+            "ceramic_image": "shopify://shop_images/dinnerware-ceramic_601fdbd5-d66e-4731-871d-ce4ba6c9114d.png",
+            "left_image": "shopify://shop_images/dinnerware-left.svg",
+            "right_image": "shopify://shop_images/dinnerware-right.svg",
             "category_collection": "dinnerware",
             "category_video": "",
             "class": "dinnerware"
@@ -72,9 +165,9 @@
           "type": "category",
           "settings": {
             "category_name": "Servingware",
-            "ceramic_image": "shopify:\/\/shop_images\/servingware_e32e63d1-5ab6-45c0-975c-11a1e570c54c.png",
-            "left_image": "shopify:\/\/shop_images\/servingware-left.svg",
-            "right_image": "shopify:\/\/shop_images\/servingware-right.png",
+            "ceramic_image": "shopify://shop_images/servingware_e32e63d1-5ab6-45c0-975c-11a1e570c54c.png",
+            "left_image": "shopify://shop_images/servingware-left.svg",
+            "right_image": "shopify://shop_images/servingware-right.png",
             "category_collection": "servingware",
             "category_video": "",
             "class": "servingware"
@@ -84,9 +177,9 @@
           "type": "category",
           "settings": {
             "category_name": "Vases & Planters",
-            "ceramic_image": "shopify:\/\/shop_images\/vases-ceramic.png",
-            "left_image": "shopify:\/\/shop_images\/vases-left.svg",
-            "right_image": "shopify:\/\/shop_images\/vases-right.svg",
+            "ceramic_image": "shopify://shop_images/vases-ceramic.png",
+            "left_image": "shopify://shop_images/vases-left.svg",
+            "right_image": "shopify://shop_images/vases-right.svg",
             "category_collection": "vases-planters",
             "category_video": "",
             "class": "vases"
@@ -125,7 +218,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Build It",
-            "button_link_1": "shopify:\/\/collections\/build-your-set",
+            "button_link_1": "shopify://collections/build-your-set",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -143,7 +236,7 @@
         "@media screen and (max-width: 749px) {p {margin-left: unset; }}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/build-set.jpg",
+        "image": "shopify://shop_images/build-set.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
@@ -159,24 +252,22 @@
     "5d03e27b-f96a-41e4-b3b1-9250271ef79d": {
       "type": "image-banner-masked",
       "settings": {
-        "image-left": "shopify:\/\/shop_images\/texture-left.jpg",
-        "image-center": "shopify:\/\/shop_images\/team.jpg",
-        "image-right": "shopify:\/\/shop_images\/texture-right_6afc6d5e-6481-42b6-b9a6-51b65758e709.jpg",
+        "image-left": "shopify://shop_images/texture-left.jpg",
+        "image-center": "shopify://shop_images/WolfCeramics_Studio_July2024-189_2.jpg",
+        "image-right": "shopify://shop_images/texture-right_6afc6d5e-6481-42b6-b9a6-51b65758e709.jpg",
         "heading": "Welcome to our studio.",
         "paragraph": "Founded in 2016 by Sarah Wolf, Wolf Ceramics is a small pottery studio based in Hood River, Oregon, about one hour from Portland. We take inspiration from the primary shapes, patterns and wisdom that are found in the natural world to create useful, everyday ceramics designed for enhancing the rituals of daily human life.",
         "button_text": "More About Us",
-        "button_url": "shopify:\/\/pages\/studio",
+        "button_url": "shopify://pages/studio",
         "padding_top": 80,
         "padding_bottom": 0
       }
     },
     "c0e06741-5451-4925-b604-921ee109b139": {
       "type": "custom-liquid",
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
-        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n<\/style>",
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
@@ -186,7 +277,7 @@
       "type": "apps",
       "blocks": {
         "ae7d2ce7-caa1-48b8-b5f8-e1f6fd91138a": {
-          "type": "shopify:\/\/apps\/qr-code-hub\/blocks\/home_landing\/4500f4b8-8cd3-4443-9a62-c1d1d9888ad7",
+          "type": "shopify://apps/qr-codes-unlimited/blocks/home_landing/4500f4b8-8cd3-4443-9a62-c1d1d9888ad7",
           "settings": {
             "has_icon": true
           }
@@ -198,14 +289,64 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "image_banner_t4J4Ta": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_JNDC3L": {
+          "type": "heading",
+          "settings": {
+            "heading": "Handmade in Hood River, Oregon",
+            "heading_size": "h1"
+          }
+        },
+        "text_gPxqnE": {
+          "type": "text",
+          "settings": {
+            "text": "Take a peak inside our studio.",
+            "text_style": "body"
+          }
+        },
+        "buttons_MyNYJF": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Process",
+            "button_link_1": "shopify://pages/process",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_JNDC3L",
+        "text_gPxqnE",
+        "buttons_MyNYJF"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/WolfCeramics_Studio_July2024-63.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "full-screen",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
     "image_banner",
+    "slideshow_qCLEBD",
     "6ff1c6d4-201f-47a9-b2bf-6922ebb35438",
     "ee62491c-7194-4eaf-9e4b-4293bbcb3e5f",
     "5d03e27b-f96a-41e4-b3b1-9250271ef79d",
     "c0e06741-5451-4925-b604-921ee109b139",
-    "1700073651514c08b6"
+    "1700073651514c08b6",
+    "image_banner_t4J4Ta"
   ]
 }

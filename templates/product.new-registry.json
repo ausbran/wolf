@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -12,13 +21,11 @@
         },
         "title": {
           "type": "title",
-          "settings": {
-          }
+          "settings": {}
         },
         "price": {
           "type": "price",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -28,8 +35,7 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {
-          }
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -41,23 +47,22 @@
         "55f712bf-99c6-4e27-9462-26b4b3f02312": {
           "type": "size_info",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dimensions-image.jpg"
+            "image": "shopify://shop_images/dimensions-image.jpg"
           }
         },
         "de0a2194-a9b5-45f6-a9ff-6925c4540f2f": {
           "type": "pickup_info",
           "settings": {
-            "image": "shopify:\/\/shop_images\/pickup-image.jpg",
+            "image": "shopify://shop_images/pickup-image.jpg",
             "header": "Local Pickup",
             "shipping": "Ships in 3-5 business days",
             "small-header": "Available for pickup at our studio",
-            "text": "<p>Our production studio is located in Hood River, Oregon. We don’t have a storefront. Customers who select local Hood River pickup will receive an email with pickup instructions.<\/p>\n\n<p>Though our studio isn’t generally open for browsing, we love to have open studios! Join our mailing list to get notified about upcoming events. <\/p>"
+            "text": "<p>Our production studio is located in Hood River, Oregon. We don’t have a storefront. Customers who select local Hood River pickup will receive an email with pickup instructions.</p>\n\n<p>Though our studio isn’t generally open for browsing, we love to have open studios! Join our mailing list to get notified about upcoming events. </p>"
           }
         },
         "description": {
           "type": "description",
-          "settings": {
-          }
+          "settings": {}
         },
         "share": {
           "type": "share",
@@ -109,7 +114,7 @@
         "template--16161779318962__575cc4f1-b858-4142-a98b-843a3a764e11-heading-1"
       ],
       "custom_css": [
-        "h1.rich-text__heading,h2.rich-text__heading,h3.rich-text__heading,h4.rich-text__heading,h5.rich-text__heading,.h0.rich-text__heading,.h1.rich-text__heading,.h2.rich-text__heading,.h3.rich-text__heading,.h4.rich-text__heading,.h5.rich-text__heading {line-height: calc(1.1 \/ max(1, var(--font-heading-scale)));}",
+        "h1.rich-text__heading,h2.rich-text__heading,h3.rich-text__heading,h4.rich-text__heading,h5.rich-text__heading,.h0.rich-text__heading,.h1.rich-text__heading,.h2.rich-text__heading,.h3.rich-text__heading,.h4.rich-text__heading,.h5.rich-text__heading {line-height: calc(1.1 / max(1, var(--font-heading-scale)));}",
         "@media screen and (max-width: 749px) {.rich-text {padding: 2rem 0; } .rich-text: not(.rich-text--full-width) .rich-text__wrapper {width: 100%; } .rich-text .h0 {font-size: 3.2rem !important; }}"
       ],
       "settings": {
@@ -126,13 +131,13 @@
       "settings": {
         "image1": "{{ product.metafields.custom.whats_it_for_image.value }}",
         "title1": "What it's for",
-        "text1": "<p>{{ product.metafields.custom.whats_it_for_text | metafield_tag }}<\/p>",
+        "text1": "<p>{{ product.metafields.custom.whats_it_for_text | metafield_tag }}</p>",
         "video2": "{{ product.metafields.custom.how_its_made_video.value }}",
         "image2": "{{ product.metafields.custom.how_its_made_image.value }}",
         "title2": "How it's made",
-        "text2": "<p>{{ product.metafields.custom.how_its_made_text | metafield_tag }}<\/p>",
+        "text2": "<p>{{ product.metafields.custom.how_its_made_text | metafield_tag }}</p>",
         "title3": "Pictured with",
-        "text3": "<p>Start a collection! Explore the other useful ceramic objects for your home pictured with the {{ product.title }}.<\/p>",
+        "text3": "<p>Start a collection! Explore the other useful ceramic objects for your home pictured with the {{ product.title }}.</p>",
         "image_width": "full",
         "image_ratio": "portrait",
         "column_alignment": "left",
@@ -166,7 +171,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Build it",
-            "button_link_1": "shopify:\/\/collections\/build-your-set",
+            "button_link_1": "shopify://collections/build-your-set",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -180,7 +185,7 @@
         "template--16161779318962__91faf671-9e0f-43fd-9abc-360ddbf8eefe-buttons-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/build-set.jpg",
+        "image": "shopify://shop_images/build-set.jpg",
         "image_overlay_opacity": 10,
         "image_height": "small",
         "desktop_content_position": "middle-center",
@@ -234,7 +239,7 @@
         "template--16161779318962__425a3054-bc61-41f8-927a-30f8b61e0117-text-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/made-by-hand.jpg",
+        "image": "shopify://shop_images/made-by-hand.jpg",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "bottom-left",
@@ -250,7 +255,7 @@
     "63355915-bfae-4ee4-9685-d18f6edde6a4": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}\/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}\/cart\/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='\/cart\/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n<\/script>",
+        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0

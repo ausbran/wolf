@@ -57,7 +57,7 @@
 
 .horizontal .multicolumn-list {
   flex-wrap: nowrap;
-  overflow: scroll;
+  overflow-x: scroll;
 }
 
 .multicolumn-list.text-on-top {

@@ -585,6 +585,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function addProductToList(product) {
+    let colorSwatch = '';
+    if (product.colorSwatchImage) {
+        // Show swatch image instead of color text
+        colorSwatch = `<span class="collection-variant" style="background-image: url('${product.colorSwatchImage}');"></span>`;
+    }
     const li = document.createElement('li');
     li.setAttribute('data-product-id', product.uniqueVariantId); // Use uniqueVariantId
     li.style.opacity = '0';
@@ -592,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="top-line">
           <span>${product.title}</span>
           <div>
-            <span>${product.color ? product.color : ''}</span>
+            ${colorSwatch}
             <span>$${product.price}</span>
           </div>
         </div>
@@ -691,34 +696,42 @@ function adjustQuantity(uniqueVariantId, adjustment) {
         const productPrice = productElement.dataset.productPrice;
         const selectedColorVariantLabel = productElement.querySelector('.variant-swatch.visible');
 
+        let colorSwatchImage = '';
         let color = '';
+
         if (selectedColorVariantLabel) {
-            const colorTextSpan = selectedColorVariantLabel.nextElementSibling;
-            if (colorTextSpan) {
-                color = colorTextSpan.textContent.trim();
-            }
+          const backgroundImageStyle = selectedColorVariantLabel.style.backgroundImage;
+          if (backgroundImageStyle.includes('url(')) {
+            colorSwatchImage = backgroundImageStyle.replace(/url\(["']?(.*?)["']?\)/, '$1');
+          }
+          // Correctly extract the variant title from the sibling span element
+          const colorTextElement = selectedColorVariantLabel.nextElementSibling;
+          if (colorTextElement) {
+            color = colorTextElement.textContent.trim();
+          }
         }
 
-      // Create a unique identifier for each variant selection
-        const uniqueVariantId = `${productId}-${color.replace(/\s+/g, '-').toLowerCase()}`;
+        // Create a unique identifier for each variant selection
+        const uniqueVariantId = `${productId}-${colorSwatchImage ? colorSwatchImage.replace(/.*\//, '').replace(/\.[^/.]+$/, '') : 'default'}`;
 
         // Attempt to find a product by its unique variant ID
         let productIndex = selectedProducts.findIndex(product => product.uniqueVariantId === uniqueVariantId);
 
         if (productIndex > -1) {
-            // Product variant already selected, update quantity
-            selectedProducts[productIndex].quantity += quantity;
+          // Product variant already selected, update quantity
+          selectedProducts[productIndex].quantity += quantity;
         } else {
-            // New product variant, add to the list
-            const newProduct = {
-                uniqueVariantId: uniqueVariantId,
-                id: productId,
-                title: productTitle,
-                price: productPrice,
-                quantity: quantity,
-                color: color
-            };
-            selectedProducts.push(newProduct);
+          // New product variant, add to the list
+          const newProduct = {
+            uniqueVariantId: uniqueVariantId,
+            id: productId,
+            title: productTitle,
+            price: productPrice,
+            quantity: quantity,
+            color: color, // Add color text
+            colorSwatchImage: colorSwatchImage
+          };
+          selectedProducts.push(newProduct);
         }
 
         refreshSelectedProductsList();

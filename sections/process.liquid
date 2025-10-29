@@ -1,0 +1,506 @@
+{{ 'section-process.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #BackgroundContainer:after {
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+  }
+{%- endstyle -%}
+
+<div id="Banner-{{ section.id }}" class="banner banner--full-screen process">
+  <!-- Background Container -->
+  <div class="banner__background-wrapper">
+    <div id="BackgroundContainer" class="banner__background">
+      <img src="{{ 'mask.svg' | asset_url }}" class="mask top" alt="Mask">
+      <img src="{{ 'mask-bottom.svg' | asset_url }}" class="mask bottom" alt="Mask">
+
+      <div id="InstructionalModal" class="instructional-modal" style="display: none;">
+        <dotlottie-player
+          id="InstructionalAnimation"
+          src="https://lottie.host/995c1259-9fd6-400d-8e70-fd60f9ef473f/EzNKN6Zd0s.lottie"
+          background="transparent"
+          speed="1"
+        ></dotlottie-player>
+        <p id="InstructionalMessage" class="instructional-message">
+          You are viewing <span class="message-change"></span>. Switch to
+          <span class="message-change-inverse"></span> by using the navigation above.
+        </p>
+      </div>
+
+      {% if section.settings.initial_video != blank %}
+        <div class="banner__media" id="initialBackground">
+          {{
+            section.settings.initial_video
+            | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'banner__media video'
+          }}
+        </div>
+      {% elsif section.settings.initial_image != blank %}
+        <img
+          src="{{ section.settings.initial_image | image_url: width: 3840 }}"
+          alt="Initial Background"
+          class="banner__media image"
+          id="initialBackground"
+        >
+      {% endif %}
+
+      <!-- Slide Backgrounds -->
+      {%- for block in section.blocks -%}
+        <div class="slide__background {{ block.type | replace: '_', '-' }}">
+          {% if block.settings.video != blank %}
+            {{
+              block.settings.video
+              | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'banner__media video'
+            }}
+          {% elsif block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | image_url: width: 3840 }}"
+              alt="Slide Background"
+              class="banner__media image"
+            >
+          {% endif %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <!-- Initial Content -->
+  <div class="banner__initial-content {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    <h3 class="small-caps">Select a Method</h3>
+    <h2 class="banner__heading">{{ section.settings.initial_heading }}</h2>
+    <p class="banner__text">{{ section.settings.initial_text }}</p>
+    <div class="banner__buttons">
+      <a class="button button--secondary" onclick="startSlides('hand-thrown-slide')">Hand Thrown</a>
+      <a class="button button--secondary" onclick="startSlides('jiggered-slide')">Jiggered</a>
+    </div>
+  </div>
+
+  <!-- Slide Content -->
+  <div id="SlideContent" class="slide-content">
+    <div class="slide-controls">
+      <div class="slide-options">
+        <button
+          class="drawer__close"
+          type="button"
+          onclick="closeSlides()"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {% render 'icon-close' %}
+        </button>
+        <div class="custom-dropdown">
+          <select id="processSelect" onchange="toggleProcess()">
+            <option value="hand-thrown-slide">Hand Thrown</option>
+            <option value="jiggered-slide">Jiggered</option>
+          </select>
+          {% render 'icon-caret' %}
+        </div>
+      </div>
+    </div>
+
+    <div id="SlidesContainer" class="slides">
+      <div class="slides-wrapper">
+        {%- for block in section.blocks -%}
+          <div
+            class="banner__slide {{ block.type | replace: '_', '-' }}"
+            data-process="{{ block.type | replace: '_', '-' }}"
+          >
+            <div class="slide__content">
+              <div class="slide-details">
+                <span class="slide-count"></span>
+                <span class="slide-type">{{ block.type | replace: '_', ' ' | replace: 'slide', '' }}</span>
+              </div>
+              <div class="slide-header">
+                <h3>{{ block.settings.heading }}</h3>
+                <div class="arrows">
+                  <button class="arrow prev" onclick="prevSlide()">{% render 'icon-caret' %}</button>
+                  <button class="arrow next" onclick="nextSlide()">{% render 'icon-caret' %}</button>
+                </div>
+              </div>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Slide Navigation -->
+      <div id="SlideNavigation" class="slide-navigation">
+        <ul id="NavigationList" class="navigation-list">
+          {%- for block in section.blocks -%}
+            <li
+              class="slide-nav-item {{ block.type | replace: '_', '-' }}"
+              data-process="{{ block.type | replace: '_', '-' }}"
+              data-slide="{{ forloop.index0 }}"
+              onclick="jumpToSlide({{ forloop.index0 }})"
+            >
+              {{ block.settings.heading }}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 0;
+  let processType = '';
+  let hasShownInstructionalModal = false; // Flag to ensure modal only fires once
+
+  function startSlides(type) {
+    hideAllSlides();
+
+    processType = type;
+    currentSlide = 0;
+
+    const backgroundContainer = document.getElementById('BackgroundContainer');
+    const slideContent = document.getElementById('SlideContent');
+    const slidesContainer = document.getElementById('SlidesContainer'); // Container for slides
+    const initialBackground = document.getElementById('initialBackground');
+    const initialContent = document.querySelector('.banner__initial-content');
+    const modal = document.getElementById('InstructionalModal');
+    const message = document.querySelector('.message-change');
+    const inverseMessage = document.querySelector('.message-change-inverse');
+    const lottiePlayer = document.getElementById('InstructionalAnimation');
+
+    // Set the instructional message
+    if (type === 'hand-thrown-slide') {
+      message.textContent = 'Hand Thrown';
+      inverseMessage.textContent = 'Jiggered';
+    } else if (type === 'jiggered-slide') {
+      message.textContent = 'Jiggered';
+      inverseMessage.textContent = 'Hand Thrown';
+    }
+
+    // Make the slide controls visible immediately
+    slideContent.style.display = 'flex';
+    slideContent.style.opacity = '1';
+    slideContent.style.visibility = 'visible';
+
+    // Ensure SlidesContainer (slides) is hidden initially
+    slidesContainer.style.opacity = '0';
+    slidesContainer.style.visibility = 'hidden';
+
+    // Show the instructional modal if not already shown
+    if (!hasShownInstructionalModal) {
+      hasShownInstructionalModal = true; // Set the flag
+      modal.style.display = 'flex';
+      modal.classList.add('show');
+
+      // Play the Lottie animation
+      setTimeout(() => {
+        lottiePlayer.play();
+      }, 400);
+
+      // Handle the end of the Lottie animation
+      lottiePlayer.addEventListener('complete', () => {
+        // Fade out the modal
+        modal.classList.remove('show');
+        setTimeout(() => {
+          modal.style.display = 'none';
+
+          // Fade in the slides container
+          slidesContainer.style.opacity = '1';
+          slidesContainer.style.visibility = 'visible';
+        }, 500); // Sync with modal fade-out duration
+      });
+    } else {
+      // If modal was already shown, directly show SlidesContainer
+      slidesContainer.style.opacity = '1';
+      slidesContainer.style.visibility = 'visible';
+    }
+
+    // Add the `expanded` class to the background
+    backgroundContainer.classList.add('expanded');
+
+    // Smooth scroll to the background
+    document.querySelector('.banner__background-wrapper').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+
+    // Fade out the initial content
+    initialContent.classList.add('fade-out');
+    setTimeout(() => {
+      initialContent.style.display = 'none';
+      initialContent.classList.remove('fade-out');
+    }, 500);
+
+    // Fade out the initial background
+    initialBackground.classList.add('fade-out');
+    setTimeout(() => {
+      initialBackground.style.display = 'none';
+      initialBackground.classList.remove('fade-out');
+    }, 500);
+
+    // Set dropdown to the selected process type
+    document.getElementById('processSelect').value = type;
+
+    // Populate navigation for the selected process type
+    populateSlideNavigation();
+
+    // Show the first slide and its background after animations are done
+    if (!hasShownInstructionalModal) {
+      lottiePlayer.addEventListener('complete', () => {
+        showSlide(currentSlide);
+      });
+    } else {
+      showSlide(currentSlide);
+    }
+  }
+
+  function closeSlides() {
+    const backgroundContainer = document.getElementById('BackgroundContainer');
+    const slideContent = document.getElementById('SlideContent');
+    const initialBackground = document.getElementById('initialBackground');
+    const initialContent = document.querySelector('.banner__initial-content');
+
+    // Remove the `expanded` class from the background
+    backgroundContainer.classList.remove('expanded');
+
+    // Hide the slide content
+    slideContent.classList.add('fade-out');
+    setTimeout(() => {
+      slideContent.style.display = 'none';
+      slideContent.classList.remove('fade-out');
+    }, 500);
+
+    // Show the initial content
+    initialContent.style.display = 'block';
+    initialContent.classList.add('fade-in');
+    setTimeout(() => {
+      initialContent.classList.remove('fade-in');
+    }, 500);
+
+    // Show the initial background
+    initialBackground.style.display = 'block';
+    initialBackground.classList.add('fade-in');
+    setTimeout(() => {
+      initialBackground.classList.remove('fade-in');
+    }, 500);
+
+    // Hide all slide backgrounds
+    hideAllSlides();
+  }
+
+  function showSlide(index) {
+    const slides = document.querySelectorAll(`.banner__slide[data-process="${processType}"]`);
+    const backgrounds = document.querySelectorAll(`.slide__background.${processType}`);
+    const totalSlides = slides.length;
+
+    if (totalSlides === 0) {
+      console.error(`No slides found for process type: ${processType}`);
+      return;
+    }
+
+    // Remove active class from all slides and backgrounds
+    slides.forEach((slide) => slide.classList.remove('active'));
+    backgrounds.forEach((bg) => bg.classList.remove('active'));
+
+    // Add active class to the selected slide and background
+    if (slides[index]) {
+      slides[index].classList.add('active');
+
+      // Update the slide count
+      const slideCount = slides[index].querySelector('.slide-count');
+      slideCount.textContent = `${index + 1} of ${totalSlides}`;
+    }
+
+    if (backgrounds[index]) {
+      backgrounds[index].classList.add('active');
+    }
+  }
+
+  function nextSlide() {
+    const slides = document.querySelectorAll(`.banner__slide[data-process="${processType}"]`);
+    const navItems = document.querySelectorAll('.slide-nav-item');
+    const navigationWrapper = document.getElementById('SlideNavigation');
+
+    // Update the current slide index
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    // Show the next slide
+    showSlide(currentSlide);
+
+    // Scroll the navigation to align the clicked item
+    const targetNavItem = navItems[currentSlide];
+    if (targetNavItem && navigationWrapper) {
+      const scrollAmount = targetNavItem.offsetLeft + targetNavItem.offsetWidth + 20;
+      navigationWrapper.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  }
+
+  function prevSlide() {
+    const slides = document.querySelectorAll(`.banner__slide[data-process="${processType}"]`);
+    const navItems = document.querySelectorAll('.slide-nav-item');
+    const navigationWrapper = document.getElementById('SlideNavigation');
+
+    // Update the current slide index
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+
+    // Show the previous slide
+    showSlide(currentSlide);
+
+    // Scroll the navigation to align the clicked item
+    const targetNavItem = navItems[currentSlide];
+    if (targetNavItem && navigationWrapper) {
+      const scrollAmount = targetNavItem.offsetLeft + targetNavItem.offsetWidth + 20;
+      navigationWrapper.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  }
+
+  function toggleProcess() {
+    const selectedProcess = document.getElementById('processSelect').value;
+    startSlides(selectedProcess);
+  }
+
+  function hideAllSlides() {
+    // Remove active class from all slides and backgrounds
+    const allSlides = document.querySelectorAll('.banner__slide');
+    const allBackgrounds = document.querySelectorAll('.slide__background');
+    allSlides.forEach((slide) => slide.classList.remove('active'));
+    allBackgrounds.forEach((bg) => bg.classList.remove('active'));
+  }
+
+  function populateSlideNavigation() {
+    const slides = document.querySelectorAll(`.banner__slide[data-process="${processType}"]`);
+    const navigationList = document.getElementById('NavigationList');
+    navigationList.innerHTML = ''; // Clear the navigation list
+
+    slides.forEach((slide, index) => {
+      const heading = slide.querySelector('.slide-header h3').textContent;
+      const navItem = document.createElement('li');
+      navItem.className = `slide-nav-item ${processType}`;
+      navItem.setAttribute('data-process', processType);
+      navItem.setAttribute('data-slide', index);
+      navItem.textContent = heading;
+      navItem.onclick = () => jumpToSlide(index); // Attach click handler
+      navigationList.appendChild(navItem);
+    });
+  }
+
+  function jumpToSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+
+    // Scroll the navigation so the clicked item scrolls fully out to the left
+    const clickedNavItem = document.querySelector(`.slide-nav-item[data-slide="${index}"]`);
+    const navigationWrapper = document.getElementById('SlideNavigation');
+
+    if (clickedNavItem && navigationWrapper) {
+      const scrollAmount = clickedNavItem.offsetLeft + clickedNavItem.offsetWidth + 20;
+
+      navigationWrapper.scrollTo({
+        left: scrollAmount, // Adjust scroll to include the width of the clicked item
+        behavior: 'smooth', // Ensures smooth scrolling
+      });
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Process",
+  "settings": [
+    {
+      "type": "video",
+      "id": "initial_video",
+      "label": "Initial Background Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "initial_image",
+      "label": "Initial Background Image",
+      "info": "This image will display if there is no initial video chosen."
+    },
+    {
+      "type": "text",
+      "id": "initial_heading",
+      "label": "Initial Heading",
+      "default": "Crafted two ways, made just for you."
+    },
+    {
+      "type": "textarea",
+      "id": "initial_text",
+      "label": "Initial Text"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hand_thrown_slide",
+      "name": "Hand Thrown Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Slide Heading",
+          "default": "Hand Thrown Slide Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Slide Text",
+          "default": "Hand thrown slide description."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Slide Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        }
+      ]
+    },
+    {
+      "type": "jiggered_slide",
+      "name": "Jiggered Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Slide Heading",
+          "default": "Jiggered Slide Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Slide Text",
+          "default": "Jiggered slide description."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Slide Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process",
+      "blocks": [{ "type": "hand_thrown_slide" }, { "type": "jiggered_slide" }]
+    }
+  ]
+}
+{% endschema %}

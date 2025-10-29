@@ -80,8 +80,8 @@
                       aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                       data-product-url="{{ card_product.url }}"
                     >
-                      {%comment%}{% render 'icon-zoom' %}{%endcomment%}
-                      Choose Options
+                      {% render 'icon-zoom' %}
+                      
                       {%- if horizontal_quick_add -%}
                         <span class="icon-wrap">{% render 'icon-arrow' %}</span>
                       {%- endif -%}
@@ -109,7 +109,7 @@
                       <button
                         id="ModalClose-{{ card_product.id }}"
                         type="button"
-                        class="quick-add-modal__toggle"
+                        class="quick-add-modal__toggle drawer__close"
                         aria-label="{{ 'accessibility.close' | t }}"
                       >
                         {% render 'icon-close' %}

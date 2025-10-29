@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -5,16 +14,24 @@
     "announcement_bar_qANPdF": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_48kitC": {
+        "announcement_arDBdc": {
           "type": "announcement",
           "settings": {
-            "text": "Come to our Studio Sale, June 22nd!",
-            "link": "https:\/\/wolfceramics.com\/blogs\/news\/summer-open-studio-sale"
+            "text": "",
+            "link": ""
+          }
+        },
+        "announcement_BTyaXE": {
+          "type": "announcement",
+          "settings": {
+            "text": "We're hiring! Join our team in Hood River.",
+            "link": "shopify://pages/production-potter-position"
           }
         }
       },
       "block_order": [
-        "announcement_48kitC"
+        "announcement_arDBdc",
+        "announcement_BTyaXE"
       ],
       "settings": {
         "show_social": false,
@@ -26,9 +43,7 @@
     },
     "header": {
       "type": "header",
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "logo_position": "middle-left",
         "menu": "navigation",
@@ -44,10 +59,21 @@
         "padding_top": 16,
         "padding_bottom": 16
       }
+    },
+    "announcement_bar_9XNbbF": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
     }
   },
   "order": [
     "announcement_bar_qANPdF",
-    "header"
+    "header",
+    "announcement_bar_9XNbbF"
   ]
 }

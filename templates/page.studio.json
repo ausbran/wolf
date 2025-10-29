@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -35,8 +44,8 @@
         ".banner__heading + * {max-width: 100%;}"
       ],
       "settings": {
-        "video": "shopify:\/\/files\/videos\/studio.mp4",
-        "image": "shopify:\/\/shop_images\/WolfCeramics_June2023-52.jpg",
+        "video": "shopify://files/videos/studio.mp4",
+        "image": "shopify://shop_images/WolfCeramics_June2023-52.jpg",
         "image_overlay_opacity": 0,
         "image_height": "full-screen",
         "desktop_content_position": "middle-center",
@@ -62,7 +71,7 @@
         "template--16176669687986__d991d7ce-32ce-4927-8819-657d4976d602-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Wolf Ceramics was founded in 2016 by Sarah Wolf. A native Oregonian, Sarah followed a winding path through geochemistry, farming, outdoor education and guiding, and considering architecture school before landing back on her most addictive and inspired hobby: ceramics. <\/p><p>After a year and a half of graduate studies at the Oregon College of Art and Craft, Sarah began producing work out of her NW Portland pottery studio, steadily building a mug club and connecting with local chefs and restaurants. Soon her mugs, plates, bowls and home wares were finding permanent homes around the country.  In 2019, Wolf Ceramics moved their studio to the nearby town of Hood River nestled in the Columbia River Gorge Scenic Area at the base of Mt. Hood.<\/p>",
+            "text": "<p>Wolf Ceramics was founded in 2016 by Sarah Wolf. A native Oregonian, Sarah followed a winding path through geochemistry, farming, outdoor education and guiding, and considering architecture school before landing back on her most addictive and inspired hobby: ceramics. </p><p>After a year and a half of graduate studies at the Oregon College of Art and Craft, Sarah began producing work out of her NW Portland pottery studio, steadily building a mug club and connecting with local chefs and restaurants. Soon her mugs, plates, bowls and home wares were finding permanent homes around the country.  In 2019, Wolf Ceramics moved their studio to the nearby town of Hood River nestled in the Columbia River Gorge Scenic Area at the base of Mt. Hood.</p>",
             "text_style": "body"
           }
         },
@@ -70,7 +79,7 @@
           "type": "button",
           "settings": {
             "button_label": "Read More",
-            "button_link": "shopify:\/\/blogs\/news\/heres-the-story-of-how-this-little-business-came-into-being",
+            "button_link": "shopify://blogs/news/heres-the-story-of-how-this-little-business-came-into-being",
             "button_style_secondary": false
           }
         }
@@ -81,7 +90,7 @@
         "template--16176669687986__d991d7ce-32ce-4927-8819-657d4976d602-button-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/story.jpg",
+        "image": "shopify://shop_images/story.jpg",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -118,7 +127,7 @@
         "template--16176669687986__fb81c42a-b2aa-4130-87cb-538b4dee1716-text-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/process.jpg",
+        "image": "shopify://shop_images/process.jpg",
         "image_overlay_opacity": 50,
         "image_height": "large",
         "desktop_content_position": "bottom-left",
@@ -131,16 +140,185 @@
         "show_text_below": true
       }
     },
+    "image_with_text_rcyTTM": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_LXPrzM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Mission",
+            "heading_size": "h1"
+          }
+        },
+        "text_y6NG3k": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>At Wolf Ceramics, our vision is to cultivate a thriving community of passionate artisans who collaborate in a supportive and nurturing environment.</strong> We strive to honor the humanity of our team members, promoting balance and sustainable practices that enable us to craft beautiful, functional, and durable pottery for years to come.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_aWciVj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More",
+            "button_link": "https://wolfceramics.com/blogs/news/our-mission-values",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_LXPrzM",
+        "text_y6NG3k",
+        "button_aWciVj"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/WolfCeramics_Studio_July2024-101.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_nGJMnH": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_DjtHmb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/1_be2be0c9-9023-4dff-bd10-b18d1ae23f6f.png",
+            "title": "Embrace JOYL",
+            "text": "<p><strong>Definition: ‘Joy in toil.’ </strong>The emotion of great delight or satisfaction caused by completing an exceptionally laborious task or project. It’s not every person who delights in making the same form again and again, striving for a little more deftness, a more perfect profile, or to finish a mug’s rim just right. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_qn3ajn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/2_249c85d8-e74d-4b6f-8c0f-b9db5c0bfd9f.png",
+            "title": "Collaborate Curiously",
+            "text": "<p><strong>We approach our day-to-day with curiosity first. </strong>We are always learning from one another, asking questions, and working together to solve our ever-evolving array of production challenges. We believe that taking care of oneself is an act of caring for the entire team.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_bjRBgQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/3_127326c2-a45c-4e1f-b34a-d99550838855.png",
+            "title": "Create to Connect",
+            "text": "<p><strong>Our ceramics are made to be used every day</strong>, to last through family dinners with little ones, and to enrich. meals spent with friends. Taking part in this work inspires us to gather, to celebrate the food that we eat and the people that we share it with.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_DjtHmb",
+        "column_qn3ajn",
+        "column_bjRBgQ"
+      ],
+      "settings": {
+        "title": "Our Values",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "no_padding": true,
+        "horizontal": false,
+        "border": false,
+        "text_placement": "below",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "https://wolfceramics.com/blogs/news/our-mission-values",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_h9cerY": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_dQgbzq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Mission & Values",
+            "heading_size": "h1"
+          }
+        },
+        "text_Apac94": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Wolf Ceramics, our vision is to cultivate a thriving community of passionate artisans who collaborate in a supportive and nurturing environment. </p><p>We strive to honor the humanity of our team members, promoting balance and sustainable practices that enable us to craft beautiful, functional, and durable pottery for years to come. Our signature aesthetic blends timeless design with a unique, joyful style that enhances the dining experience for our customers and hospitality partners. We aim to create handmade dinnerware that becomes a cherished part of everyday life, gracing tables and gatherings with the warmth and artistry of our dedicated craftsmanship. </p>",
+            "text_style": "body"
+          }
+        },
+        "button_WpddnH": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More",
+            "button_link": "https://wolfceramics.com/blogs/news/our-mission-values",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_dQgbzq",
+        "text_Apac94",
+        "button_WpddnH"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/WolfCeramics_Studio_July2024-101.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "video_Lnz6BP": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "Take a look: Inside the Wolf Studio",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://vimeo.com/1056662432",
+        "cover_image": "shopify://shop_images/IMG_6502_8565ffd3-0220-4a66-8d18-b7494e0bd6b4.jpg",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "c6f46386-cf15-432a-a7fd-99ffa5b7655a": {
       "type": "multicolumn",
       "blocks": {
         "template--16176669687986__c6f46386-cf15-432a-a7fd-99ffa5b7655a-column-1": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sarah.jpg",
-            "hover-image": "shopify:\/\/shop_images\/sarah-hover.jpg",
+            "image": "shopify://shop_images/kt-378.jpg",
+            "hover-image": "shopify://shop_images/kt-278.jpg",
             "title": "Sarah",
-            "text": "<p>Founder and artist. Once a solo studio potter and now the happy leader of a team, Sarah enjoys making goods that will be well used by her friends and community. She values time spent in the mountains just as much as a day’s work in the studio.<\/p>",
+            "text": "<p>Founder and artist. Once a solo studio potter and now the happy leader of a team, Sarah enjoys making goods that will be well used by her friends and community. She values time spent in the mountains just as much as a day’s work in the studio.</p>",
             "link_label": "",
             "link": ""
           }
@@ -148,21 +326,10 @@
         "template--16176669687986__c6f46386-cf15-432a-a7fd-99ffa5b7655a-column-2": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/joey-rose.jpg",
-            "hover-image": "shopify:\/\/shop_images\/joey-rose-hover.jpg",
+            "image": "shopify://shop_images/kt-300.jpg",
+            "hover-image": "shopify://shop_images/kt-184_244697c6-dc48-4092-8dd4-569b2b2f6aae.jpg",
             "title": "Joey Rose",
-            "text": "<p>Glazing and operations. Joey Rose's shrewd attention to detail and efficiency are integral to operations here. Outside of Wolf, she has a business, designing and creating accessories and leather goods that incorporate fur, animal bone, fiber, and metal. <a href=\"https:\/\/justjoeyrose.com\/\">See her work.<\/a><\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--16176669687986__c6f46386-cf15-432a-a7fd-99ffa5b7655a-column-3": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/BDF36FC0-42E7-4C57-9507-58942C6E3A81-39854-00000798B762A5A8_2.jpg",
-            "hover-image": "shopify:\/\/shop_images\/00AF416F-4F5E-414F-9F34-77697022B647-91756-000022456A50F653.jpg",
-            "title": "Skylar",
-            "text": "<p>Potter and production manager. Skylar has worked as a potter at Wolf since 2022. She divides her time between managing wet-work production, throwing here at Wolf, teaching throwing classes, and exploring atmospheric firing in her personal work that can be found <a href=\"https:\/\/www.instagram.com\/talegapottery\/\" title=\"https:\/\/www.instagram.com\/talegapottery\/\">here<\/a>.<\/p>",
+            "text": "<p>Glazing and operations. Joey Rose's shrewd attention to detail and efficiency are integral to operations here. Outside of Wolf, she has a business, designing and creating accessories and leather goods that incorporate fur, animal bone, fiber, and metal. <a href=\"https://justjoeyrose.com/\">See her work.</a></p>",
             "link_label": "",
             "link": ""
           }
@@ -170,10 +337,10 @@
         "0750175d-5bd1-4360-b173-2e480d1108d2": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/D9F19D54-DEB7-4ABD-93B1-3201CE65240B-91756-0000224445F15359.jpg",
-            "hover-image": "shopify:\/\/shop_images\/63267B6B-F3C8-4948-82F5-A465610ADB76-15885-000014583A8DEF10.jpg",
+            "image": "shopify://shop_images/kt-046.jpg",
+            "hover-image": "shopify://shop_images/kt-303_d9fafa55-9c4f-4fa1-b7e6-812d1013375b.jpg",
             "title": "Ian",
-            "text": "<p>Production potter. Ian joined Wolf after hiking the Appalachian Trail, bringing his joyful demeanor and easy diligence with him. Outside of Wolf, Ian has explored functional and sculptural work, as well as a passion for wood firing. Check out Ian’s pots, paintings, and other larks <a href=\"https:\/\/www.instagram.com\/dolomite_78\/\">here<\/a>.<\/p>",
+            "text": "<p>Production potter. Ian joined Wolf after hiking the Appalachian Trail, bringing his joyful demeanor and easy diligence with him. Outside of Wolf, Ian has explored functional and sculptural work, as well as a passion for wood firing. Check out Ian’s pots, paintings, and other larks <a href=\"https://www.instagram.com/dolomite_78/\">here</a>.</p>",
             "link_label": "",
             "link": ""
           }
@@ -181,10 +348,10 @@
         "a0a4f44b-6554-4c72-987e-e02162579d80": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/52832096-B1E5-4FAF-9183-99FEF20ED617-91756-000022442602A8B6_b2e19144-8d55-42af-9210-fccc7982e2fc.jpg",
-            "hover-image": "shopify:\/\/shop_images\/4A25E14B-245E-4D45-943F-72418953AFC5-39854-00000798A77A745E_26e194c2-fb1a-4ca1-ba92-c178aceff141.jpg",
+            "image": "shopify://shop_images/kt-002.jpg",
+            "hover-image": "shopify://shop_images/kt-364.jpg",
             "title": "Gloria",
-            "text": "<p>Production potter. Gloria joined the Wolf team after completing her BA in linguistics at Reed College, where she spent many hours in the studio thanks to her work study job as an assistant to the ceramics department. She also speaks Russian and is a budding sheep-shearer.<\/p>",
+            "text": "<p>Production potter. Gloria joined the Wolf team after completing her BA in linguistics at Reed College, where she spent many hours in the studio thanks to her work study job as an assistant to the ceramics department. </p>",
             "link_label": "",
             "link": ""
           }
@@ -192,9 +359,10 @@
         "column_x96gHJ": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/2989A3CB-6DAF-4168-B124-C0296E3E964B-91756-00002243CBA815D1_6e916132-1387-4849-9579-5acb4233147a.jpg",
+            "image": "shopify://shop_images/kt-051.jpg",
+            "hover-image": "shopify://shop_images/kt-395.jpg",
             "title": "Hana",
-            "text": "<p>Glazer and production technician. Hana braved the move to the PNW from sunny California. She's the newest member of our team and we are thrilled to have her!<\/p>",
+            "text": "<p>Glazer and production technician. Hana braved the move to the PNW from sunny California. She enjoys the variety in seasons, and spends time backpacking and cross country skiing with her dog, Bhodie.</p>",
             "link_label": "",
             "link": ""
           }
@@ -202,10 +370,10 @@
         "column_4pNFf3": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/39A47E88-199A-4600-A09C-632B44A1029E-91756-0000224414A53C5F.jpg",
-            "hover-image": "shopify:\/\/shop_images\/IMG_4658.jpg",
+            "image": "shopify://shop_images/kt-024.jpg",
+            "hover-image": "shopify://shop_images/kt-284.jpg",
             "title": "Jacob",
-            "text": "<p>Studio Assistant. It was the many rivers and whitewater kayaking that brought Jacob here to the Columbia River Gorge. He spends a day or two a week with us and keeps things running smoothly around here, recycling clay, loading kilns, and attaching handles. <\/p>",
+            "text": "<p>Production potter. It was the many rivers and whitewater kayaking that brought Jacob here to the Columbia River Gorge. Jacob joined us early in 2024 as a studio assistant and then returned to Wolf to work as a production potter! </p>",
             "link_label": "",
             "link": ""
           }
@@ -214,7 +382,6 @@
       "block_order": [
         "template--16176669687986__c6f46386-cf15-432a-a7fd-99ffa5b7655a-column-1",
         "template--16176669687986__c6f46386-cf15-432a-a7fd-99ffa5b7655a-column-2",
-        "template--16176669687986__c6f46386-cf15-432a-a7fd-99ffa5b7655a-column-3",
         "0750175d-5bd1-4360-b173-2e480d1108d2",
         "a0a4f44b-6554-4c72-987e-e02162579d80",
         "column_x96gHJ",
@@ -247,45 +414,45 @@
         "template--16176669687986__f4358f73-b3e2-42b8-a41c-fb4b7346a97a-column-1": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/blue-bg.png",
-            "hover-image": "shopify:\/\/shop_images\/IMG_4097.jpg",
+            "image": "shopify://shop_images/blue-bg.png",
+            "hover-image": "shopify://shop_images/IMG_4097.jpg",
             "title": "Interested in working for Wolf?",
-            "text": "<p>We are a lighthearted bunch that take our work seriously but also like to maintain a healthy sense of humor.<\/p>",
+            "text": "<p>We are a lighthearted bunch that take our work seriously but also like to maintain a healthy sense of humor.</p>",
             "link_label": "See Positions",
-            "link": "https:\/\/wolfceramics.com\/pages\/production-assistant-position"
+            "link": "https://wolfceramics.com/pages/application-form"
           }
         },
         "template--16176669687986__f4358f73-b3e2-42b8-a41c-fb4b7346a97a-column-2": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/clay-bg.png",
-            "hover-image": "shopify:\/\/shop_images\/newsletter.jpg",
+            "image": "shopify://shop_images/clay-bg.png",
+            "hover-image": "shopify://shop_images/newsletter.jpg",
             "title": "Join our mailing list",
-            "text": "<p>Get 10% off your first order and stay up to date with news from the studio by joining our newsletter list.<\/p>",
+            "text": "<p>Get 10% off your first order and stay up to date with news from the studio by joining our newsletter list.</p>",
             "link_label": "Subscribe",
-            "link": "\/pages\/join-our-mailing-list?view=newsletter"
+            "link": "/pages/join-our-mailing-list?view=newsletter"
           }
         },
         "9566e8ed-4d82-4c31-92f5-5621839090b5": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/white-grey-bg.png",
-            "hover-image": "shopify:\/\/shop_images\/moad-wolfceramics-sarahwolf-studio-1-scaled.webp",
+            "image": "shopify://shop_images/white-grey-bg.png",
+            "hover-image": "shopify://shop_images/moad-wolfceramics-sarahwolf-studio-1-scaled.webp",
             "title": "Wolf in the news",
-            "text": "<p>A collection of stories, round ups, and interviews about Wolf, written by other folks!<\/p>",
+            "text": "<p>A collection of stories, round ups, and interviews about Wolf, written by other folks!</p>",
             "link_label": "Read News",
-            "link": "shopify:\/\/blogs\/press"
+            "link": "shopify://blogs/press"
           }
         },
         "6b749ef6-243f-4e22-97de-06bfcf9e0999": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/green-bg.png",
-            "hover-image": "shopify:\/\/shop_images\/WolfCeramics_June2023-58.jpg",
+            "image": "shopify://shop_images/green-bg.png",
+            "hover-image": "shopify://shop_images/WolfCeramics_June2023-58.jpg",
             "title": "Sarah's virtual ceramics class",
-            "text": "<p>Make your own decorative mug as you learn pottery throwing basics.<\/p>",
+            "text": "<p>Make your own decorative mug as you learn pottery throwing basics.</p>",
             "link_label": "Learn More",
-            "link": "https:\/\/www.craftsy.com\/class\/introduction-to-pottery\/"
+            "link": "https://www.craftsy.com/class/introduction-to-pottery/"
           }
         }
       },
@@ -324,10 +491,58 @@
     "bbc45dc6-a231-4e74-9e72-3f95b276cc6c": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n<\/style>",
+        "custom_liquid": "<style>\n.header-wrapper {\nbackground-color: transparent;\n}\nsticky-header * {\ncolor: #fff;\n}\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
+      }
+    },
+    "image_banner_nVANTT": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_X4zdpb": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_Nczqg7": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "buttons_3DC9t6": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_X4zdpb",
+        "text_Nczqg7",
+        "buttons_3DC9t6"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/WolfCeramics_Studio_July2024-57_1efa7c30-3ad2-4c1a-8328-877e4e760087.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "full-screen",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
       }
     }
   },
@@ -336,8 +551,13 @@
     "a1af06ff-85f4-46ba-8bbc-743593a9ada0",
     "d991d7ce-32ce-4927-8819-657d4976d602",
     "fb81c42a-b2aa-4130-87cb-538b4dee1716",
+    "image_with_text_rcyTTM",
+    "multicolumn_nGJMnH",
+    "image_with_text_h9cerY",
+    "video_Lnz6BP",
     "c6f46386-cf15-432a-a7fd-99ffa5b7655a",
     "f4358f73-b3e2-42b8-a41c-fb4b7346a97a",
-    "bbc45dc6-a231-4e74-9e72-3f95b276cc6c"
+    "bbc45dc6-a231-4e74-9e72-3f95b276cc6c",
+    "image_banner_nVANTT"
   ]
 }
