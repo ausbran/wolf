@@ -25,6 +25,34 @@
 {%- assign items_in_cart = cart | line_items_for: product | sum: 'quantity' -%}
 {% # theme-check-enable %}
 
+{%- if product and product != empty -%}
+  {%- assign visible_variants = product.variants -%}
+  {%- assign visible_variants_count = 0 -%}
+  {%- assign quick_order_selected_variant = blank -%}
+  {%- assign quick_order_selected_variant_available = blank -%}
+  {%- for variant in visible_variants -%}
+    {%- assign metafield_raw = variant.metafields.custom.hide_on_storefront -%}
+    {%- assign hide_value = metafield_raw.value | default: metafield_raw -%}
+    {%- assign hide_str = hide_value | append: '' | downcase -%}
+    {%- if hide_str == 'true' -%}
+      {%- continue -%}
+    {%- endif -%}
+    {%- assign visible_variants_count = visible_variants_count | plus: 1 -%}
+    {%- if quick_order_selected_variant == blank -%}
+      {%- assign quick_order_selected_variant = variant -%}
+    {%- endif -%}
+    {%- if variant.available and quick_order_selected_variant_available == blank -%}
+      {%- assign quick_order_selected_variant_available = variant -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if quick_order_selected_variant_available != blank -%}
+    {%- assign quick_order_selected_variant = quick_order_selected_variant_available -%}
+  {%- endif -%}
+  {%- if quick_order_selected_variant == blank -%}
+    {%- assign quick_order_selected_variant = product.selected_or_first_available_variant -%}
+  {%- endif -%}
+{%- endif -%}
+
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <quick-order-list
     class="page-width section-{{ section.id }}-padding"
@@ -86,11 +114,17 @@
                 {%- render 'quick-order-list-row',
                   item: product,
                   image: product.featured_media,
-                  sku: product.selected_or_first_available_variant.sku,
-                  variant: product.selected_or_first_available_variant
+                  sku: quick_order_selected_variant.sku,
+                  variant: quick_order_selected_variant
                 -%}
               {%- else -%}
                 {%- for variant in product.variants -%}
+                  {%- assign metafield_raw = variant.metafields.custom.hide_on_storefront -%}
+                  {%- assign hide_value = metafield_raw.value | default: metafield_raw -%}
+                  {%- assign hide_str = hide_value | append: '' | downcase -%}
+                  {%- if hide_str == 'true' -%}
+                    {%- continue -%}
+                  {%- endif -%}
                   {%- render 'quick-order-list-row',
                     item: variant,
                     image: variant.image,
@@ -103,7 +137,7 @@
           </table>
         </div>
         <noscript>
-          {%- if product.has_only_default_variant or product.variants.size == 1 -%}
+          {%- if product.has_only_default_variant or visible_variants_count == 1 -%}
             <button type="submit" class="button button--secondary right" formnovalidate form="QuickOrderList">
               {{ 'sections.cart.update' | t }}
             </button>
@@ -123,7 +157,7 @@
       </p>
     </form>
 
-    {%- if product.has_only_default_variant or product.variants.size == 1 -%}
+    {%- if product.has_only_default_variant or visible_variants_count == 1 -%}
       <span class="quick-order-list-error">
         {% comment %} Populated by JS {% endcomment %}
       </span>

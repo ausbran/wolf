@@ -12,10 +12,11 @@
 <div class="customer">
   {%- assign gift_card_recipient_control_flag = 'properties[__shopify_send_gift_card_to_recipient]' -%}
   <script src="{{ 'recipient-form.js' | asset_url }}" defer="defer"></script>
+  {%- assign current_variant = selected_variant | default: product.selected_or_first_available_variant -%}
   <recipient-form
     class="recipient-form"
     data-section-id="{{ section.id }}"
-    data-product-variant-id="{{ product.selected_or_first_available_variant.id }}"
+    data-product-variant-id="{{ current_variant.id }}"
   >
     <input
       id="Recipient-checkbox-{{ section.id }}"

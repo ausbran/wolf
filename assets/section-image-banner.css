@@ -10,15 +10,15 @@
   overflow: hidden;
 }
 
-  .banner--full-screen {
-    overflow: hidden;
-    height: 100vh !important;
-    flex-direction: row;
-  }
+.banner--full-screen {
+  overflow: hidden;
+  height: 100vh !important;
+  flex-direction: row;
+}
 
-  .banner--full-screen .banner__media {
-    position: absolute !important;
-  }
+.banner--full-screen .banner__media {
+  position: absolute !important;
+}
 
 .banner__box {
   text-align: center;
@@ -51,7 +51,7 @@
   .banner--content-align-left .banner__box {
     text-align: left;
   }
- 
+
   .banner--content-align-left.banner--desktop-transparent .banner__box,
   .banner--content-align-right.banner--desktop-transparent .banner__box {
     max-width: 75rem;
@@ -174,8 +174,8 @@
   }
 
   .banner:not(.banner--stacked):not(.banner--full-screen) {
-   width: calc(100% - 4rem);
-   padding: 0;
+    width: calc(100% - 4rem);
+    padding: 0;
   }
 
   .banner--stacked {
@@ -187,8 +187,7 @@
   }
 }
 
-.banner__media
- {
+.banner__media {
   height: 100%;
   position: absolute;
   left: 0;
@@ -221,7 +220,7 @@
   .banner--stacked .animate--zoom-in:first-child > img {
     width: 100%;
   }
-   .banner__content.banner__content--bottom-center {
+  .banner__content.banner__content--bottom-center {
     margin-bottom: unset;
   }
 
@@ -290,7 +289,6 @@
     position: relative;
   }
 
-
   .banner::before {
     display: none !important;
   }
@@ -315,7 +313,6 @@
 }
 
 @media screen and (min-width: 750px) {
-
   .banner__content--top-left {
     align-items: flex-start;
     justify-content: flex-start;
@@ -384,13 +381,13 @@
   z-index: 1;
 }
 
-  .banner--desktop-transparent .banner__box * {
-    text-shadow: var(--shadow);
-  }
+.banner--desktop-transparent .banner__box * {
+  text-shadow: var(--shadow);
+}
 
-  .banner--desktop-transparent .banner__box a {
-    box-shadow: var(--shadow);
-  }
+.banner--desktop-transparent .banner__box a {
+  box-shadow: var(--shadow);
+}
 
 @media screen and (min-width: 750px) {
   .banner--desktop-transparent .banner__box {
@@ -522,7 +519,6 @@
 @media screen and (min-width: 750px) {
   .banner--content-align-center .banner__buttons--multiple > * {
     flex-grow: 1;
-    min-width: 22rem;
   }
 
   .banner--content-align-right .banner__buttons--multiple {

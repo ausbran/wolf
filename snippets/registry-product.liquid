@@ -3,6 +3,31 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 
 {%- if card_product and card_product != empty -%}
+  {%- assign card_visible_variants = card_product.variants -%}
+  {%- assign card_visible_variants_count = 0 -%}
+  {%- assign card_selected_variant = blank -%}
+  {%- assign card_selected_variant_available = blank -%}
+  {%- for variant in card_visible_variants -%}
+    {%- assign metafield_raw = variant.metafields.custom.hide_on_storefront -%}
+    {%- assign hide_value = metafield_raw.value | default: metafield_raw -%}
+    {%- assign hide_str = hide_value | append: '' | downcase -%}
+    {%- if hide_str == 'true' -%}
+      {%- continue -%}
+    {%- endif -%}
+    {%- assign card_visible_variants_count = card_visible_variants_count | plus: 1 -%}
+    {%- if card_selected_variant == blank -%}
+      {%- assign card_selected_variant = variant -%}
+    {%- endif -%}
+    {%- if variant.available and card_selected_variant_available == blank -%}
+      {%- assign card_selected_variant_available = variant -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if card_selected_variant_available != blank -%}
+    {%- assign card_selected_variant = card_selected_variant_available -%}
+  {%- endif -%}
+  {%- if card_selected_variant == blank -%}
+    {%- assign card_selected_variant = card_product.selected_or_first_available_variant -%}
+  {%- endif -%}
   {%- liquid
     assign ratio = 1
     if card_product.featured_media and media_aspect_ratio == 'portrait'
@@ -48,11 +73,11 @@
                 {%- liquid
                   assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
                   assign qty_rules = false
-                  if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
+                  if card_selected_variant.quantity_rule.min > 1 or card_selected_variant.quantity_rule.max != null or card_selected_variant.quantity_rule.increment > 1
                     assign qty_rules = true
                   endif
                 -%}
-                {%- if card_product.variants.size > 1 or qty_rules -%}
+                {%- if card_visible_variants_count > 1 or qty_rules -%}
                   <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
                     <button
                       id="{{ product_form_id }}-submit"
@@ -104,9 +129,15 @@
               </div>
             {%- endif -%}
 
-            {% if card_product.variants.size > 1 %}
-              {% assign firstVariant = card_product.variants.first %}
+            {% if card_visible_variants_count > 1 %}
+              {% assign firstVariant = card_selected_variant | default: card_product.selected_or_first_available_variant %}
               {% for variant in card_product.variants %}
+                {% assign metafield_raw = variant.metafields.custom.hide_on_storefront %}
+                {% assign hide_value = metafield_raw.value | default: metafield_raw %}
+                {% assign hide_str = hide_value | append: '' | downcase %}
+                {% if hide_str == 'true' %}
+                  {% continue %}
+                {% endif %}
                 {% if forloop.first %}
                   <a class="view-product" href="{{ card_product.url }}" target="_blank">
                     {% render 'icon-zoom' %}
@@ -160,7 +191,7 @@
               {% endfor %}
             {% endif %}
 
-            {% if card_product.variants.size == 1 or card_product.title contains 'Club' %}
+            {% if card_visible_variants_count == 1 or card_product.title contains 'Club' %}
                 {% if forloop.first %}
                   <a class="view-product" href="{{ card_product.url }}" target="_blank">
                     {% render 'icon-zoom' %}
@@ -278,7 +309,7 @@
                 </p>
               {%- endif -%}
 
-              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true, use_variant: true, selected_variant: card_selected_variant %}
               {%- if card_product.quantity_price_breaks_configured? -%}
                 <div class="card__information-volume-pricing-note">
                   <span class="caption">{{ 'products.product.volume_pricing.note' | t }}</span>
@@ -287,16 +318,42 @@
             </div>
           </div>
 
-          {% assign firstVariant = card_product.variants.first %}
+          {% assign swatch_first_variant = blank %}
+          {% assign swatch_first_available = blank %}
+          {% assign swatch_count = 0 %}
+          {% for variant in card_product.variants %}
+            {% assign metafield_raw = variant.metafields.custom.hide_on_storefront %}
+            {% assign hide_value = metafield_raw.value | default: metafield_raw %}
+            {% assign hide_str = hide_value | append: '' | downcase %}
+            {% if hide_str == 'true' %}
+              {% continue %}
+            {% endif %}
+            {% assign swatch_count = swatch_count | plus: 1 %}
+            {% if swatch_first_variant == blank %}
+              {% assign swatch_first_variant = variant %}
+            {% endif %}
+            {% if variant.available and swatch_first_available == blank %}
+              {% assign swatch_first_available = variant %}
+            {% endif %}
+          {% endfor %}
+          {% if swatch_first_available != blank %}
+            {% assign swatch_first_variant = swatch_first_available %}
+          {% endif %}
           {% unless card_product.title contains "Club" %}
-          {% if card_product.variants.size > 1 %}
-            <div class="collection-variants {% if card_product.variants.size > 6 %}small{%endif%}">
+          {% if swatch_count > 1 %}
+            <div class="collection-variants {% if swatch_count > 6 %}small{%endif%}">
               {% for variant in card_product.variants %}
+                {% assign metafield_raw = variant.metafields.custom.hide_on_storefront %}
+                {% assign hide_value = metafield_raw.value | default: metafield_raw %}
+                {% assign hide_str = hide_value | append: '' | downcase %}
+                {% if hide_str == 'true' %}
+                  {% continue %}
+                {% endif %}
                 <div class="collection-variants-inner">
                   <label 
                     style="background-image: url({{ variant.title | replace: ' ', '_' | append: '.png' | file_url }})"
                     for="{{ variant.id }}"
-                    class="variant-swatch collection-variant variantId-{{variant.id}} {% if variant == firstVariant %}visible{% endif %}"
+                    class="variant-swatch collection-variant variantId-{{variant.id}} {% if variant == swatch_first_variant %}visible{% endif %}"
                   ></label>
                   <span class="value-hover">{{ variant.title }}</span>
                 </div>

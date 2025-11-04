@@ -9,6 +9,11 @@
   Usage:
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
+{%- assign picker_variants = variants | default: product.variants -%}
+{%- assign current_variant = selected_variant | default: product.selected_or_first_available_variant -%}
+{%- if picker_variants.size == 0 -%}
+  {%- assign picker_variants = product.variants -%}
+{%- endif -%}
 {%- unless product.has_only_default_variant -%}
   {%- if block.settings.picker_type == 'button' -%}
     <variant-radios
@@ -26,11 +31,11 @@
           <legend class="form__label">
             {%comment%}{{ option.name }}{%endcomment%}
           </legend>
-          {% render 'product-variant-options', product: product, option: option, block: block %}
+          {% render 'product-variant-options', product: product, option: option, block: block, variants: picker_variants, selected_variant: current_variant %}
         </fieldset>
       {%- endfor -%}
       <script type="application/json">
-        {{ product.variants | json }}
+        {{ picker_variants | json }}
       </script>
     </variant-radios>
   {%- else -%}
@@ -53,7 +58,7 @@
               name="options[{{ option.name | escape }}]"
               form="{{ product_form_id }}"
             >
-              {% render 'product-variant-options', product: product, option: option, block: block %}
+              {% render 'product-variant-options', product: product, option: option, block: block, variants: picker_variants, selected_variant: current_variant %}
             </select>
             {% render 'icon-caret' %}
           </div>
@@ -61,7 +66,7 @@
       {%- endfor -%}
 
       <script type="application/json">
-        {{ product.variants | json }}
+        {{ picker_variants | json }}
       </script>
     </variant-selects>
   {%- endif -%}
@@ -79,9 +84,9 @@
         class="select__select"
         form="{{ product_form_id }}"
       >
-        {%- for variant in product.variants -%}
+        {%- for variant in picker_variants -%}
           <option
-            {% if variant == product.selected_or_first_available_variant %}
+            {% if variant == current_variant %}
               selected="selected"
             {% endif %}
             {% if variant.available == false %}

@@ -116,6 +116,28 @@
                     {%- endfor -%}
                   {%- endif -%}
                   {%- if skip_product -%}{% continue %}{%- endif -%}
+                  {%- assign predictive_selected_variant = blank -%}
+                  {%- assign predictive_selected_variant_available = blank -%}
+                  {%- for variant in product.variants -%}
+                    {%- assign predictive_metafield_raw = variant.metafields.custom.hide_on_storefront -%}
+                    {%- assign hide_value = predictive_metafield_raw.value | default: predictive_metafield_raw -%}
+                    {%- assign hide_str = hide_value | append: '' | downcase -%}
+                    {%- if hide_str == 'true' -%}
+                      {%- continue -%}
+                    {%- endif -%}
+                    {%- if predictive_selected_variant == blank -%}
+                      {%- assign predictive_selected_variant = variant -%}
+                    {%- endif -%}
+                    {%- if variant.available and predictive_selected_variant_available == blank -%}
+                      {%- assign predictive_selected_variant_available = variant -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- if predictive_selected_variant_available != blank -%}
+                    {%- assign predictive_selected_variant = predictive_selected_variant_available -%}
+                  {%- endif -%}
+                  {%- if predictive_selected_variant == blank -%}
+                    {%- assign predictive_selected_variant = product.selected_or_first_available_variant -%}
+                  {%- endif -%}
                   <li id="predictive-search-option-product-{{ forloop.index }}" class="predictive-search__list-item" role="option" aria-selected="false">
                     <a href="{{ product.url }}" class="predictive-search__item predictive-search__item--link-with-thumbnail link link--text" tabindex="-1">
                       {%- if product.featured_media != blank -%}
@@ -129,7 +151,7 @@
                         <p class="predictive-search__item-heading h5">{{ product.title }}
                         </p>
                         {%- if settings.predictive_search_show_price -%}
-                          {% render 'price', product: product, use_variant: true, show_badges: false %}
+                          {% render 'price', product: product, use_variant: true, show_badges: false, selected_variant: predictive_selected_variant %}
                         {%- endif -%}
                       </div>
                     </a>

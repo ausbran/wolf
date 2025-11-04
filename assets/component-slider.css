@@ -38,9 +38,9 @@ slider-component.slider-component-full-width {
   padding-bottom: 0;
 }
 
-.slider__slide[aria-hidden="true"] {
+/* .slider__slide[aria-hidden='true'] {
   visibility: hidden;
-}
+} */
 
 @media screen and (max-width: 749px) {
   .slider.slider--mobile {
@@ -293,7 +293,7 @@ slider-component.slider-component-full-width {
   padding: 0;
   display: block;
   background-color: var(--black);
-  opacity: .3;
+  opacity: 0.3;
 }
 
 .slider-counter__link--active.slider-counter__link--dots .dot {
@@ -365,27 +365,42 @@ slider-component.slider-component-full-width {
 }
 
 .slider-button {
-  color: rgba(var(--color-foreground), 0.75);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  width: 70px;
-  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 999px;
+  border: none;
+  background: #fff;
+  color: rgba(var(--color-foreground), 0.8);
+  cursor: pointer;
+  transition:
+    transform var(--duration-default) ease,
+    box-shadow var(--duration-default) ease,
+    opacity var(--duration-default) ease;
+  pointer-events: auto;
+  padding: 0;
 }
 
 .slider-button:not([disabled]):hover {
   color: rgb(var(--color-foreground));
+  opacity: 0.7;
 }
 
 .slider-button .icon {
-  height: 0.6rem;
+  width: 1.25rem;
+  height: auto;
+  transition: transform var(--duration-default) ease;
+}
+
+.slider-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0;
+  color: rgba(var(--color-foreground), 0.4);
 }
 
 .slider-button[disabled] .icon {
-  color: rgba(var(--color-foreground), 0.3);
   cursor: not-allowed;
 }
 
@@ -397,10 +412,8 @@ slider-component.slider-component-full-width {
   transform: rotate(90deg);
 }
 
-.slider-button--next:not([disabled]):hover .icon {
-  transform: rotate(-90deg) scale(1.1);
-}
-
-.slider-button--prev:not([disabled]):hover .icon {
-  transform: rotate(90deg) scale(1.1);
+@media screen and (min-width: 750px) {
+  .product__media-wrapper .slider.slider--mobile + .product-media-slider-buttons {
+    display: flex;
+  }
 }

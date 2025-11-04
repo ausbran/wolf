@@ -1,3 +1,83 @@
+.simple-slideshow {
+  position: relative;
+  --slideshow-max-width: 150rem;
+  --slideshow-peek: 30px;
+  --slideshow-gap: 30px;
+  --slideshow-horizontal-padding: max(var(--slideshow-peek), calc((100vw - var(--slideshow-max-width)) / 2));
+}
+
+.simple-slideshow__inner {
+  position: relative;
+}
+
+.simple-slideshow__track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: var(--slideshow-gap);
+  scrollbar-width: none;
+  padding-inline: var(--slideshow-horizontal-padding);
+  box-sizing: border-box;
+}
+
+.simple-slideshow__track::-webkit-scrollbar {
+  display: none;
+}
+
+.simple-slideshow__track .slideshow__slide {
+  flex: 0 0 auto;
+  width: calc(100% - (var(--slideshow-peek) * 2));
+  max-width: var(--slideshow-max-width);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+.simple-slideshow__track .slideshow__slide:first-of-type {
+  margin-left: var(--slideshow-peek);
+}
+.simple-slideshow__track .slideshow__slide:last-of-type {
+  margin-right: var(--slideshow-peek);
+}
+
+.simple-slideshow__controls {
+  padding: 0 110px;
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 10;
+  gap: 1rem;
+}
+
+.simple-slideshow__controls .slider-button {
+  pointer-events: auto;
+}
+
+@media screen and (max-width: 749px) {
+  .simple-slideshow__controls {
+    display: none;
+  }
+  .simple-slideshow__track .slideshow__slide:first-of-type {
+    margin-left: unset;
+  }
+  .simple-slideshow__track .slideshow__slide:last-of-type {
+    margin-right: unset;
+  }
+}
+
+.simple-slideshow--mobile-text-below .simple-slideshow__track {
+  align-items: stretch;
+}
+
 slideshow-component {
   position: relative;
   display: flex;
@@ -13,9 +93,10 @@ slideshow-component {
 slideshow-component .slideshow.banner {
   flex-direction: row;
   flex-wrap: nowrap;
+  gap: 4rem;
   margin: 0;
-  gap: 0;
   margin-bottom: 3rem;
+  border-radius: unset;
 }
 
 .slideshow__slide {
@@ -51,7 +132,8 @@ slideshow-component .slideshow.banner {
 }
 
 @media screen and (max-width: 749px) {
-  slideshow-component.page-width .slideshow__text {
+  slideshow-component.page-width .slideshow__text,
+  .simple-slideshow--mobile-text-below .slideshow__text {
     border-right: var(--text-boxes-border-width) solid rgba(var(--color-foreground), var(--text-boxes-border-opacity));
     border-left: var(--text-boxes-border-width) solid rgba(var(--color-foreground), var(--text-boxes-border-opacity));
   }
@@ -108,7 +190,111 @@ slideshow-component .slideshow.banner {
 
 .slider-button--prev,
 .slider-button--next {
-  visibility: hidden;
+  visibility: visible;
+}
+
+.slideshow-component--peek {
+  position: relative;
+  --slideshow-peek-padding: clamp(2rem, 12vw, 10rem);
+  --slideshow-peek-gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+@media screen and (min-width: 750px) {
+  .slideshow-component--peek .slideshow {
+    display: flex !important;
+    gap: var(--slideshow-peek-gap);
+    padding: 0 var(--slideshow-peek-padding);
+    scroll-padding-left: var(--slideshow-peek-padding);
+    scroll-padding-right: var(--slideshow-peek-padding);
+  }
+
+  .slideshow-component--peek .slideshow__slide {
+    flex: 0 0 calc(100% - (var(--slideshow-peek-padding) * 2));
+    max-width: calc(100% - (var(--slideshow-peek-padding) * 2));
+    border-radius: var(--media-radius);
+    overflow: hidden;
+  }
+
+  .slideshow-component--peek .slideshow__controls,
+  .slideshow-component--peek .slider-buttons {
+    margin: auto;
+    max-width: 150rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    border: none;
+    background: transparent;
+  }
+
+  .slideshow-component--peek .slider-button {
+    pointer-events: auto;
+    width: clamp(4.4rem, 5vw, 6.4rem);
+    height: clamp(4.4rem, 5vw, 6.4rem);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    /* box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18); */
+    color: rgba(var(--color-foreground), 0.85);
+    transition:
+      transform var(--duration-default) ease,
+      box-shadow var(--duration-default) ease,
+      opacity var(--duration-default) ease;
+  }
+
+  .slideshow-component--peek .slider-button:not([disabled]):hover {
+    /* transform: translateY(-2px); */
+    /* box-shadow: 0 24px 48px rgba(0, 0, 0, 0.22); */
+    color: rgb(var(--color-foreground));
+  }
+
+  .slideshow-component--peek .slider-button .icon {
+    width: 1.25rem;
+    height: auto;
+  }
+
+  .slideshow-component--peek .slider-counter,
+  .slideshow-component--peek .slideshow__autoplay {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .slideshow-component--peek {
+    --slideshow-peek-padding: 1.5rem;
+    --slideshow-peek-gap: 1.5rem;
+  }
+
+  .slideshow-component--peek .slideshow {
+    padding: 0;
+  }
+
+  .slideshow-component--peek .slideshow__controls,
+  .slideshow-component--peek .slider-buttons {
+    position: static;
+    transform: none;
+    pointer-events: auto;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .slideshow-component--peek .slider-button {
+    width: 4.2rem;
+    height: 4.2rem;
+    background: rgba(255, 255, 255, 0.9);
+    /* box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16); */
+  }
+
+  .slideshow-component--peek .slider-button .icon {
+    width: 1.6rem;
+  }
 }
 
 .slideshow__controls--top {
@@ -142,6 +328,14 @@ slideshow-component:not(.page-width) .slider-buttons {
   display: flex;
 }
 
+.slideshow__autoplay.slider-button {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  opacity: 1;
+}
+
 .slideshow__autoplay {
   position: absolute;
   right: 0;
@@ -172,7 +366,9 @@ slideshow-component:not(.page-width) .slider-buttons {
   position: absolute;
   opacity: 1;
   transform: scale(1);
-  transition: transform 150ms ease, opacity 150ms ease;
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease;
   width: 0.8rem;
   height: 1.2rem;
 }

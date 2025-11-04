@@ -227,7 +227,7 @@
   padding: unset;
 }
 .collection-hero__inner.all .collection-hero__text-wrapper * {
-  color: #fff;
+  color: var(--collection-contrast, #fff);
   text-align: center;
 }
 
@@ -281,7 +281,7 @@
     text-align: center;
   }
   .collection-hero__text-wrapper * {
-    color: #fff !important;
+    color: var(--collection-contrast, #fff) !important;
     text-shadow: var(--shadow);
   }
   .mugs .image.ceramic {

@@ -18,20 +18,32 @@
   <h3 class="small-caps">Shop our Ceramics</h3>
   <div class="category-toggle">
     {% for block in section.blocks %}
-      <span class="category-toggle-item {% if forloop.first %}active{% endif %}" data-category="{{ block.settings.category_name }}">{{ block.settings.category_name }}</span>
+      {%- assign category_label = block.settings.category_name | default: block.settings.category_collection.title | default: 'Collection' -%}
+      {%- assign toggle_label = block.settings.toggle_label | default: category_label -%}
+      {%- assign toggle_color = block.settings.toggle_color | default: '' -%}
+      {%- assign toggle_style = '' -%}
+      {%- if toggle_color != blank -%}
+        {%- assign toggle_style = '--collection-accent: ' | append: toggle_color | append: ';' -%}
+      {%- endif -%}
+      <span class="category-toggle-item {% if forloop.first %}active{% endif %}" data-category="{{ toggle_label }}"{% if toggle_style != blank %} style="{{ toggle_style }}"{% endif %}>{{ toggle_label }}</span>
     {% endfor %}
   </div>
   <div class="category-content">
     {% for block in section.blocks %}
-      <div class="category-content-item {% if forloop.first %}active{% endif %} {{ block.settings.class }}" data-category="{{ block.settings.category_name }}">
-        <img class="image ceramic" src="{{ block.settings.ceramic_image | img_url: 'master' }}" alt="{{ block.settings.category_name }} Image">
-        <img class="image left" src="{{ block.settings.left_image | img_url: 'master' }}" alt="{{ block.settings.category_name }} Image">
+      {%- assign category_label = block.settings.category_name | default: block.settings.category_collection.title | default: 'Collection' -%}
+      {%- assign toggle_label = block.settings.toggle_label | default: category_label -%}
+      {%- assign button_color = block.settings.button_color | default: '' -%}
+      {%- assign button_text_color = block.settings.button_text_color | default: '#ffffff' -%}
+      {%- capture block_color_style -%}{% if button_color != blank %}--collection-accent: {{ button_color }};{% endif %}{% if button_text_color != blank %} --collection-contrast: {{ button_text_color }};{% endif %}{%- endcapture -%}
+      <div class="category-content-item {% if forloop.first %}active{% endif %} {{ block.settings.class }}" data-category="{{ toggle_label }}"{% if block_color_style != blank %} style="{{ block_color_style | strip }}"{% endif %}>
+        <img class="image ceramic" src="{{ block.settings.ceramic_image | img_url: 'master' }}" alt="{{ category_label }} Image">
+        <img class="image left" src="{{ block.settings.left_image | img_url: 'master' }}" alt="{{ category_label }} Image">
         <div class="category-text">
-          <h2 class="h0">{{ block.settings.category_name }}</h2>
+          <h2 class="h0">{{ toggle_label }}</h2>
           <p>{{ block.settings.category_collection.description }}</p>
-          <a href="{{ block.settings.category_collection.url }}" class="shop-button button">Shop {{ block.settings.category_name }}</a>
+          <a href="{{ block.settings.category_collection.url }}" class="shop-button button">Shop {{ toggle_label }}</a>
         </div>
-        <img class="image right" src="{{ block.settings.right_image | img_url: 'master' }}" alt="{{ block.settings.category_name }} Image">
+        <img class="image right" src="{{ block.settings.right_image | img_url: 'master' }}" alt="{{ category_label }} Image">
         <video class="category-video" src="{{ block.settings.category_video }}" controls muted></video>
       </div>
     {% endfor %}
@@ -100,10 +112,16 @@ document.addEventListener("DOMContentLoaded", function () {
       "name": "Category Block",
       "settings": [
         {
-          "type": "text",
-          "label": "Category Name",
-          "id": "category_name"
-        },
+      "type": "text",
+      "label": "Category Name",
+      "id": "category_name"
+    },
+    {
+      "type": "text",
+      "label": "Toggle label (optional)",
+      "id": "toggle_label",
+      "info": "Leave blank to reuse the category name."
+    },
         {
           "type": "image_picker",
           "label": "Ceramic Image",
@@ -134,6 +152,22 @@ document.addEventListener("DOMContentLoaded", function () {
           "label": "Class",
           "info": "Assign a class name. This is for development purposes",
           "id": "class"
+        },
+        {
+          "type": "color",
+          "label": "Toggle underline color",
+          "id": "toggle_color"
+        },
+        {
+          "type": "color",
+          "label": "Button background color",
+          "id": "button_color"
+        },
+        {
+          "type": "color",
+          "label": "Button text color",
+          "id": "button_text_color",
+          "default": "#ffffff"
         }
       ]
     }

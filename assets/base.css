@@ -1483,7 +1483,7 @@ button.shopify-payment-button__button--unbranded {
   justify-content: center;
   align-items: center;
   border: 0;
-  padding: 0 5rem;
+  padding: 0 4rem;
   cursor: pointer;
   font: inherit;
   font-size: 1.5rem;
@@ -2469,6 +2469,10 @@ product-info .loading-overlay:not(.hidden) ~ *,
 .announcement-bar-slider,
 .announcement-bar-slider .slider {
   width: 100%;
+}
+
+.announcement-bar .slider-button {
+  background-color: transparent;
 }
 
 .announcement-bar .slider-button--next {

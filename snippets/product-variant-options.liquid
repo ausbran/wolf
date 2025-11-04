@@ -15,34 +15,65 @@
   %}
 {% endcomment %}
 {%- liquid
-  assign variants_available_arr = product.variants | map: 'available'
-  assign variants_option1_arr = product.variants | map: 'option1'
-  assign variants_option2_arr = product.variants | map: 'option2'
-  assign variants_option3_arr = product.variants | map: 'option3'
-
+  assign option_current_variant = selected_variant | default: product.selected_or_first_available_variant
   assign product_form_id = 'product-form-' | append: section.id
 -%}
 
 {%- for value in option.values -%}
   {%- liquid
+    assign has_visible_variant = false
     assign option_disabled = true
 
-    for option1_name in variants_option1_arr
+    for variant in product.variants
+      assign metafield_raw = variant.metafields.custom.hide_on_storefront
+      assign hide_value = metafield_raw.value | default: metafield_raw
+      assign hide_str = hide_value | append: '' | downcase
+      if hide_str == 'true'
+        continue
+      endif
+
       case option.position
         when 1
-          if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
-            assign option_disabled = false
+          if variant.option1 == value
+            assign has_visible_variant = true
+            if variant.available
+              assign option_disabled = false
+              break
+            endif
           endif
         when 2
-          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
-            assign option_disabled = false
+          if variant.option1 == option_current_variant.option1 and variant.option2 == value
+            assign has_visible_variant = true
+            if variant.available
+              assign option_disabled = false
+              break
+            endif
           endif
         when 3
-          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
-            assign option_disabled = false
+          if variant.option1 == option_current_variant.option1 and variant.option2 == option_current_variant.option2 and variant.option3 == value
+            assign has_visible_variant = true
+            if variant.available
+              assign option_disabled = false
+              break
+            endif
           endif
       endcase
     endfor
+
+    unless has_visible_variant
+      continue
+    endunless
+
+    case option.position
+      when 1
+        assign current_value = option_current_variant.option1
+      when 2
+        assign current_value = option_current_variant.option2
+      when 3
+        assign current_value = option_current_variant.option3
+      else
+        assign current_value = option.selected_value
+    endcase
   -%}
 
   {%- if block.settings.picker_type == 'button' -%}
@@ -52,7 +83,7 @@
       name="{{ option.name }}"
       value="{{ value | escape }}"
       form="{{ product_form_id }}"
-      {% if option.selected_value == value %}
+      {% if current_value == value %}
         checked
       {% endif %}
       {% if option_disabled %}
@@ -74,7 +105,7 @@
   {%- elsif block.settings.picker_type == 'dropdown' -%}
     <option
       value="{{ value | escape }}"
-      {% if option.selected_value == value %}
+      {% if current_value == value %}
         selected="selected"
       {% endif %}
     >

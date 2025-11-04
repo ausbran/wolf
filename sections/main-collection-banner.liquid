@@ -21,6 +21,7 @@
 
   assign rightImage = collection.metafields.custom.right_image
   assign rightImageURL = rightImage | img_url: 'master' | img_tag
+
 -%}
 
 <div class="collection-hero {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
